@@ -1,0 +1,43 @@
+
+.login-body{
+    background-color: rgb(102, 124, 96);
+}
+
+.login-title{
+    color: rgba(31, 73, 31, 0.678);
+}
+
+.login-form{
+    width: 300px;
+    border: 3px solid rgb(93, 113, 98);
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+}
+
+.login-box{
+    border: 10px solid rgb(66, 80, 70);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 300px auto;
+    width: 20%;
+    background-color: white;
+}
+
+.login-text{
+    font-size: large;
+    font-weight: 600;
+}
+
+.icono-login{
+    height: 15px;
+}
+
+.boton-iniciar-sesion{
+    background-color: rgba(20, 40, 22, 0.638);
+    color: rgb(255, 255, 255);
+    font-family: Montserrat, sans-serif;
+    display: block;
+    margin: 10px 0;
+}
