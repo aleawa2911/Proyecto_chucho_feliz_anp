@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             exit;
         }else{
             echo "<script>alert('Usuario o contrasena incorrectos')</script>";
-        }
+        } 
     }
 }
 

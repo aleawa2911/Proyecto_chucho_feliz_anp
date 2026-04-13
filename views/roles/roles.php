@@ -1,9 +1,4 @@
-﻿<?php 
-require_once __DIR__ . '/../layout/header.php';
-require_once __DIR__ . '/../layout/footer.php';
-?>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +9,29 @@ require_once __DIR__ . '/../layout/footer.php';
     <title>Roles</title>
 </head>
 <body>
-<h1>Gestión de roles</h1>
+    <div class="espacio-header"></div>
+    <div class="tabla-insertar">
+        <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=roles">
+        <table >
+            <tr>
+                <th><label class="insertar-text">Nombre</label></th>
+                <th><label class="insertar-text">Descripción</label></th>
+                <th><label class="insertar-text">Activo</label></th>
+            </tr>
+            <tr>
+                <td><input type="text" name="nombre_rol" required class="campo-texto" placeholder="Cajero"></td>
+                <td><input type="text" name="descripcion" required class="campo-texto" placeholder="Permisos"></td>
+                <td><select name="activo" required class="campo-texto"> 
+                        <option value="">Seleccione un estado</option>
+                        <option value="0">Inactivo</option>
+                        <option value="1">Activo</option>
+                    </select>
+                </td>
+                <td><input type="submit" value="Insertar" name="accion" class="boton-insertar"></td>
+            </tr>
+        </table>
+        </form>
+    </div>
 <div class="tabla-registros-box">
     <table class="tabla-registros">
         <tr>
@@ -37,7 +54,7 @@ require_once __DIR__ . '/../layout/footer.php';
             <td class="td-registros"><?php echo $rol['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $rol['usuario_actualizacion']; ?></td>
             <td class="td-registros">
-                <form method="post" action="/proyecto_chucho_feliz_anp/controllers/roles.php">
+                <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=roles">
                     <input type="hidden" name="id_rol" value="<?php echo $rol['id_rol']?>">
                     <input type="submit" class="boton-editar" name="accion" value="Editar">
                     <?php if ($rol['activo'] == '1') {?>

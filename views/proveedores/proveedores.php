@@ -1,8 +1,3 @@
-<?php 
-require_once __DIR__ . '/../layout/header.php';
-require_once __DIR__ . '/../layout/footer.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +9,34 @@ require_once __DIR__ . '/../layout/footer.php';
     <title>Proveedores</title>
 </head>
 <body>
-<h1>Gestión de Proveedores</h1>
+    <div class="espacio-header"></div>
+    <br>
+    <div class="tabla-insertar">
+        <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
+        <table >
+            <tr>
+                <th><label class="insertar-text">Nombre</label></th>
+                <th><label class="insertar-text">Contacto</label></th>
+                <th><label class="insertar-text">Teléfono</label></th>
+                <th><label class="insertar-text">Correo</label></th>
+                <th><label class="insertar-text">Activo</label></th>
+            </tr>
+            <tr>
+                <td><input type="text" name="nombre_proveedor" required class="campo-texto" placeholder="CuchoProveedor"></td>
+                <td><input type="text" name="contacto" required class="campo-texto" placeholder="Juana Chucho"></td>
+                <td><input type="tel" name="telefono" class="campo-texto" placeholder="+503-12345678"></td>
+                <td><input type="email" name="correo" required class="campo-texto" placeholder="Chucho@proveedor.com"></td>
+                <td><select name="activo" required class="campo-texto"> 
+                        <option value="">Seleccione un estado</option>
+                        <option value="0">Inactivo</option>
+                        <option value="1">Activo</option>
+                    </select>
+                </td>
+                <td><input type="submit" value="Insertar" name="accion" class="boton-insertar"></td>
+            </tr>
+        </table>
+        </form>
+    </div>
 <div class="tabla-registros-box">
     <table class="tabla-registros">
         <tr>
@@ -34,18 +56,18 @@ require_once __DIR__ . '/../layout/footer.php';
         <?php foreach ($data as $proveedor): ?>
         <tr>
             <td class="td-registros"><?php echo $proveedor['id_proveedor']; ?></td>
-            <td class="td-registros"><?php echo $proveedor['nombre']; ?></td>
+            <td class="td-registros"><?php echo $proveedor['nombre_proveedor']; ?></td>
             <td class="td-registros"><?php echo $proveedor['contacto']; ?></td>
             <td class="td-registros"><?php echo $proveedor['telefono']; ?></td>
-            <td class="td-registros"><?php echo $proveedor['email']; ?></td>
+            <td class="td-registros"><?php echo $proveedor['correo']; ?></td>
             <td class="td-registros"><?php if ($proveedor['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <td class="td-registros"><?php echo $proveedor['fecha_creacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['fecha_actualizacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['usuario_actualizacion']; ?></td>
             <td class="td-registros">
-                <form method="post" action="/proyecto_chucho_feliz_anp/controllers/proveedores.php">
-                    <input type="hidden" name="id_proveedor" value="<?php echo $usuario['id_proveedor']?>">
+                <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
+                    <input type="hidden" name="id_proveedor" value="<?php echo $proveedor['id_proveedor']?>">
                     <input type="submit" class="boton-editar" name="accion" value="Editar">
                     <?php if ($proveedor['activo'] == '1') {?>
                     <input type="submit" class="boton-desactivar" name="accion" value="Desactivar">

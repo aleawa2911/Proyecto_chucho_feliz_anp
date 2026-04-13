@@ -10,7 +10,7 @@ class CategoriasModelo{
     public function ObtenerTodos(){
         $sql = "SELECT 
                     c.id_categoria,
-                    c.nombre,
+                    c.nombre_categoria,
                     c.descripcion,
                     c.activo,
                     c.fecha_creacion,
@@ -28,22 +28,35 @@ class CategoriasModelo{
         return $data;
     }
 
-    /*public function Insertar(){
-
+    public function Insertar($nombre_categoria,$descripcion,$activo,$usuario_creacion){
+        $sql = "INSERT IGNORE INTO categorias(
+                    nombre_categoria,
+                    descripcion,
+                    activo,
+                    usuario_creacion
+                    )
+                VALUES(
+                    :nombre_categoria,
+                    :descripcion,
+                    :activo,
+                    :usuario_creacion
+                    )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([]);
-    }*/
+        $stmt->execute([":nombre_categoria"=>$nombre_categoria,":descripcion"=>$descripcion,":activo"=>$activo, ":usuario_creacion"=>$usuario_creacion]);
+    }
 
-    public function Desactivar($id_categoria){
-        $sql = "UPDATE categorias SET activo = 0 WHERE id_categoria = :id";
+    public function Desactivar($id_categoria,$usuario_actualizacion){
+        $activo = 0;
+        $sql = "UPDATE categorias SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_categoria = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_categoria]);
+        $stmt->execute([':id' => $id_categoria, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     } 
 
-    public function Activar($id_categoria){
-        $sql = "UPDATE categorias SET activo = 1 WHERE id_categoria = :id";
+    public function Activar($id_categoria,$usuario_actualizacion){
+        $activo = 1;
+        $sql = "UPDATE categorias SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_categoria = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_categoria]);
+        $stmt->execute([':id' => $id_categoria, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
 }
 ?>

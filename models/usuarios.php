@@ -36,7 +36,7 @@ class UsuariosModelo{
     public function Insertar($primer_nombre,$segundo_nombre, $primer_apellido, $segundo_apellido, $nombre_usuario, $correo, $contrasena, $id_rol, $activo, $usuario_creacion){
         $salt = "IDfgdgbnmnSDFedsfLSDFGGdsffdssSdfhuyt";
         $pass = hash('sha256', $salt . trim($contrasena));
-        $sql = "INSERT INTO usuarios (
+        $sql = "INSERT IGNORE INTO usuarios (
                                 primer_nombre, 
                                 segundo_nombre, 
                                 primer_apellido, 
@@ -64,16 +64,18 @@ class UsuariosModelo{
         $stmt->execute([':primer_nombre'=>$primer_nombre,':segundo_nombre'=> $segundo_nombre, ':primer_apellido'=>$primer_apellido, ':segundo_apellido'=>$segundo_apellido, ':nombre_usuario'=>$nombre_usuario, ':correo'=>$correo, ':contrasena'=>$pass, ':id_rol'=>$id_rol, ':activo'=>$activo, ':usuario_creacion'=>$usuario_creacion]);
     }
 
-    public function Desactivar($id_usuario){
-        $sql = "UPDATE usuarios SET activo = 0 WHERE id_usuario = :id";
+    public function Desactivar($id_usuario,$usuario_actualizacion){
+        $activo = 0;
+        $sql = "UPDATE usuarios SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_usuario = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_usuario]);
+        $stmt->execute([':id' => $id_usuario, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     } 
 
-    public function Activar($id_usuario){
-        $sql = "UPDATE usuarios SET activo = 1 WHERE id_usuario = :id";
+    public function Activar($id_usuario,$usuario_actualizacion){
+        $activo = 1;
+        $sql = "UPDATE usuarios SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_usuario = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_usuario]);
+        $stmt->execute([':id' => $id_usuario, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
 }
 ?>

@@ -28,22 +28,34 @@ class RolesModelo{
         return $data;
     }
 
-    /*public function Insertar(){
-
+    public function Insertar($nombre_rol,$descripcion,$activo,$usuario_creacion){
+        $sql = "INSERT IGNORE INTO roles(
+                    nombre_rol,
+                    descripcion,
+                    activo,
+                    usuario_creacion)
+                VALUES(
+                    :nombre_rol,
+                    :descripcion,
+                    :activo,
+                    :usuario_creacion
+                    )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([]);
-    }*/
+        $stmt->execute([":nombre_rol"=>$nombre_rol,":descripcion"=>$descripcion,":activo"=>$activo,":usuario_creacion"=>$usuario_creacion]);
+    }
 
-    public function Desactivar($id_rol){
-        $sql = "UPDATE roles SET activo = 0 WHERE id_rol = :id";
+    public function Desactivar($id_rol,$usuario_actualizacion){
+        $activo = 0;
+        $sql = "UPDATE roles SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_rol = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_rol]);
+        $stmt->execute([':id' => $id_rol, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     } 
 
-    public function Activar($id_rol){
-        $sql = "UPDATE roles SET activo = 1 WHERE id_rol = :id";
+    public function Activar($id_rol,$usuario_actualizacion){
+        $activo = 1;
+        $sql = "UPDATE roles SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_rol = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_rol]);
+        $stmt->execute([':id' => $id_rol, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
 }
 ?>

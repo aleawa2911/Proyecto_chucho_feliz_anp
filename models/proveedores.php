@@ -10,10 +10,10 @@ class ProveedoresModelo{
     public function ObtenerTodos(){
         $sql = "SELECT 
                     pr.id_proveedor,
-                    pr.nombre,
+                    pr.nombre_proveedor,
                     pr.contacto,
                     pr.telefono,
-                    pr.email,
+                    pr.correo,
                     pr.activo,
                     pr.fecha_creacion,
                     pr.fecha_actualizacion,
@@ -30,22 +30,36 @@ class ProveedoresModelo{
         return $data;
     }
 
-    /*public function Insertar(){
-
+    public function Insertar($nombre_proveedor,$contacto,$telefono,$correo,$activo){
+        $sql = "INSERT IGNORE INTO proveedores(
+                    nombre_proveedor,
+                    contacto,
+                    telefono,
+                    correo,
+                    activo)
+                VALUES(
+                    :nombre_proveedor,
+                    :contacto,
+                    :telefono,
+                    :correo,
+                    :activo
+                    )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([]);
-    }*/
+        $stmt->execute([":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":activo"=>$activo]);
+    }
 
-    public function Desactivar($id_proveedor){
-        $sql = "UPDATE proveedores SET activo = 0 WHERE id_proveedor = :id";
+    public function Desactivar($id_proveedor, $usuario_actualizacion){
+        $activo = 0;
+        $sql = "UPDATE proveedores SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_proveedor = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_proveedor]);
+        $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     } 
 
-    public function Activar($id_proveedor){
-        $sql = "UPDATE proveedores SET activo = 1 WHERE id_proveedor = :id";
+    public function Activar($id_proveedor, $usuario_actualizacion){
+        $activo = 1;
+        $sql = "UPDATE proveedores SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_proveedor = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_proveedor]);
+        $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
 }
 ?>

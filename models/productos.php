@@ -11,13 +11,13 @@ class ProductosModelo{
         $sql = "SELECT 
                     p.id_producto,
                     p.codigo,
-                    p.nombre,
+                    p.nombre_producto,
                     p.precio_venta,
                     p.stock,
                     p.stock_defectuoso,
                     p.stock_minimo,
-                    c.nombre AS categoria,
-                    pr.nombre AS proveedor,
+                    c.nombre_categoria AS categoria,
+                    pr.nombre_proveedor AS proveedor,
                     p.activo,
                     p.fecha_creacion,
                     p.fecha_actualizacion,
@@ -38,22 +38,70 @@ class ProductosModelo{
         return $data;
     }
 
-    /*public function Insertar(){
-
+    public function ObtenerProveedor(){
+        $sql = "SELECT 
+                    pr.nombre_proveedor,
+                    pr.id_proveedor
+                FROM productos p
+                RIGHT JOIN proveedores pr 
+                    ON p.id_proveedor = pr.id_proveedor";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([]);
-    }*/
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
 
-    public function Desactivar($id_producto){
-        $sql = "UPDATE productos SET activo = 0 WHERE id_producto = :id";
+    public function ObtenerCategoria(){
+        $sql = "SELECT 
+                    c.nombre_categoria,
+                    c.id_categoria
+                FROM productos p
+                RIGHT JOIN categorias c
+                    ON p.id_categoria = c.id_categoria";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_producto]);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+
+    public function Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo){
+        $sql = "INSERT IGNORE INTO productos(
+                    codigo,
+                    nombre_producto,
+                    precio_venta,
+                    stock,
+                    stock_defectuoso,
+                    stock_minimo,
+                    id_categoria,
+                    id_proveedor,
+                    activo)
+                VALUES(
+                    :codigo,
+                    :nombre_producto,
+                    :precio_venta,
+                    :stock,
+                    :stock_defectuoso,
+                    :stock_minimo,
+                    :id_categoria,
+                    :id_proveedor,
+                    :activo
+                    )";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
+    }
+
+    public function Desactivar($id_producto, $usuario_actualizacion){
+        $activo = 0;
+        $sql = "UPDATE productos SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_producto = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id_producto, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     } 
 
-    public function Activar($id_producto){
-        $sql = "UPDATE productos SET activo = 1 WHERE id_producto = :id";
+    public function Activar($id_producto, $usuario_actualizacion){
+        $activo = 1;
+        $sql = "UPDATE productos SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_producto = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_producto]);
+        $stmt->execute([':id' => $id_producto, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
 }
 ?>
