@@ -64,7 +64,7 @@ class ProductosModelo{
         return $data;
     }
 
-    public function Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo){
+    public function Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
         $sql = "INSERT IGNORE INTO productos(
                     codigo,
                     nombre_producto,
@@ -74,7 +74,8 @@ class ProductosModelo{
                     stock_minimo,
                     id_categoria,
                     id_proveedor,
-                    activo)
+                    activo,
+                    usuario_creacion)
                 VALUES(
                     :codigo,
                     :nombre_producto,
@@ -84,10 +85,11 @@ class ProductosModelo{
                     :stock_minimo,
                     :id_categoria,
                     :id_proveedor,
-                    :activo
+                    :activo,
+                    :usuario_creacion
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
+        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo, ":usuario_creacion"=>$usuario_creacion]);
     }
 
     public function Desactivar($id_producto, $usuario_actualizacion){

@@ -30,22 +30,24 @@ class ProveedoresModelo{
         return $data;
     }
 
-    public function Insertar($nombre_proveedor,$contacto,$telefono,$correo,$activo){
+    public function Insertar($nombre_proveedor,$contacto,$telefono,$correo,$activo,$usuario_creacion){
         $sql = "INSERT IGNORE INTO proveedores(
                     nombre_proveedor,
                     contacto,
                     telefono,
                     correo,
-                    activo)
+                    activo,
+                    usuario_creacion)
                 VALUES(
                     :nombre_proveedor,
                     :contacto,
                     :telefono,
                     :correo,
-                    :activo
+                    :activo,
+                    :usuario_creacion
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":activo"=>$activo]);
+        $stmt->execute([":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":activo"=>$activo,":usuario_creacion"=>$usuario_creacion]);
     }
 
     public function Desactivar($id_proveedor, $usuario_actualizacion){

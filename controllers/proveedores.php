@@ -21,7 +21,8 @@ if ($_SESSION['rol'] == 'Cajero') {
                 $telefono = $_POST['telefono'];
                 $correo = $_POST['correo'];
                 $activo = $_POST['activo'];
-                $modelo->Insertar($nombre_proveedor, $contacto, $telefono,$correo,$activo);
+                $usuario_creacion = $_SESSION["id_usuario"];
+                $modelo->Insertar($nombre_proveedor, $contacto, $telefono,$correo,$activo,$usuario_creacion);
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=proveedores');
                 break;
             

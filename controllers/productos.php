@@ -27,7 +27,7 @@ require_once __DIR__ . '/../views/layout/footer.php';
                 $id_proveedor= $_POST['id_proveedor'];
                 $activo = $_POST['activo'];
                 $usuario_creacion = $_SESSION['id_usuario'];
-                $modelo->Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo);
+                $modelo->Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo,$usuario_creacion);
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=productos');
                 break;
             
