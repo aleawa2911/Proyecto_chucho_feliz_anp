@@ -1,7 +1,7 @@
 <?php 
 session_start();
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../vistas/login.php');
+if (!isset($_SESSION['rol'])) {
+    header('Location: /proyecto_chucho_feliz_anp/index.php?url=login');
     exit;
 }
 ?>

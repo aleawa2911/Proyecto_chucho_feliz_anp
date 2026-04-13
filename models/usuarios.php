@@ -1,0 +1,79 @@
+<?php 
+require_once __DIR__ . '/../config/conexion.php';
+class UsuariosModelo{
+    
+    private $pdo;
+
+    public function __construct(){
+        $conexion = new Conexion();
+        $this->pdo = $conexion->conectar();
+    }
+    public function ObtenerTodos(){
+        $sql = "SELECT 
+                    u.id_usuario,
+                    CONCAT_WS(' ', u.primer_nombre, u.segundo_nombre, u.primer_apellido, u.segundo_apellido) AS nombre_completo,
+                    u.nombre_usuario,
+                    u.correo,
+                    r.nombre_rol AS rol,
+                    u.activo,
+                    u.fecha_creacion,
+                    u.fecha_actualizacion,
+                    uc.nombre_usuario AS usuario_creacion,
+                    ua.nombre_usuario AS usuario_actualizacion
+                FROM usuarios u
+                INNER JOIN roles r 
+                    ON u.id_rol = r.id_rol
+                LEFT JOIN usuarios uc 
+                    ON u.usuario_creacion = uc.id_usuario
+                LEFT JOIN usuarios ua 
+                    ON u.usuario_actualizacion = ua.id_usuario;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+
+    public function Insertar($primer_nombre,$segundo_nombre, $primer_apellido, $segundo_apellido, $nombre_usuario, $correo, $contrasena, $id_rol, $activo, $usuario_creacion){
+        $salt = "IDfgdgbnmnSDFedsfLSDFGGdsffdssSdfhuyt";
+        $pass = hash('sha256', $salt . trim($contrasena));
+        $sql = "INSERT INTO usuarios (
+                                primer_nombre, 
+                                segundo_nombre, 
+                                primer_apellido, 
+                                segundo_apellido, 
+                                nombre_usuario, 
+                                correo, 
+                                contrasena, 
+                                id_rol, 
+                                activo,
+                                usuario_creacion
+                            ) 
+                    VALUES (
+                        :primer_nombre, 
+                        :segundo_nombre, 
+                        :primer_apellido, 
+                        :segundo_apellido, 
+                        :nombre_usuario, 
+                        :correo, 
+                        :contrasena, 
+                        :id_rol, 
+                        :activo,
+                        :usuario_creacion
+                        )";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':primer_nombre'=>$primer_nombre,':segundo_nombre'=> $segundo_nombre, ':primer_apellido'=>$primer_apellido, ':segundo_apellido'=>$segundo_apellido, ':nombre_usuario'=>$nombre_usuario, ':correo'=>$correo, ':contrasena'=>$pass, ':id_rol'=>$id_rol, ':activo'=>$activo, ':usuario_creacion'=>$usuario_creacion]);
+    }
+
+    public function Desactivar($id_usuario){
+        $sql = "UPDATE usuarios SET activo = 0 WHERE id_usuario = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id_usuario]);
+    } 
+
+    public function Activar($id_usuario){
+        $sql = "UPDATE usuarios SET activo = 1 WHERE id_usuario = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id_usuario]);
+    }
+}
+?>

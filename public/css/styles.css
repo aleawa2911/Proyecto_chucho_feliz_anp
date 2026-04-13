@@ -1,26 +1,29 @@
+/*-------------------------------LOGIN------------------------------------*/
 
 .login-body{
     background-color: rgb(102, 124, 96);
+    overflow: hidden;
 }
 
 .login-title{
-    color: rgba(31, 73, 31, 0.678);
+    margin: 0;
 }
 
 .login-form{
     width: 300px;
-    border: 3px solid rgb(93, 113, 98);
+    border: 3px solid rgba(93, 113, 98, 0.381);
     border-radius: 15px;
-    padding: 20px;
+    padding: 20px 50px;
+    padding-bottom: 4px;
     width: 50%;
     margin: auto;
 }
 
 .login-box{
     border: 10px solid rgb(66, 80, 70);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 300px auto;
+    border-radius: 60px;
+    padding: 30px;
+    margin: 180px auto;
     width: 20%;
     background-color: white;
 }
@@ -28,16 +31,232 @@
 .login-text{
     font-size: large;
     font-weight: 600;
+    color: rgba(18, 42, 18, 0.678);
+    letter-spacing: 1px;
+}
+
+.login-elementos-decorativos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-logo{
+    height: 120px;
 }
 
 .icono-login{
     height: 15px;
 }
 
-.boton-iniciar-sesion{
-    background-color: rgba(20, 40, 22, 0.638);
+/*--------------------------------HEADER-----------------------------------*/
+
+
+.header-boton{
+    display: inline-block;
+    
+    font-size: 14px;
+}
+
+.header-box-seccion-titulo{
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+}
+
+.header-box-seccion{
+    padding: 4px 20px;
+    background-color: rgb(94, 114, 88);
+    border-radius: 20px;
+    margin-right:50px;
+    padding-bottom: 7px;
+}
+
+.header-box-sesion{
+
+    padding-left: 5px;
+    padding-right: 5;
+    border-radius: 30px;
+    display: flex;
+    margin-right: 150px;
+}
+
+.sesion-nombre-box{
+    text-align: center;
+    border-radius: 20px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+.sesion-rol-box{
+    text-align: center;
+    font-weight:800;
+    font-size: 11px;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgb(77, 98, 70);
+}
+
+.sesion-logout-box{
+    margin-left: 15px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.boton-logout{
+    margin-top: 3px;
+    background-color: rgb(79, 97, 74);
+    padding: 12;
+    border-radius: 50%;
+    border: 2px solid rgba(20, 40, 22, 0.638);
+}
+
+.boton-logout:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
+}
+
+.sesion-logout-icon{
+    height: 25px;
+}
+
+/*-------------------------------TABLAS DE REGISTRO------------------------------------*/
+
+.tabla-registros{
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.th-registros{
+    border: 2px solid black;
+    border-collapse: collapse;
+    color: white;
+    background-color: rgba(20, 40, 22, 0.638) ;
+    padding: 7px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.td-registros{
+    border: 1px solid black;
+    border-collapse:collapse;
+    padding: 7px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.tabla-registros-box{
+    margin: auto;
+    width: fit-content;
+}
+
+/*-------------------------------TABLAS DE INSERTAR------------------------------------*/
+
+.tabla-insertar{
+    margin: auto;
+    width: fit-content;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.insertar-text{
+    font-size: medium;
+    font-weight: 600;
+    color: rgba(13, 30, 13, 0.678);
+    letter-spacing: 1px;
+}
+
+/*-------------------------------------------------------------------*/
+
+.campo-texto{
+    border-radius: 8px;
+    padding: 7px;
+}
+
+.boton{
+    background-color: rgba(20, 40, 22, 0.638) ;
     color: rgb(255, 255, 255);
-    font-family: Montserrat, sans-serif;
     display: block;
-    margin: 10px 0;
+    border: 3px solid rgba(20, 40, 22, 0.638);
+    border-radius: 20px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
+}
+
+.boton-editar{
+    background-color: rgb(39, 95, 216) ;
+    color: rgb(255, 255, 255);
+    display: in-line;
+
+    border: 3px solid rgb(0, 10, 84);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.boton-editar:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
+}
+
+.boton-desactivar{
+    background-color: rgb(194, 12, 12) ;
+    color: rgb(255, 255, 255);
+    display: in-line;
+    margin-left: 3px;
+    border: 3px solid rgb(101, 1, 1);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton-desactivar:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
+}
+
+.boton-activar{
+    background-color: rgb(61, 194, 12) ;
+    color: rgb(255, 255, 255);
+    display: in-line;
+    margin-left: 3px;
+    border: 3px solid rgb(24, 101, 1);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton-activar:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
+}
+
+.boton-insertar{
+    background-color: rgb(12, 145, 5) ;
+    color: rgb(255, 255, 255);
+    display: in-line;
+    margin-left: 3px;
+    border: 3px solid rgb(13, 101, 1);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.boton-insertar:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
 }

@@ -1,0 +1,1 @@
+<footer><p>© 2026 Chucho Feliz :) - UFG</p></footer>
