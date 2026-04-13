@@ -50,13 +50,7 @@
         </table>
         </form>
     </div>
-
-<div class="form-buscar">
-    <p>Buscar usuario</p>
-    <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios"></form>
-    <input type="text" class="campo-texto">
-</div>
-
+    
 <div class="tabla-registros-box">
     <table class="tabla-registros">
         <tr>
