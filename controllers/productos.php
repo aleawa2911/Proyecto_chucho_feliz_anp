@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/autentificacion.php';
 require_once __DIR__ . '/../models/productos.php';
-require_once __DIR__ . '/../models/categorias.php';
-require_once __DIR__ . '/../models/proveedores.php';
 require_once __DIR__ . '/../views/layout/header.php';
 require_once __DIR__ . '/../views/layout/footer.php';
 

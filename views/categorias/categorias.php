@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
-    <title>Usuarios</title>
+    <title>Categorías | Chucho Feliz</title>
 </head>
 <body>
     <div class="espacio-header"></div>
