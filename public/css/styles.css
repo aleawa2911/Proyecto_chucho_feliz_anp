@@ -155,6 +155,7 @@
     padding-right: 7px;
     text-align: center;
     font-size: 14px;
+    height: 50px;
 }
 
 .tabla-registros-box{
@@ -183,6 +184,8 @@
 .campo-texto{
     border-radius: 8px;
     padding: 7px;
+    text-align: center;
+    width: fit-content;
 }
 
 .boton{
@@ -202,16 +205,15 @@
 }
 
 .boton-editar{
-    background-color: rgb(39, 95, 216) ;
+    background-color: rgb(82, 100, 122) ;
     color: rgb(255, 255, 255);
-    display: in-line;
-
-    border: 3px solid rgb(0, 10, 84);
+    border: 3px solid rgb(62, 78, 98);
     border-radius: 8px;
     padding: 7px;
     text-align: center;
     text-decoration: none;
-    
+    position: relative;
+    top:7.5px;
 }
 
 .boton-editar:hover{
@@ -219,14 +221,33 @@
     cursor: pointer;
 }
 
+.boton-actualizar{
+    background-color: rgb(92, 120, 158) ;
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(62, 78, 98);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+}
+
+
+.boton-actualizar:hover{
+    background-color: rgba(47, 92, 51, 0.638);
+    cursor: pointer;
+}
+
 .boton-desactivar{
-    background-color: rgb(194, 12, 12) ;
+    background-color: rgb(131, 90, 74) ;
     color: rgb(255, 255, 255);
     margin-left: 3px;
-    border: 3px solid rgb(101, 1, 1);
+    border: 3px solid rgb(90, 58, 46);
     border-radius: 8px;
     padding: 7px;
     text-decoration: none;
+    position: relative;
+    top:7.5px;
 }
 
 .boton-desactivar:hover{
@@ -235,13 +256,15 @@
 }
 
 .boton-activar{
-    background-color: rgb(61, 194, 12) ;
+    background-color: rgb(93, 114, 87) ;
     color: rgb(255, 255, 255);
     margin-left: 3px;
-    border: 3px solid rgb(24, 101, 1);
+    border: 3px solid rgb(47, 80, 50);
     border-radius: 8px;
     padding: 7px;
     text-decoration: none;
+    position: relative;
+    top:7.5px;
 }
 
 .boton-activar:hover{
@@ -250,11 +273,11 @@
 }
 
 .boton-insertar{
-    background-color: rgb(12, 145, 5) ;
+    background-color: rgb(74, 118, 92) ;
     color: rgb(255, 255, 255);
     display: in-line;
     margin-left: 3px;
-    border: 3px solid rgb(13, 101, 1);
+    border: 3px solid rgb(54, 90, 70);
     border-radius: 8px;
     padding: 7px;
     text-align: center;
@@ -268,5 +291,8 @@
 }
 
 .boton-activo{
-    background-color: rgb(81, 151, 86);;
+    background-color: rgb(75, 129, 79);
+    color: rgb(255, 255, 255);
+    font-weight: 700;
 }
+

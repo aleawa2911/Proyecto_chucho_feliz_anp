@@ -11,6 +11,7 @@
 <body>
     <div class="espacio-header"></div>
     <br>
+    <?php if ($_SESSION['rol'] != 'Cajero') { ?>
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
         <table >
@@ -54,6 +55,7 @@
             </tr>
         </table>
         </form>
+    <?php } ?> 
     </div>
 <div class="tabla-registros-box">
     <table class="tabla-registros">
@@ -61,13 +63,13 @@
             <th class="th-registros">Codigo</th>
             <th class="th-registros">Nombre</th>
             <th class="th-registros">Precio</th>
-            <th class="th-registros">Stock</th>
-            <th class="th-registros">Stock Mínimo</th>
-            <th class="th-registros">Stock Defectuoso</th>  
+            <th class="th-registros">Stock</th> 
             <th class="th-registros">Categoría</th>
-            <th class="th-registros">Proveedor</th>
             <th class="th-registros">Estado</th>
-            <?php if ($_SESSION['rol'] != 'Cajero') { ?>      
+            <?php if ($_SESSION['rol'] != 'Cajero') { ?>    
+            <th class="th-registros">Stock Mínimo</th>
+            <th class="th-registros">Stock Defectuoso</th>
+            <th class="th-registros">Proveedor</th> 
             <th class="th-registros">Fecha Creación</th>
             <th class="th-registros">Fecha Actualización</th>
             <th class="th-registros">Usuario Creación</th>
@@ -82,12 +84,14 @@
             <td class="td-registros"><?php echo $producto['nombre_producto']; ?></td>
             <td class="td-registros"><?php echo $producto['precio_venta']; ?></td>
             <td class="td-registros"><?php echo $producto['stock']; ?></td>
-            <td class="td-registros"><?php echo $producto['stock_defectuoso']; ?></td>
-            <td class="td-registros"><?php echo $producto['stock_minimo']; ?></td>
+
             <td class="td-registros"><?php echo $producto['categoria']; ?></td>
-            <td class="td-registros"><?php echo $producto['proveedor']; ?></td>
+            
             <td class="td-registros"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
+            <td class="td-registros"><?php echo $producto['stock_defectuoso']; ?></td>
+            <td class="td-registros"><?php echo $producto['stock_minimo']; ?></td>
+            <td class="td-registros"><?php echo $producto['proveedor']; ?></td>
             <td class="td-registros"><?php echo $producto['fecha_creacion']; ?></td>
             <td class="td-registros"><?php echo $producto['fecha_actualizacion']; ?></td>
             <td class="td-registros"><?php echo $producto['usuario_creacion']; ?></td>

@@ -11,6 +11,7 @@
 <body>
     <div class="espacio-header"></div>
     <br>
+    <?php if ($_SESSION['rol'] != 'Cajero') { ?>
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
         <table >
@@ -32,7 +33,8 @@
             </tr>
         </table>
         </form>
-    </div>    
+    </div> 
+    <?php } ?>   
 <div class="tabla-registros-box">
     <table class="tabla-registros">
         <tr>

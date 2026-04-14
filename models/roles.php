@@ -28,6 +28,31 @@ class RolesModelo{
         return $data;
     }
 
+    public function ObtenerPorId($id_rol){
+        $sql = "SELECT
+                    id_rol,
+                    nombre_rol,
+                    descripcion
+                FROM roles
+                WHERE id_rol = :id_rol";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_rol"=>$id_rol]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
+    public function Actualizar($id_rol,$nombre_rol,$descripcion,$usuario_actualizacion){
+        $sql = "UPDATE roles 
+                SET 
+                    nombre_rol = :nombre_rol,
+                    descripcion = :descripcion,
+                    usuario_actualizacion = :usuario_actualizacion
+                WHERE 
+                    id_rol = :id_rol";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_rol"=>$id_rol,":nombre_rol"=>$nombre_rol,":descripcion"=>$descripcion,":usuario_actualizacion"=>$usuario_actualizacion]);
+    }
+
     public function Insertar($nombre_rol,$descripcion,$activo,$usuario_creacion){
         $sql = "INSERT IGNORE INTO roles(
                     nombre_rol,

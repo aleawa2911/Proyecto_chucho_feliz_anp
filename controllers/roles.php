@@ -25,7 +25,19 @@ if ($_SESSION['rol'] == 'Cajero' || $_SESSION['rol'] == 'Encargado') {
                 break;
             
             case 'Editar':
-                # code...
+                $id_rol = $_POST['id_rol'];
+                $usuario_actualizacion = $_SESSION['id_usuario'];
+                $updateid = $modelo->ObtenerPorId($id_rol);
+                require_once __DIR__ . '/../views/roles/editar_roles.php';
+                break;
+
+            case 'Actualizar':
+                $id_rol = $_POST['id_rol'];
+                $nombre_rol = $_POST['nombre_rol'];
+                $descripcion = $_POST['descripcion'];
+                $usuario_actualizacion = $_SESSION["id_usuario"];
+                $modelo->Actualizar($id_rol,$nombre_rol,$descripcion,$usuario_actualizacion);
+                header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
                 break;
 
             case 'Desactivar':
@@ -42,6 +54,8 @@ if ($_SESSION['rol'] == 'Cajero' || $_SESSION['rol'] == 'Encargado') {
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
                 break;
         }
+    }else {
+        require_once __DIR__ . '/../views/roles/roles.php';
     }
-require_once __DIR__ . '/../views/roles/roles.php';
+
 ?>
