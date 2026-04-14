@@ -280,14 +280,11 @@
 .boton-insertar{
     background-color: rgb(74, 118, 92) ;
     color: rgb(255, 255, 255);
-    display: in-line;
     margin-left: 3px;
     border: 3px solid rgb(54, 90, 70);
     border-radius: 8px;
     padding: 7px;
-    text-align: center;
     text-decoration: none;
-    
 }
 
 .boton-insertar:hover{

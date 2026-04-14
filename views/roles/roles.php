@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <td><input type="text" name="nombre_rol" required class="campo-texto" placeholder="Cajero"></td>
-                <td><input type="text" name="descripcion" required class="campo-texto" placeholder="Permisos"></td>
+                <td><input type="text" name="descripcion" class="campo-texto" placeholder="Permisos"></td>
                 <td><select name="activo" required class="campo-texto"> 
                         <option value="">Seleccione un estado</option>
                         <option value="0">Inactivo</option>
@@ -62,7 +62,7 @@
             <?php if (isset($updateid) && $updateid['id_rol'] == $rol['id_rol']){ ?>
             <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=roles">
             <td class="th-registros"><?php echo $rol['id_rol']; ?></td>
-            <td class="td-registros"><input type="text" name="nombre_rol" value="<?php echo $rol['nombre_rol']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_rol" value="<?php echo $rol['nombre_rol']; ?>" required class="campo-texto"></td>
             <td class="td-registros"><input type="text" name="descripcion" value="<?php echo $rol['descripcion']; ?>" class="campo-texto"></td>
             <td class="td-registros"><?php if ($rol['activo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
             <td class="td-registros"><?php echo $rol['fecha_creacion']; ?></td>

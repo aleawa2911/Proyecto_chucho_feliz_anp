@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td><input type="text" name="nombre_categoria" required class="campo-texto" placeholder="Alimentos"></td>
-                <td><input type="text" name="descripcion" required class="campo-texto" placeholder="Comida"></td>
+                <td><input type="text" name="descripcion" class="campo-texto" placeholder="Comida"></td>
                 <td><select name="activo" required class="campo-texto"> 
                         <option value="">Seleccione un estado</option>
                         <option value="0">Inactivo</option>
@@ -64,7 +64,7 @@
             <?php if (isset($updateid) && $updateid['id_categoria'] == $categoria['id_categoria']) { ?>
             <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
             <td class="th-registros"><?php echo $categoria['id_categoria']; ?></td>
-            <td class="td-registros"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" required class="campo-texto"></td>
             <td class="td-registros"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto"></td>
             <td class="td-registros"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>

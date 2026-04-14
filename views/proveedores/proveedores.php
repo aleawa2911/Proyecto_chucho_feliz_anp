@@ -21,13 +21,13 @@
                 <th><label class="insertar-text">Contacto</label></th>
                 <th><label class="insertar-text">Teléfono</label></th>
                 <th><label class="insertar-text">Correo</label></th>
-                <th><label class="insertar-text">Activo</label></th>
+                <th><label class="insertar-text">Estado</label></th>
             </tr>
             <tr>
                 <td><input type="text" name="nombre_proveedor" required class="campo-texto" placeholder="CuchoProveedor"></td>
-                <td><input type="text" name="contacto" required class="campo-texto" placeholder="Juana Chucho"></td>
+                <td><input type="text" name="contacto" class="campo-texto" placeholder="Juana Chucho"></td>
                 <td><input type="tel" name="telefono" class="campo-texto" placeholder="+503-12345678"></td>
-                <td><input type="email" name="correo" required class="campo-texto" placeholder="Chucho@proveedor.com"></td>
+                <td><input type="email" name="correo" class="campo-texto" placeholder="Chucho@proveedor.com"></td>
                 <td><select name="activo" required class="campo-texto"> 
                         <option value="">Seleccione un estado</option>
                         <option value="0">Inactivo</option>
@@ -65,7 +65,7 @@
             <?php if (isset($updateid) && $updateid['id_proveedor'] == $proveedor['id_proveedor']) { ?>
             <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
             <td class="th-registros"><?php echo $proveedor['id_proveedor']; ?></td>
-            <td class="td-registros"><input type="text" name="nombre_proveedor" value="<?php echo $proveedor['nombre_proveedor']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_proveedor" value="<?php echo $proveedor['nombre_proveedor']; ?>" required class="campo-texto"></td>
             <td class="td-registros"><input type="text" name="contacto" value="<?php echo $proveedor['contacto']; ?>" class="campo-texto"></td>
             <td class="td-registros"><input type="text" name="telefono" value="<?php echo $proveedor['telefono']; ?>" class="campo-texto"></td>
             <td class="td-registros"><input type="text" name="correo" value="<?php echo $proveedor['correo']; ?>" class="campo-texto"></td>

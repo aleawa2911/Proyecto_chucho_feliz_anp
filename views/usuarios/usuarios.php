@@ -82,16 +82,16 @@
             <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">
             <td class="th-registros"><?php echo $usuario['id_usuario']; ?></td>
             <td class="td-registros">
-                <input type="text" name="primer_nombre" value="<?php echo $usuario['primer_nombre']; ?>" class="campo-texto" placeholder="Primer nombre">
+                <input type="text" name="primer_nombre" value="<?php echo $usuario['primer_nombre']; ?>" required class="campo-texto" placeholder="Primer nombre">
                 <input type="text" name="segundo_nombre" value="<?php echo $usuario['segundo_nombre']; ?>" class="campo-texto" placeholder="Segundo nombre">
                 <br>
-                <input type="text" name="primer_apellido" value="<?php echo $usuario['primer_apellido']; ?>" class="campo-texto" placeholder="Primer apellido">
+                <input type="text" name="primer_apellido" value="<?php echo $usuario['primer_apellido']; ?>" required class="campo-texto" placeholder="Primer apellido">
                 <input type="text" name="segundo_apellido" value="<?php echo $usuario['segundo_apellido']; ?>" class="campo-texto" placeholder="Segundo apellido">
             </td>
-            <td class="td-registros"><input type="text" name="nombre_usuario" value="<?php echo $usuario['nombre_usuario']; ?>" class="campo-texto"></td>
-            <td class="td-registros"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_usuario" value="<?php echo $usuario['nombre_usuario']; ?>" required class="campo-texto"></td>
+            <td class="td-registros"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" required class="campo-texto"></td>
             <td class="td-registros">
-                <select name="id_rol" class="campo-texto">
+                <select name="id_rol" required class="campo-texto">
                     <option value="1" <?php if ($usuario['id_rol'] == '1') {echo 'selected';} ?>>Administrador</option>
                     <option value="2" <?php if ($usuario['id_rol'] == '2') {echo 'selected';} ?>>Encargado</option>
                     <option value="3" <?php if ($usuario['id_rol'] == '3') {echo 'selected';} ?>>Cajero</option>

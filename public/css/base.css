@@ -19,6 +19,7 @@ header{
     padding: 6px 10px;
     color: white;
     width: 100%;
+    z-index: 20000;
 }
 
 footer{
@@ -28,5 +29,6 @@ footer{
     position:fixed;
     width:100%;
     bottom:0px;
-    font-size: 12px;
+    font-size: 10px;
+    z-index: 20000;
 }
