@@ -56,5 +56,5 @@ require_once __DIR__ . '/../views/layout/footer.php';
     }
 
 /*Jalamos la vista con la q se trabajara*/
-require_once __DIR__ . '/../views/categorias/categorias.php';
+require_once __DIR__ . '/../views/crud/categorias.php';
 ?>

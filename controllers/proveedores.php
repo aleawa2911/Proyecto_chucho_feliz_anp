@@ -65,5 +65,5 @@ require_once __DIR__ . '/../views/layout/footer.php';
     }
 
 /*Jalamos la vista con la q se trabajara*/
-require_once __DIR__ . '/../views/proveedores/proveedores.php';
+require_once __DIR__ . '/../views/crud/proveedores.php';
 ?>

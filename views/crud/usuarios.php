@@ -37,8 +37,8 @@
                 <td><select name="id_rol" required class="campo-texto">
                         <option value="">Seleccione un rol</option>
                         <option value="1">Administrador</option>
-                        <option value="2">Encargado</option>
-                        <option value="3">Cajero</option>
+                        <option value="2">Cajero</option>
+                        <option value="3">Encargado</option>
                     </select>
                 </td>
                 <td><select name="activo" required class="campo-texto"> 
@@ -92,9 +92,10 @@
             <td class="td-registros"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" required class="campo-texto"></td>
             <td class="td-registros">
                 <select name="id_rol" required class="campo-texto">
-                    <option value="1" <?php if ($usuario['id_rol'] == '1') {echo 'selected';} ?>>Administrador</option>
-                    <option value="2" <?php if ($usuario['id_rol'] == '2') {echo 'selected';} ?>>Encargado</option>
-                    <option value="3" <?php if ($usuario['id_rol'] == '3') {echo 'selected';} ?>>Cajero</option>
+                    
+                    <option value="1" <?php if ((int)$updateid['id_rol'] === 1) {echo 'selected';} ?>>Administrador</option>
+                    <option value="2" <?php if ((int)$updateid['id_rol'] === 2) {echo 'selected';} ?>>Cajero</option>
+                    <option value="3" <?php if ((int)$updateid['id_rol'] === 3) {echo 'selected';} ?>>Encargado</option>
                 </select>
             </td>
             <td class="td-registros"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>

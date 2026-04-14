@@ -74,5 +74,5 @@ require_once __DIR__ . '/../views/layout/footer.php';
     }
 
 /*Jalamos la vista con la q se trabajara*/
-require_once __DIR__ . '/../views/usuarios/usuarios.php';
+require_once __DIR__ . '/../views/crud/usuarios.php';
 ?>

@@ -35,7 +35,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
                         <div class="header-boton"><a href="index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>">Ventas</a></div>
-                        <div class="header-boton"><a href="index.php?url=cierre_caja" class="boton <?php if($url=='cierra_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
                         <div class="header-boton"><a href="index.php?url=devoluciones" class="boton <?php if($url=='devoluciones')echo 'boton-activo'?>">Devoluciones</a></div>
                         <div class="header-boton"><a href="index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>">Compras</a></div>
                 </div>
@@ -65,7 +65,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
                         <div class="header-boton"><a href="index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>">Ventas</a></div>
-                        <div class="header-boton"><a href="index.php?url=cierre_caja" class="boton <?php if($url=='cierra_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
                         <div class="header-boton"><a href="index.php?url=devoluciones" class="boton <?php if($url=='devoluciones')echo 'boton-activo'?>">Devoluciones</a></div>
                         <div class="header-boton"><a href="index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>">Compras</a></div>
                 </div>
