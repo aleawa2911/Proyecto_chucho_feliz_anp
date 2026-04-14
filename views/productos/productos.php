@@ -31,10 +31,10 @@
             <tr>
                 <td><input type="text" name="codigo" required class="campo-texto" placeholder="ALI001"></td>
                 <td><input type="text" name="nombre_producto" required class="campo-texto" placeholder="JugueteWawa"></td>
-                <td><input type="text" name="precio_venta" required class="campo-texto" placeholder="12.99"></td>
-                <td><input type="text" name="stock" required class="campo-texto" placeholder="4"></td>
-                <td><input type="text" name="stock_defectuoso" required class="campo-texto" placeholder="5"></td>
-                <td><input type="text" name="stock_minimo" required class="campo-texto" placeholder="10"></td>
+                <td><input type="number" name="precio_venta" required class="campo-texto" placeholder="12.99"></td>
+                <td><input type="number" name="stock" required class="campo-texto" placeholder="16"></td>
+                <td><input type="number" name="stock_defectuoso" required class="campo-texto" placeholder="5"></td>
+                <td><input type="number" name="stock_minimo" required class="campo-texto" placeholder="10"></td>
                 <td><select name="id_categoria" required class="campo-texto"> 
                         <option value="">Seleccione una categoría</option>
                         <?php foreach ($dataC as $categoria): ?>
@@ -48,7 +48,7 @@
                         <?php endforeach; ?>
                     </select></td>
                 <td><select name="activo" required class="campo-texto"> 
-                        <option value="">Seleccione una categoría</option>
+                        <option value="">Seleccione un estado</option>
                         <option value="0">Inactivo</option>
                         <option value="1">Activo</option>
                     </select>
@@ -94,22 +94,24 @@
             <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
             <td class="td-registros"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" class="campo-texto"></td>
             <td class="td-registros"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="stock" value="<?php echo $producto['stock']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="number" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="number" name="stock" value="<?php echo $producto['stock']; ?>" class="campo-texto"></td>
             <td class="td-registros">
                 <select name="id_categoria" class="campo-texto">
                     <?php foreach ($dataC as $categoria): ?>
-                    <option value="<?php echo $categoria['id_categoria']?>" <?php if ($categoria['id_categoria'] == $producto['id_categoria']) {echo 'selected';} ?>><?php echo $categoria['nombre_categoria']?></option>
+                        <option value="">Categoría</option>
+                        <option value="<?php echo $categoria['id_categoria']?>"><?php echo $categoria['nombre_categoria']?></option>
                     <?php endforeach; ?>
                 </select>
             </td>
             <td class="td-registros"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
-            <td class="td-registros"><input type="text" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="number" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="number" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" class="campo-texto"></td>
             <td class="td-registros">
                 <select name="id_proveedor" class="campo-texto">
                     <?php foreach ($dataP as $proveedor): ?>
-                    <option value="<?php echo $proveedor['id_proveedor']?>" <?php if ($proveedor['id_proveedor'] == $producto['id_proveedor']) {echo 'selected';} ?>><?php echo $proveedor['nombre_proveedor']?></option>
+                        <option value="">Proveedor</option>
+                        <option value="<?php echo $proveedor['id_proveedor']?>"><?php echo $proveedor['nombre_proveedor']?></option>
                     <?php endforeach; ?>
                 </select>
             </td>

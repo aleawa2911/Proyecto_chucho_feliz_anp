@@ -83,11 +83,10 @@ class ProductosModelo{
 
     public function ObtenerProveedor(){
         $sql = "SELECT 
-                    pr.nombre_proveedor,
-                    pr.id_proveedor
-                FROM productos p
-                RIGHT JOIN proveedores pr 
-                    ON p.id_proveedor = pr.id_proveedor";
+                    id_proveedor,
+                    nombre_proveedor
+                FROM proveedores
+                ORDER BY nombre_proveedor ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -96,11 +95,10 @@ class ProductosModelo{
 
     public function ObtenerCategoria(){
         $sql = "SELECT 
-                    c.nombre_categoria,
-                    c.id_categoria
-                FROM productos p
-                RIGHT JOIN categorias c
-                    ON p.id_categoria = c.id_categoria";
+                    id_categoria,
+                    nombre_categoria
+                FROM categorias
+                ORDER BY nombre_categoria ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
