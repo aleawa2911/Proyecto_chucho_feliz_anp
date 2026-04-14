@@ -1,12 +1,18 @@
 <?php 
-// Si no viene nada en la URL, manda a login
+// Si no viene nada en la URL, manda a login por default
 $url = $_GET['url'] ?? 'login';
+
+//Los botones de la pagina reenvian a un index.php?url=talcosa, entonces el index toma la decision segun que url se le da, de llamar a X o Y controlador
 
 switch ($url) {
 
     case 'login':
         require_once __DIR__ . '/controllers/login.php';
         break;
+
+    case 'logout':
+        require_once __DIR__ . '/controllers/logout.php';
+        break;    
     
     case 'dashboard':
         require_once __DIR__ . '/controllers/dashboard.php';

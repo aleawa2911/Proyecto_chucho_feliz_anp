@@ -1,15 +1,18 @@
 <?php
+/*Jalamos la conexion a la db*/
 require_once __DIR__ . '/../config/conexion.php';
-
 class LoginModelo{
+
+    /*Propiedad privada q guarda la conexion PDO a la DB*/
     private $pdo;
 
+    /*Guardamos la conexion a la DB en la propiedad pdo*/
     public function __construct(){
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
 
-    /*Funcion para verificar contraseña comparando con la database*/
+    /*Funcion para verificar contraseña comparando con la database, chequeando tambien que el user este activo, es decir que activo == 1*/
     public function verificar($user,$password)
     {
         $salt = "IDfgdgbnmnSDFedsfLSDFGGdsffdssSdfhuyt";

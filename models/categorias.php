@@ -1,8 +1,12 @@
 <?php 
+/*Jalamos la conexion a la db*/
 require_once __DIR__ . '/../config/conexion.php';
 class CategoriasModelo{
+
+    /*Propiedad privada q guarda la conexion PDO a la DB*/
     private $pdo;
 
+    /*Guardamos la conexion a la DB en la propiedad pdo*/
     public function __construct(){
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
@@ -21,11 +25,36 @@ class CategoriasModelo{
                 LEFT JOIN usuarios uc 
                     ON c.usuario_creacion = uc.id_usuario
                 LEFT JOIN usuarios ua 
-                    ON c.usuario_actualizacion = ua.id_usuario;";
+                    ON c.usuario_actualizacion = ua.id_usuario ORDER BY c.activo DESC, c.id_categoria ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
+    }
+
+    public function ObtenerPorId($id_categoria){
+        $sql = "SELECT
+                    id_categoria,
+                    nombre_categoria,
+                    descripcion
+                FROM categorias
+                WHERE id_categoria = :id_categoria";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_categoria"=>$id_categoria]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
+    public function Actualizar($id_categoria,$nombre_categoria,$descripcion,$usuario_actualizacion){
+        $sql = "UPDATE categorias
+                SET
+                    nombre_categoria = :nombre_categoria,
+                    descripcion = :descripcion,
+                    usuario_actualizacion = :usuario_actualizacion
+                WHERE
+                    id_categoria = :id_categoria";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_categoria"=>$id_categoria,":nombre_categoria"=>$nombre_categoria,":descripcion"=>$descripcion,":usuario_actualizacion"=>$usuario_actualizacion]);
     }
 
     public function Insertar($nombre_categoria,$descripcion,$activo,$usuario_creacion){

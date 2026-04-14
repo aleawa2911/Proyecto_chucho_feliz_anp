@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Jalamos los estilos de CSS-->
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
@@ -12,13 +13,14 @@
     <div class="espacio-header"></div>
     <br>
     <?php if ($_SESSION['rol'] != 'Cajero') { ?>
+    <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
         <table >
             <tr>
                 <th><label class="insertar-text">Nombre</label></th>
                 <th><label class="insertar-text">Descripción</label></th>
-                <th><label class="insertar-text">Activo</label></th>
+                <th><label class="insertar-text">Estado</label></th>
             </tr>
             <tr>
                 <td><input type="text" name="nombre_categoria" required class="campo-texto" placeholder="Alimentos"></td>
@@ -29,14 +31,17 @@
                         <option value="1">Activo</option>
                     </select>
                 </td>
+                <!--Boton que triggerea la accion insertar en el controlador-->
                 <td><input type="submit" value="Insertar" name="accion" class="boton-insertar"></td>
             </tr>
         </table>
         </form>
     </div> 
     <?php } ?>   
+<!--Tabla de registros-->
 <div class="tabla-registros-box">
     <table class="tabla-registros">
+        <!--Header de la tabla-->
         <tr>
             <th class="th-registros">ID</th>
             <th class="th-registros">Nombre</th>
@@ -51,9 +56,31 @@
             <?php } ?>
         </tr>
 
+        <!--Recibimos los datos de la funcion ObtenerTodos()-->
         <?php foreach ($data as $categoria): ?>
         <tr>
-            <td class="td-registros"><?php echo $categoria['id_categoria']; ?></td>
+            <!--Chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
+            y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
+            <?php if (isset($updateid) && $updateid['id_categoria'] == $categoria['id_categoria']) { ?>
+            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
+            <td class="th-registros"><?php echo $categoria['id_categoria']; ?></td>
+            <td class="td-registros"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <?php if ($_SESSION['rol'] != 'Cajero') { ?>
+            <td class="td-registros"><?php echo $categoria['fecha_creacion']; ?></td>
+            <td class="td-registros"><?php echo $categoria['fecha_actualizacion']; ?></td>
+            <td class="td-registros"><?php echo $categoria['usuario_creacion']; ?></td>
+            <td class="td-registros"><?php echo $categoria['usuario_actualizacion']; ?></td>
+            <td class="td-registros">
+                    <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">
+                    <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                </form>
+            </td>
+            <?php } ?>
+            <?php } else { ?>
+            <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
+            <td class="th-registros"><?php echo $categoria['id_categoria']; ?></td>
             <td class="td-registros"><?php echo $categoria['nombre_categoria']; ?></td>
             <td class="td-registros"><?php echo $categoria['descripcion']; ?></td>
             <td class="td-registros"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
@@ -63,6 +90,7 @@
             <td class="td-registros"><?php echo $categoria['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $categoria['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
                     <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">
                     <input type="submit" class="boton-editar" name="accion" value="Editar">
@@ -72,7 +100,8 @@
                     <input type="submit" class="boton-activar" name="accion" value="Activar">
                     <?php }?>
                 </form>
-            </td>    
+            </td>
+            <?php } ?>
             <?php } ?>
         </tr>
         <?php endforeach; ?>

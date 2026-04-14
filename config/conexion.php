@@ -1,6 +1,7 @@
 <?php 
 class Conexion{
 
+    /*Hacemos la funcion pa conectarnos a la DB, con fetch_assoc como atributo, y q muestre las excepciones*/
     public function conectar(){
         $dsn = 'mysql:host=localhost;dbname=chucho_feliz';
         $user = 'root';

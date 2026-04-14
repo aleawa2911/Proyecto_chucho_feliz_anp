@@ -1,15 +1,21 @@
 <?php
+/*Retomamos la sesion en autentificacion.php*/
 require_once __DIR__ . '/../config/autentificacion.php';
+/*Jalamos el modelo con el q vamos a trabajar*/
 require_once __DIR__ . '/../models/proveedores.php';
+/*Jalamos el layout q usaremos en todo el sitio web*/
 require_once __DIR__ . '/../views/layout/header.php';
 require_once __DIR__ . '/../views/layout/footer.php';
 
-if ($_SESSION['rol'] == 'Cajero') {
-    header('Location:/proyecto_chucho_feliz_anp/index.php?url=dashboard');
-}
+    /*Chequeamos q el rol no sea uno de los no permitidos para ver esta parte por si tratan de entrar por url, en caso de tener prohibido el acceso, lo mandamos al dashboard*/
+    if ($_SESSION['rol'] == 'Cajero') {
+        header('Location:/proyecto_chucho_feliz_anp/index.php?url=dashboard');
+    }
 
-    $modelo = new ProveedoresModelo();
-    $data = $modelo->ObtenerTodos();
+    /*Instanciamos el modelo de proveedores*/
+	$modelo = new ProveedoresModelo();
+    /*Guardamos la data de las tablas en $data*/
+	$data = $modelo->ObtenerTodos();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $accion = $_POST['accion'];
@@ -26,8 +32,20 @@ if ($_SESSION['rol'] == 'Cajero') {
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=proveedores');
                 break;
             
-            case 'Editar':
-                # code...
+	        case 'Editar':
+                $id_proveedor = $_POST['id_proveedor'];
+                $updateid = $modelo->ObtenerPorId($id_proveedor);
+	            break;
+
+            case 'Actualizar':
+                $id_proveedor = $_POST['id_proveedor'];
+                $nombre_proveedor = $_POST['nombre_proveedor'];
+                $contacto = $_POST['contacto'];
+                $telefono = $_POST['telefono'];
+                $correo = $_POST['correo'];
+                $usuario_actualizacion = $_SESSION["id_usuario"];
+                $modelo->Actualizar($id_proveedor,$nombre_proveedor,$contacto,$telefono,$correo,$usuario_actualizacion);
+                header('Location: /proyecto_chucho_feliz_anp/index.php?url=proveedores');
                 break;
 
             case 'Desactivar':
@@ -45,5 +63,7 @@ if ($_SESSION['rol'] == 'Cajero') {
                 break;
         }
     }
+
+/*Jalamos la vista con la q se trabajara*/
 require_once __DIR__ . '/../views/proveedores/proveedores.php';
 ?>

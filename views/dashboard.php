@@ -1,12 +1,8 @@
-﻿<?php 
-require_once __DIR__ . '/layout/header.php';
-require_once __DIR__ . '/layout/footer.php';
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <div class="espacio-header"></div>
     <meta charset="UTF-8">
+    <!--Jalamos los estilos de CSS-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
@@ -14,5 +10,6 @@ require_once __DIR__ . '/layout/footer.php';
     <title>Dashboard</title>
 </head>
 <body>
+    <div class="espacio-header"></div>
 </body>
 </html>

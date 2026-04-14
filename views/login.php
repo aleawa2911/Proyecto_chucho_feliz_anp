@@ -1,10 +1,9 @@
-﻿
-<!--Vista del login estilizado con css basico y fuentes basicas-->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Jalamos los estilos de CSS-->
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
@@ -27,6 +26,7 @@
         </div>
         <h5 class>Ingresa tus credenciales para continuar.</h5>
         <div class="login-form-box">
+            <!--Se envian las credenciales al controlador login mediante post-->
             <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=login">
                 <table class="login-form">
                     <tr>

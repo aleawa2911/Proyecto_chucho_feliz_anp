@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Jalamos los estilos de CSS-->
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
@@ -11,6 +12,7 @@
 <body>
     <div class="espacio-header"></div>
     <br>
+    <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
         <table >
@@ -32,13 +34,16 @@
                         <option value="1">Activo</option>
                     </select>
                 </td>
+                <!--Boton que triggerea la accion insertar en el controlador-->
                 <td><input type="submit" value="Insertar" name="accion" class="boton-insertar"></td>
             </tr>
         </table>
         </form>
     </div>
+<!--Tabla de registros-->
 <div class="tabla-registros-box">
     <table class="tabla-registros">
+        <!--Header de la tabla-->
         <tr>
             <th class="th-registros">ID</th>
             <th class="th-registros">Nombre</th>
@@ -53,9 +58,30 @@
             <th class="th-registros">Acciones</th>  
         </tr>
 
+        <!--Recibimos los datos de la funcion ObtenerTodos()-->
         <?php foreach ($data as $proveedor): ?>
         <tr>
-            <td class="td-registros"><?php echo $proveedor['id_proveedor']; ?></td>
+            <!--Si existe $updateid (se define al presionar Editar) y su id coincide con el de esta fila, mostramos la fila en modo edicion con formuladior y boton de Actualizar.-->
+            <?php if (isset($updateid) && $updateid['id_proveedor'] == $proveedor['id_proveedor']) { ?>
+            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
+            <td class="th-registros"><?php echo $proveedor['id_proveedor']; ?></td>
+            <td class="td-registros"><input type="text" name="nombre_proveedor" value="<?php echo $proveedor['nombre_proveedor']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="contacto" value="<?php echo $proveedor['contacto']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="telefono" value="<?php echo $proveedor['telefono']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="correo" value="<?php echo $proveedor['correo']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><?php if ($proveedor['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="td-registros"><?php echo $proveedor['fecha_creacion']; ?></td>
+            <td class="td-registros"><?php echo $proveedor['fecha_actualizacion']; ?></td>
+            <td class="td-registros"><?php echo $proveedor['usuario_creacion']; ?></td>
+            <td class="td-registros"><?php echo $proveedor['usuario_actualizacion']; ?></td>
+            <td class="td-registros">
+                    <input type="hidden" name="id_proveedor" value="<?php echo $proveedor['id_proveedor']?>">
+                    <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                </form>
+            </td>
+            <?php } else { ?>
+            <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
+            <td class="th-registros"><?php echo $proveedor['id_proveedor']; ?></td>
             <td class="td-registros"><?php echo $proveedor['nombre_proveedor']; ?></td>
             <td class="td-registros"><?php echo $proveedor['contacto']; ?></td>
             <td class="td-registros"><?php echo $proveedor['telefono']; ?></td>
@@ -66,6 +92,7 @@
             <td class="td-registros"><?php echo $proveedor['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
                     <input type="hidden" name="id_proveedor" value="<?php echo $proveedor['id_proveedor']?>">
                     <input type="submit" class="boton-editar" name="accion" value="Editar">
@@ -75,7 +102,8 @@
                     <input type="submit" class="boton-activar" name="accion" value="Activar">
                     <?php }?>
                 </form>
-            </td>    
+            </td>
+            <?php } ?>
         </tr>
         <?php endforeach; ?>
     </table>

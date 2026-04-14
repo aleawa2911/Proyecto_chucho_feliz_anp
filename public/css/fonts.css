@@ -1,4 +1,5 @@
-﻿@font-face {
+﻿/*Fuente principal del sitio, almacenada en public/fonts, no hay mucho q decir*/
+@font-face {
     font-family: 'Montserrat';
     src: url('/proyecto_chucho_feliz_anp/public/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
 }

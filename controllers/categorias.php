@@ -1,11 +1,16 @@
-<?php 
+<?php
+/*Retomamos la sesion en autentificacion.php*/
 require_once __DIR__ . '/../config/autentificacion.php';
+/*Jalamos el modelo con el q vamos a trabajar*/
 require_once __DIR__ . '/../models/categorias.php';
+/*Jalamos el layout q usaremos en todo el sitio web*/
 require_once __DIR__ . '/../views/layout/header.php';
 require_once __DIR__ . '/../views/layout/footer.php';
 
-    $modelo = new CategoriasModelo();
-    $data = $modelo->ObtenerTodos();
+    /*Instanciamos el modelo de categorias*/
+	$modelo = new CategoriasModelo();
+    /*Guardamos la data de las tablas en $data*/
+	$data = $modelo->ObtenerTodos();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $accion = $_POST['accion'];
@@ -20,8 +25,18 @@ require_once __DIR__ . '/../views/layout/footer.php';
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
                 break;
             
-            case 'Editar':
-                # code...
+	        case 'Editar':
+                $id_categoria = $_POST['id_categoria'];
+                $updateid = $modelo->ObtenerPorId($id_categoria);
+	            break;
+
+            case 'Actualizar':
+                $id_categoria = $_POST['id_categoria'];
+                $nombre_categoria = $_POST['nombre_categoria'];
+                $descripcion = $_POST['descripcion'];
+                $usuario_actualizacion = $_SESSION["id_usuario"];
+                $modelo->Actualizar($id_categoria,$nombre_categoria,$descripcion,$usuario_actualizacion);
+                header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
                 break;
 
             case 'Desactivar':
@@ -39,5 +54,7 @@ require_once __DIR__ . '/../views/layout/footer.php';
                 break;
         }
     }
+
+/*Jalamos la vista con la q se trabajara*/
 require_once __DIR__ . '/../views/categorias/categorias.php';
 ?>

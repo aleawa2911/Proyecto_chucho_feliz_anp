@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Jalamos los estilos de CSS-->
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
@@ -12,6 +13,7 @@
     <div class="espacio-header"></div>
     <br>
     <?php if ($_SESSION['rol'] != 'Cajero') { ?>
+    <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
         <table >
@@ -51,15 +53,19 @@
                         <option value="1">Activo</option>
                     </select>
                 </td>
+                <!--Boton que triggerea la accion insertar en el controlador-->
                 <td><input type="submit" value="Insertar" name="accion" class="boton-insertar"></td>
             </tr>
         </table>
         </form>
     <?php } ?> 
     </div>
+<!--Tabla de registros-->
 <div class="tabla-registros-box">
     <table class="tabla-registros">
+        <!--Header de la tabla-->
         <tr>
+            <th class="th-registros">ID</th>
             <th class="th-registros">Codigo</th>
             <th class="th-registros">Nombre</th>
             <th class="th-registros">Precio</th>
@@ -78,16 +84,56 @@
             <?php } ?>
         </tr>
 
+        <!--Recibimos los datos de la funcion ObtenerTodos()-->
         <?php foreach ($data as $producto): ?>
         <tr>
+            <!--Chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
+            y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
+            <?php if (isset($updateid) && $updateid['id_producto'] == $producto['id_producto'] && $_SESSION['rol'] != 'Cajero') { ?>
+            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
+            <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
+            <td class="td-registros"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="stock" value="<?php echo $producto['stock']; ?>" class="campo-texto"></td>
+            <td class="td-registros">
+                <select name="id_categoria" class="campo-texto">
+                    <?php foreach ($dataC as $categoria): ?>
+                    <option value="<?php echo $categoria['id_categoria']?>" <?php if ($categoria['id_categoria'] == $producto['id_categoria']) {echo 'selected';} ?>><?php echo $categoria['nombre_categoria']?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+            <td class="td-registros"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="td-registros"><input type="text" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" class="campo-texto"></td>
+            <td class="td-registros">
+                <select name="id_proveedor" class="campo-texto">
+                    <?php foreach ($dataP as $proveedor): ?>
+                    <option value="<?php echo $proveedor['id_proveedor']?>" <?php if ($proveedor['id_proveedor'] == $producto['id_proveedor']) {echo 'selected';} ?>><?php echo $proveedor['nombre_proveedor']?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+            <td class="td-registros"><?php echo $producto['fecha_creacion']; ?></td>
+            <td class="td-registros"><?php echo $producto['fecha_actualizacion']; ?></td>
+            <td class="td-registros"><?php echo $producto['usuario_creacion']; ?></td>
+            <td class="td-registros"><?php echo $producto['usuario_actualizacion']; ?></td>
+            <td class="td-registros">
+                    <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">
+                    <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                </form>
+            </td>
+            <?php } else { ?>
+
+
+            <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
+            <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
             <td class="td-registros"><?php echo $producto['codigo']; ?></td>
             <td class="td-registros"><?php echo $producto['nombre_producto']; ?></td>
             <td class="td-registros"><?php echo $producto['precio_venta']; ?></td>
             <td class="td-registros"><?php echo $producto['stock']; ?></td>
-
             <td class="td-registros"><?php echo $producto['categoria']; ?></td>
-            
             <td class="td-registros"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <!--Si el rol es cajero, no mostramos los datos innecesarios para la venta-->
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
             <td class="td-registros"><?php echo $producto['stock_defectuoso']; ?></td>
             <td class="td-registros"><?php echo $producto['stock_minimo']; ?></td>
@@ -97,6 +143,7 @@
             <td class="td-registros"><?php echo $producto['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $producto['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
                     <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">
                     <input type="submit" class="boton-editar" name="accion" value="Editar">
@@ -106,8 +153,9 @@
                     <input type="submit" class="boton-activar" name="accion" value="Activar">
                     <?php }?>
                 </form>
-            </td>    
+            </td>
             <?php } ?>  
+            <?php } ?>
         </tr>
         <?php endforeach; ?>
     </table>

@@ -1,14 +1,18 @@
 <?php 
+/*Jalamos la conexion a la db*/
 require_once __DIR__ . '/../config/conexion.php';
 class ProductosModelo{
+
+    /*Propiedad privada q guarda la conexion PDO a la DB*/
     private $pdo;
 
+    /*Guardamos la conexion a la DB en la propiedad pdo*/
     public function __construct(){
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
     public function ObtenerTodos(){
-        $sql = "SELECT 
+                $sql = "SELECT 
                     p.id_producto,
                     p.codigo,
                     p.nombre_producto,
@@ -16,6 +20,8 @@ class ProductosModelo{
                     p.stock,
                     p.stock_defectuoso,
                     p.stock_minimo,
+                    p.id_categoria,
+                    p.id_proveedor,
                     c.nombre_categoria AS categoria,
                     pr.nombre_proveedor AS proveedor,
                     p.activo,
@@ -31,11 +37,48 @@ class ProductosModelo{
                 LEFT JOIN usuarios uc 
                     ON p.usuario_creacion = uc.id_usuario
                 LEFT JOIN usuarios ua 
-                    ON p.usuario_actualizacion = ua.id_usuario";
+                    ON p.usuario_actualizacion = ua.id_usuario ORDER BY p.activo DESC, p.id_producto ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
+    }
+
+    public function ObtenerPorId($id_producto){
+        $sql = "SELECT
+                    id_producto,
+                    codigo,
+                    nombre_producto,
+                    precio_venta,
+                    stock,
+                    stock_defectuoso,
+                    stock_minimo,
+                    id_categoria,
+                    id_proveedor
+                FROM productos
+                WHERE id_producto = :id_producto";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_producto"=>$id_producto]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
+    public function Actualizar($id_producto,$codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$usuario_actualizacion){
+        $sql = "UPDATE productos
+                SET
+                    codigo = :codigo,
+                    nombre_producto = :nombre_producto,
+                    precio_venta = :precio_venta,
+                    stock = :stock,
+                    stock_defectuoso = :stock_defectuoso,
+                    stock_minimo = :stock_minimo,
+                    id_categoria = :id_categoria,
+                    id_proveedor = :id_proveedor,
+                    usuario_actualizacion = :usuario_actualizacion
+                WHERE
+                    id_producto = :id_producto";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":usuario_actualizacion"=>$usuario_actualizacion]);
     }
 
     public function ObtenerProveedor(){

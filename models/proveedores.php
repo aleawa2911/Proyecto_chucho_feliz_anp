@@ -1,8 +1,12 @@
 <?php 
+/*Jalamos la conexion a la db*/
 require_once __DIR__ . '/../config/conexion.php';
 class ProveedoresModelo{
+
+    /*Propiedad privada q guarda la conexion PDO a la DB*/
     private $pdo;
 
+    /*Guardamos la conexion a la DB en la propiedad pdo*/
     public function __construct(){
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
@@ -23,11 +27,40 @@ class ProveedoresModelo{
                 LEFT JOIN usuarios uc 
                     ON pr.usuario_creacion = uc.id_usuario
                 LEFT JOIN usuarios ua 
-                    ON pr.usuario_actualizacion = ua.id_usuario;";
+                    ON pr.usuario_actualizacion = ua.id_usuario ORDER BY pr.activo DESC, pr.id_proveedor ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
+    }
+
+    public function ObtenerPorId($id_proveedor){
+        $sql = "SELECT
+                    id_proveedor,
+                    nombre_proveedor,
+                    contacto,
+                    telefono,
+                    correo
+                FROM proveedores
+                WHERE id_proveedor = :id_proveedor";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_proveedor"=>$id_proveedor]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
+    public function Actualizar($id_proveedor,$nombre_proveedor,$contacto,$telefono,$correo,$usuario_actualizacion){
+        $sql = "UPDATE proveedores
+                SET
+                    nombre_proveedor = :nombre_proveedor,
+                    contacto = :contacto,
+                    telefono = :telefono,
+                    correo = :correo,
+                    usuario_actualizacion = :usuario_actualizacion
+                WHERE
+                    id_proveedor = :id_proveedor";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_proveedor"=>$id_proveedor,":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":usuario_actualizacion"=>$usuario_actualizacion]);
     }
 
     public function Insertar($nombre_proveedor,$contacto,$telefono,$correo,$activo,$usuario_creacion){
