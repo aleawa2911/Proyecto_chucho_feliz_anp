@@ -1,6 +1,6 @@
 <?php
 /*Jalamos la conexion a la db*/
-require_once __DIR__ . '/../config/conexion.php';
+require_once __DIR__ . '/../../config/conexion.php';
 class LoginModelo{
 
     /*Propiedad privada q guarda la conexion PDO a la DB*/

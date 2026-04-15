@@ -10,6 +10,7 @@
     <title>Usuarios | Chucho Feliz</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
     <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
@@ -35,14 +36,14 @@
                 <td><input type="email" name="correo" required class="campo-texto" placeholder="correo@chucho.com"></td>
                 <td><input type="password" name="contrasena" required class="campo-texto" placeholder="contrasena123"></td>
                 <td><select name="id_rol" required class="campo-texto">
-                        <option value="">Seleccione un rol</option>
+                        <option value="">Rol</option>
                         <option value="1">Administrador</option>
                         <option value="2">Cajero</option>
                         <option value="3">Encargado</option>
                     </select>
                 </td>
                 <td><select name="activo" required class="campo-texto"> 
-                        <option value="">Seleccione un estado</option>
+                        <option value="">Estado</option>
                         <option value="0">Inactivo</option>
                         <option value="1">Activo</option>
                     </select>
@@ -106,6 +107,7 @@
             <td class="td-registros">
                     <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    <a href="/proyecto_chucho_feliz_anp/index.php?url=usuarios" class="boton-cancelar">X</a>
                 </form>
             </td>
             <?php } else { ?>
@@ -137,5 +139,6 @@
         <?php endforeach; ?>
     </table>
 </div>
+<?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

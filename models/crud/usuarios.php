@@ -1,6 +1,6 @@
 <?php 
 /*Jalamos la conexion a la db*/
-require_once __DIR__ . '/../config/conexion.php';
+require_once __DIR__ . '/../../config/conexion.php';
 class UsuariosModelo{
 
     /*Propiedad privada q guarda la conexion PDO a la DB*/
@@ -34,7 +34,7 @@ class UsuariosModelo{
                 LEFT JOIN usuarios uc 
                     ON u.usuario_creacion = uc.id_usuario
                 LEFT JOIN usuarios ua 
-                    ON u.usuario_actualizacion = ua.id_usuario ORDER BY u.activo DESC, u.id_rol ASC, u.id_usuario ASC;";
+                    ON u.usuario_actualizacion = ua.id_usuario ORDER BY u.id_usuario ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();

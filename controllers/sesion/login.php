@@ -1,6 +1,6 @@
 <?php
 /*Jalamos el modelo con el q vamos a trabajar*/
-require_once __DIR__ . '/../models/login.php';
+require_once __DIR__ . '/../../models/sesion/login.php';
 
 /*Instanciamos el modelo de login*/
 $login = new LoginModelo();
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $_SESSION["nombre"] = $verificacion['nombre_completo'];
             $_SESSION["rol"] = $verificacion['rol'];
             $_SESSION["id_usuario"] = $verificacion['id_usuario'];
-            header('Location:http://localhost/proyecto_chucho_feliz_anp/index.php?url=dashboard');
+            header('Location:/proyecto_chucho_feliz_anp/index.php?url=dashboard');
             exit;
         }else{
             /*Si fueron incorrectas o el user esta desactivado, mostramos q es incorrecto*/
@@ -33,6 +33,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 /*Jalamos la vista con la q se trabajara*/
-require_once __DIR__ . '/../views/login.php';
+require_once __DIR__ . '/../../views/login.php';
 ?>
 

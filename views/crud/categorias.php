@@ -10,8 +10,9 @@
     <title>Categorías | Chucho Feliz</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
-    <br>
+
     <?php if ($_SESSION['rol'] != 'Cajero') { ?>
     <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
@@ -26,7 +27,7 @@
                 <td><input type="text" name="nombre_categoria" required class="campo-texto" placeholder="Alimentos"></td>
                 <td><input type="text" name="descripcion" class="campo-texto" placeholder="Comida"></td>
                 <td><select name="activo" required class="campo-texto"> 
-                        <option value="">Seleccione un estado</option>
+                        <option value="">Estado</option>
                         <option value="0">Inactivo</option>
                         <option value="1">Activo</option>
                     </select>
@@ -75,6 +76,7 @@
             <td class="td-registros">
                     <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    <a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton-cancelar">X</a>
                 </form>
             </td>
             <?php } ?>
@@ -107,5 +109,6 @@
         <?php endforeach; ?>
     </table>
 </div>
+<?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

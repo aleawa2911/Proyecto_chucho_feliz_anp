@@ -10,6 +10,7 @@
     <title>Editar Roles | Chucho Feliz</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
 
 <!--Formulario para insertar datos en la tabla-->
@@ -25,7 +26,7 @@
                 <td><input type="text" name="nombre_rol" required class="campo-texto" placeholder="Cajero"></td>
                 <td><input type="text" name="descripcion" class="campo-texto" placeholder="Permisos"></td>
                 <td><select name="activo" required class="campo-texto"> 
-                        <option value="">Seleccione un estado</option>
+                        <option value="">Estado</option>
                         <option value="0">Inactivo</option>
                         <option value="1">Activo</option>
                     </select>
@@ -72,6 +73,7 @@
             <td class="td-registros">
                     <input type="hidden" name="id_rol" value="<?php echo $rol['id_rol']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    <a href="/proyecto_chucho_feliz_anp/index.php?url=roles" class="boton-cancelar">X</a>
                 </form>
             </td>
             <?php }else{?> 
@@ -101,5 +103,6 @@
         <?php } endforeach; ?>
     </table>
 </div>
+<?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

@@ -7,55 +7,59 @@ $url = $_GET['url'] ?? 'login';
 switch ($url) {
 
     case 'login':
-        require_once __DIR__ . '/controllers/login.php';
+        require_once __DIR__ . '/controllers/sesion/login.php';
         break;
 
     case 'logout':
-        require_once __DIR__ . '/controllers/logout.php';
+        require_once __DIR__ . '/controllers/sesion/logout.php';
         break;    
     
     case 'dashboard':
-        require_once __DIR__ . '/controllers/dashboard.php';
+        require_once __DIR__ . '/controllers/control/dashboard.php';
         break;
 
     case 'roles':
-        require_once __DIR__ . '/controllers/roles.php';
+        require_once __DIR__ . '/controllers/crud/roles.php';
         break;
 
     case 'cierre_caja':
-        require_once __DIR__ . '/controllers/cierre_caja.php';
+        require_once __DIR__ . '/controllers/operaciones/cierre_caja.php';
         break;
 
     case 'ventas':
-        require_once __DIR__ . '/controllers/ventas.php';
+        require_once __DIR__ . '/controllers/operaciones/ventas.php';
         break;
 
     case 'productos':
-        require_once __DIR__ . '/controllers/productos.php';
+        require_once __DIR__ . '/controllers/crud/productos.php';
         break;
 
     case 'devoluciones':
-        require_once __DIR__ . '/controllers/devoluciones.php';
+        require_once __DIR__ . '/controllers/operaciones/devoluciones.php';
         break;
 
     case 'compras':
-        require_once __DIR__ . '/controllers/compras.php';
+        require_once __DIR__ . '/controllers/operaciones/compras.php';
         break;
 
     case 'proveedores':
-        require_once __DIR__ . '/controllers/proveedores.php';
+        require_once __DIR__ . '/controllers/crud/proveedores.php';
         break;
     
     case 'categorias':
-        require_once __DIR__ . '/controllers/categorias.php';
+        require_once __DIR__ . '/controllers/crud/categorias.php';
         break;
 
     case 'usuarios':
-        require_once __DIR__ . '/controllers/usuarios.php';
+        require_once __DIR__ . '/controllers/crud/usuarios.php';
+        break;
+
+    case 'historial':
+        require_once __DIR__ . '/controllers/control/historial.php';
         break;
 
     case 'reportes':
-        require_once __DIR__ . '/controllers/reportes.php';
+        require_once __DIR__ . '/controllers/control/reportes.php';
         break;
 
 }

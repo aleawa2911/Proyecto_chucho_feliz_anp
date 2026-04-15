@@ -1,11 +1,11 @@
 <?php 
 /*Retomamos la sesion en autentificacion.php*/
-require_once __DIR__ . '/../config/autentificacion.php';
+require_once __DIR__ . '/../sesion/autentificacion.php';
 /*Jalamos el modelo con el q vamos a trabajar*/
-require_once __DIR__ . '/../models/usuarios.php';
+require_once __DIR__ . '/../../models/crud/usuarios.php';
 /*Jalamos el layout q usaremos en todo el sitio web*/
-require_once __DIR__ . '/../views/layout/header.php';
-require_once __DIR__ . '/../views/layout/footer.php';
+
+
 
     /*Chequeamos q el rol no sea uno de los no permitidos para ver esta parte por si tratan de entrar por url, en caso de tener prohibido el acceso, lo mandamos al dashboard*/
     if ($_SESSION['rol'] == 'Cajero' || $_SESSION['rol'] == 'Encargado') {
@@ -74,5 +74,5 @@ require_once __DIR__ . '/../views/layout/footer.php';
     }
 
 /*Jalamos la vista con la q se trabajara*/
-require_once __DIR__ . '/../views/crud/usuarios.php';
+require_once __DIR__ . '/../../views/crud/usuarios.php';
 ?>

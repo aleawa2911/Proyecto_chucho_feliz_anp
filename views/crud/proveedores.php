@@ -10,8 +10,9 @@
     <title>Proveedores | Chucho Feliz</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
-    <br>
+
     <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
@@ -27,9 +28,9 @@
                 <td><input type="text" name="nombre_proveedor" required class="campo-texto" placeholder="CuchoProveedor"></td>
                 <td><input type="text" name="contacto" class="campo-texto" placeholder="Juana Chucho"></td>
                 <td><input type="tel" name="telefono" class="campo-texto" placeholder="+503-12345678"></td>
-                <td><input type="email" name="correo" class="campo-texto" placeholder="Chucho@proveedor.com"></td>
+                <td><input type="email" name="correo" class="campo-texto" placeholder="prov@chucho.com"></td>
                 <td><select name="activo" required class="campo-texto"> 
-                        <option value="">Seleccione un estado</option>
+                        <option value="">Estado</option>
                         <option value="0">Inactivo</option>
                         <option value="1">Activo</option>
                     </select>
@@ -77,6 +78,7 @@
             <td class="td-registros">
                     <input type="hidden" name="id_proveedor" value="<?php echo $proveedor['id_proveedor']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    <a href="/proyecto_chucho_feliz_anp/index.php?url=proveedores" class="boton-cancelar">X</a>
                 </form>
             </td>
             <?php } else { ?>
@@ -108,5 +110,6 @@
         <?php endforeach; ?>
     </table>
 </div>
+<?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

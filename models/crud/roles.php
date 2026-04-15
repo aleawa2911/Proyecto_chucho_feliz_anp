@@ -1,6 +1,6 @@
 <?php 
 /*Jalamos la conexion a la db*/
-require_once __DIR__ . '/../config/conexion.php';
+require_once __DIR__ . '/../../config/conexion.php';
 class RolesModelo{
 
     /*Propiedad privada q guarda la conexion PDO a la DB*/
@@ -25,7 +25,7 @@ class RolesModelo{
                 LEFT JOIN usuarios uc 
                     ON r.usuario_creacion = uc.id_usuario
                 LEFT JOIN usuarios ua 
-                    ON r.usuario_actualizacion = ua.id_usuario ORDER BY r.activo DESC, r.id_rol ASC;";
+                    ON r.usuario_actualizacion = ua.id_usuario ORDER BY r.id_rol ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();

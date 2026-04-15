@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
-    <title>Compras || Chucho Feliz</title>
+    <title>Historial | Chucho Feliz</title>
 </head>
 <body>
     <?php require_once __DIR__ . '/../layout/header.php';?>

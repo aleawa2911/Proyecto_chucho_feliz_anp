@@ -10,6 +10,8 @@
     <title>Devoluciones || Chucho Feliz</title>
 </head>
 <body>
-    
+    <?php require_once __DIR__ . '/../layout/header.php';?>
+    <div class="espacio-header"></div>
+    <?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

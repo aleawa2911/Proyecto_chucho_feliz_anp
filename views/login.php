@@ -21,7 +21,7 @@
             </div>
             
             <div>
-                <img src="public/images/logo.png" alt="logo_chucho" class="logo">
+                <img src="/proyecto_chucho_feliz_anp/public/images/logo.png" alt="logo_chucho" class="logo">
             </div>
         </div>
         <h5 class>Ingresa tus credenciales para continuar.</h5>

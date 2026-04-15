@@ -10,8 +10,9 @@
     <title>Productos | Chucho Feliz</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
-    <br>
+
     <?php if ($_SESSION['rol'] != 'Cajero') { ?>
     <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
@@ -36,19 +37,19 @@
                 <td><input type="number" name="stock_defectuoso" required class="campo-texto" placeholder="5"></td>
                 <td><input type="number" name="stock_minimo" required class="campo-texto" placeholder="10"></td>
                 <td><select name="id_categoria" required class="campo-texto"> 
-                        <option value="">Seleccione una categoría</option>
+                        <option value="">Categoría</option>
                         <?php foreach ($dataC as $categoria): ?>
                         <option value="<?php echo $categoria['id_categoria']?>"><?php echo $categoria['nombre_categoria']?></option>
                         <?php endforeach; ?>
                     </select></td>
                 <td><select name="id_proveedor" class="campo-texto"> 
-                        <option value="">Seleccione un proveedor</option>
+                        <option value="">Proveedor</option>
                         <?php foreach ($dataP as $proveedor): ?>
                         <option value="<?php echo $proveedor['id_proveedor']?>"><?php echo $proveedor['nombre_proveedor']?></option>
                         <?php endforeach; ?>
                     </select></td>
                 <td><select name="activo" required class="campo-texto"> 
-                        <option value="">Seleccione un estado</option>
+                        <option value="">Estado</option>
                         <option value="0">Inactivo</option>
                         <option value="1">Activo</option>
                     </select>
@@ -86,6 +87,7 @@
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
         <?php foreach ($data as $producto): ?>
+        <!--Le damos id a la columna de edición para volver a ella al darle al boton de editar-->
         <tr>
             <!--Chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
             y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
@@ -130,6 +132,7 @@
             <td class="td-registros">
                     <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    <a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton-cancelar">X</a>
                 </form>
             </td>
             <?php } else { ?>
@@ -170,5 +173,6 @@
         <?php endforeach; ?>
     </table>
 </div>
+<?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

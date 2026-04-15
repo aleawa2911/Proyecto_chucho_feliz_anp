@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/fonts.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/base.css">
     <link rel="stylesheet" href="/proyecto_chucho_feliz_anp/public/css/styles.css">
-    <title>Dashboard</title>
+    <title>Dashboard | Chucho Feliz</title>
 </head>
 <body>
+    
+    <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
+    <?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>
