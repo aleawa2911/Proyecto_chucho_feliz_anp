@@ -18,7 +18,7 @@ $url = $_GET['url']
         </div>
         <!--Box donde tenemos un enlace q nos manda al logout, para cerrar la sesion, el cual esta detras de un boton que contiene una imagen-->
         <div class="sesion-logout-box">
-                <a href="/proyecto_chucho_feliz_anp/index.php?url=logout"><button class="boton-logout"><img src="/proyecto_chucho_feliz_anp/public/images/logout.png" alt="logout" class="sesion-logout-icon"></button></a>
+                <a href="/proyecto_chucho_feliz_anp/index.php?url=logout" class="boton-logout"><img src="/proyecto_chucho_feliz_anp/public/images/logout.png" alt="logout" class="sesion-logout-icon"></a>
         </div>
 </div>
 <!--Box donde mostramos nuestro logo en el header-->

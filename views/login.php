@@ -41,7 +41,7 @@
                         <td><input type="password" class="campo-texto" name="contrasena" placeholder="Contraseña" required></td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;"><input class="boton" type="submit" name="accion" value="Acceder"></td>
+                        <td><input class="boton" type="submit" name="accion" value="Acceder"></td>
                     </tr>
                 </table>
             </form>
