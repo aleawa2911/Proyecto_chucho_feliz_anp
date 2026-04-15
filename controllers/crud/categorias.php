@@ -5,9 +5,9 @@ require_once __DIR__ . '/../sesion/autentificacion.php';
 require_once __DIR__ . '/../../models/crud/categorias.php';
 
     /*Instanciamos el modelo de categorias*/
-	$modelo = new CategoriasModelo();
+    $modelo = new CategoriasModelo();
     /*Guardamos la data de las tablas en $data*/
-	$data = $modelo->ObtenerTodos();
+    $data = $modelo->ObtenerTodos();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $accion = $_POST['accion'];
@@ -22,10 +22,10 @@ require_once __DIR__ . '/../../models/crud/categorias.php';
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
                 break;
             
-	        case 'Editar':
+            case 'Editar':
                 $id_categoria = $_POST['id_categoria'];
                 $updateid = $modelo->ObtenerPorId($id_categoria);
-	            break;
+                break;
 
             case 'Actualizar':
                 $id_categoria = $_POST['id_categoria'];

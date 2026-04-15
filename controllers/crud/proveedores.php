@@ -10,9 +10,9 @@ require_once __DIR__ . '/../../models/crud/proveedores.php';
     }
 
     /*Instanciamos el modelo de proveedores*/
-	$modelo = new ProveedoresModelo();
+    $modelo = new ProveedoresModelo();
     /*Guardamos la data de las tablas en $data*/
-	$data = $modelo->ObtenerTodos();
+    $data = $modelo->ObtenerTodos();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $accion = $_POST['accion'];
@@ -29,10 +29,10 @@ require_once __DIR__ . '/../../models/crud/proveedores.php';
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=proveedores');
                 break;
             
-	        case 'Editar':
+            case 'Editar':
                 $id_proveedor = $_POST['id_proveedor'];
                 $updateid = $modelo->ObtenerPorId($id_proveedor);
-	            break;
+                break;
 
             case 'Actualizar':
                 $id_proveedor = $_POST['id_proveedor'];

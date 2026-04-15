@@ -13,9 +13,9 @@ require_once __DIR__ . '/../../models/crud/usuarios.php';
     }
 
     /*Instanciamos el modelo de usuarios*/
-	$modelo = new UsuariosModelo();
+    $modelo = new UsuariosModelo();
     /*Guardamos la data de las tablas en $data*/
-	$data = $modelo->ObtenerTodos();
+    $data = $modelo->ObtenerTodos();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $accion = $_POST['accion'];
@@ -37,10 +37,10 @@ require_once __DIR__ . '/../../models/crud/usuarios.php';
                 header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
                 break;
             
-	        case 'Editar':
+            case 'Editar':
                 $id_usuario = $_POST['id_usuario'];
                 $updateid = $modelo->ObtenerPorId($id_usuario);
-	            break;
+                break;
 
             case 'Actualizar':
                 $id_usuario = $_POST["id_usuario"];

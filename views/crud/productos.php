@@ -87,11 +87,10 @@
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
         <?php foreach ($data as $producto): ?>
-        <!--Le damos id a la columna de edición para volver a ella al darle al boton de editar-->
         <tr>
-            <!--Chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
+            <!--Formulario de edicion, chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
             y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
-            <?php if (isset($updateid) && $updateid['id_producto'] == $producto['id_producto'] && $_SESSION['rol'] != 'Cajero') { ?>
+            <?php if (isset($updateid) && $updateid['id_producto'] == $producto['id_producto']) { ?>
             <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
             <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
             <td class="td-registros"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" required class="campo-texto"></td>
