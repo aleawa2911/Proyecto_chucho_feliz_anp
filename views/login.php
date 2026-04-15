@@ -16,8 +16,7 @@
             <div>
                 <h1 class="login-title">Chucho Feliz</h1>
                 <h6>ACCESO AL SISTEMA</h6>
-                <h2 class=login-title>Iniciar sesion</h2>
-                
+                <h2 class=login-title>Iniciar sesion</h2> 
             </div>
             
             <div>

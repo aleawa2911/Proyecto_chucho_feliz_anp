@@ -92,14 +92,13 @@
             <!--Formulario de edicion, chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
             y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
             <?php if (isset($updateid) && $updateid['id_producto'] == $producto['id_producto']) { ?>
-            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
             <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
-            <td class="td-registros"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" required class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" required class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" required class="campo-texto-num"></td>
-            <td class="td-registros"><input type="text" name="stock" value="<?php echo $producto['stock']; ?>" required class="campo-texto-num"></td>
+            <td class="td-registros"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" required class="campo-texto" form="form-editar-productos"></td>
+            <td class="td-registros"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" required class="campo-texto" form="form-editar-productos"></td>
+            <td class="td-registros"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="td-registros"><input type="text" name="stock" value="<?php echo $producto['stock']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
             <td class="td-registros">
-                <select name="id_categoria" required class="campo-texto">
+                <select name="id_categoria" required class="campo-texto" form="form-editar-productos">
                     <!--Recibimos los id y nombres de las categorias con ObtenerCategoria()-->
                     <?php foreach ($dataC as $categoria): ?>
                         <!--Printeamos las id_categoria y nombre_categoria, luego chequeamos si el id_categoria de $producto es igual al de $categoria, si lo es, lo marcamos como selected-->
@@ -111,10 +110,10 @@
                 </select>
             </td>
             <td class="td-registros"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
-            <td class="td-registros"><input type="text" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" required class="campo-texto-num"></td>
-            <td class="td-registros"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" required class="campo-texto-num"></td>
+            <td class="td-registros"><input type="text" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="td-registros"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
             <td class="td-registros">
-                <select name="id_proveedor" class="campo-texto">
+                <select name="id_proveedor" class="campo-texto" form="form-editar-productos">
                     <!--Recibimos los id y nombres de los proveedores con ObtenerProveedor()-->
                     <?php foreach ($dataP as $proveedor): ?>
                         <!--Printeamos las id_proveedor y nombre_proveedor, luego chequeamos si el id_proveedor de $producto es igual al de $proveedor, si lo es, lo marcamos como selected-->
@@ -130,10 +129,11 @@
             <td class="td-registros"><?php echo $producto['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $producto['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                    <form id="form-editar-productos" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
                     <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    </form>
                     <a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton-cancelar">X</a>
-                </form>
             </td>
             <?php } else { ?>
 

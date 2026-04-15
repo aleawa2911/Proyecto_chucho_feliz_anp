@@ -64,22 +64,22 @@
         <tr>
             <!--Si existe $updateid (se define al presionar Editar) y su id coincide con el de esta fila, mostramos la fila en modo edicion con formuladior y boton de Actualizar.-->
             <?php if (isset($updateid) && $updateid['id_proveedor'] == $proveedor['id_proveedor']) { ?>
-            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
             <td class="th-registros"><?php echo $proveedor['id_proveedor']; ?></td>
-            <td class="td-registros"><input type="text" name="nombre_proveedor" value="<?php echo $proveedor['nombre_proveedor']; ?>" required class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="contacto" value="<?php echo $proveedor['contacto']; ?>" class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="telefono" value="<?php echo $proveedor['telefono']; ?>" class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="correo" value="<?php echo $proveedor['correo']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_proveedor" value="<?php echo $proveedor['nombre_proveedor']; ?>" required class="campo-texto" form="form-editar-proveedores"></td>
+            <td class="td-registros"><input type="text" name="contacto" value="<?php echo $proveedor['contacto']; ?>" class="campo-texto" form="form-editar-proveedores"></td>
+            <td class="td-registros"><input type="text" name="telefono" value="<?php echo $proveedor['telefono']; ?>" class="campo-texto" form="form-editar-proveedores"></td>
+            <td class="td-registros"><input type="text" name="correo" value="<?php echo $proveedor['correo']; ?>" class="campo-texto" form="form-editar-proveedores"></td>
             <td class="td-registros"><?php if ($proveedor['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <td class="td-registros"><?php echo $proveedor['fecha_creacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['fecha_actualizacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $proveedor['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                    <form id="form-editar-proveedores" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
                     <input type="hidden" name="id_proveedor" value="<?php echo $proveedor['id_proveedor']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    </form>
                     <a href="/proyecto_chucho_feliz_anp/index.php?url=proveedores" class="boton-cancelar">X</a>
-                </form>
             </td>
             <?php } else { ?>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->

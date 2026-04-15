@@ -63,10 +63,9 @@
             <!--Chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
             y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
             <?php if (isset($updateid) && $updateid['id_categoria'] == $categoria['id_categoria']) { ?>
-            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
             <td class="th-registros"><?php echo $categoria['id_categoria']; ?></td>
-            <td class="td-registros"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" required class="campo-texto"></td>
-            <td class="td-registros"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" required class="campo-texto" form="form-editar-categorias"></td>
+            <td class="td-registros"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto" form="form-editar-categorias"></td>
             <td class="td-registros"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
             <td class="td-registros"><?php echo $categoria['fecha_creacion']; ?></td>
@@ -74,10 +73,11 @@
             <td class="td-registros"><?php echo $categoria['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $categoria['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                    <form id="form-editar-categorias" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
                     <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    </form>
                     <a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton-cancelar">X</a>
-                </form>
             </td>
             <?php } ?>
             <?php } else { ?>

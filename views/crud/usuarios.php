@@ -80,19 +80,18 @@
             y si el valor coincide con el de la fila, si es true, mostramos los campos de la fila como formulario junto al boton actualizar 
             para enviar esos datos al controlador y usar la funcion Actualizar-->
             <?php if (isset($updateid) && $updateid['id_usuario'] == $usuario['id_usuario']) { ?>
-            <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">
             <td class="th-registros"><?php echo $usuario['id_usuario']; ?></td>
             <td class="td-registros">
-                <input type="text" name="primer_nombre" value="<?php echo $usuario['primer_nombre']; ?>" required class="campo-texto" placeholder="Primer nombre">
-                <input type="text" name="segundo_nombre" value="<?php echo $usuario['segundo_nombre']; ?>" class="campo-texto" placeholder="Segundo nombre">
+                <input type="text" name="primer_nombre" value="<?php echo $usuario['primer_nombre']; ?>" required class="campo-texto" placeholder="Primer nombre" form="form-editar-usuarios">
+                <input type="text" name="segundo_nombre" value="<?php echo $usuario['segundo_nombre']; ?>" class="campo-texto" placeholder="Segundo nombre" form="form-editar-usuarios">
                 <br>
-                <input type="text" name="primer_apellido" value="<?php echo $usuario['primer_apellido']; ?>" required class="campo-texto" placeholder="Primer apellido">
-                <input type="text" name="segundo_apellido" value="<?php echo $usuario['segundo_apellido']; ?>" class="campo-texto" placeholder="Segundo apellido">
+                <input type="text" name="primer_apellido" value="<?php echo $usuario['primer_apellido']; ?>" required class="campo-texto" placeholder="Primer apellido" form="form-editar-usuarios">
+                <input type="text" name="segundo_apellido" value="<?php echo $usuario['segundo_apellido']; ?>" class="campo-texto" placeholder="Segundo apellido" form="form-editar-usuarios">
             </td>
-            <td class="td-registros"><input type="text" name="nombre_usuario" value="<?php echo $usuario['nombre_usuario']; ?>" required class="campo-texto"></td>
-            <td class="td-registros"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" required class="campo-texto"></td>
+            <td class="td-registros"><input type="text" name="nombre_usuario" value="<?php echo $usuario['nombre_usuario']; ?>" required class="campo-texto" form="form-editar-usuarios"></td>
+            <td class="td-registros"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" required class="campo-texto" form="form-editar-usuarios"></td>
             <td class="td-registros">
-                <select name="id_rol" required class="campo-texto">
+                <select name="id_rol" required class="campo-texto" form="form-editar-usuarios">
                     
                     <option value="1" <?php if ((int)$updateid['id_rol'] === 1) {echo 'selected';} ?>>Administrador</option>
                     <option value="2" <?php if ((int)$updateid['id_rol'] === 2) {echo 'selected';} ?>>Cajero</option>
@@ -105,10 +104,11 @@
             <td class="td-registros"><?php echo $usuario['usuario_creacion']; ?></td>
             <td class="td-registros"><?php echo $usuario['usuario_actualizacion']; ?></td>
             <td class="td-registros">
+                    <form id="form-editar-usuarios" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">
                     <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
+                    </form>
                     <a href="/proyecto_chucho_feliz_anp/index.php?url=usuarios" class="boton-cancelar">X</a>
-                </form>
             </td>
             <?php } else { ?>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
