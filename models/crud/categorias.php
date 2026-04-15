@@ -58,7 +58,7 @@ class CategoriasModelo{
     }
 
     public function Insertar($nombre_categoria,$descripcion,$activo,$usuario_creacion){
-        $sql = "INSERT IGNORE INTO categorias(
+        $sql = "INSERT INTO categorias(
                     nombre_categoria,
                     descripcion,
                     activo,

@@ -58,7 +58,7 @@ class RolesModelo{
     }
 
     public function Insertar($nombre_rol,$descripcion,$activo,$usuario_creacion){
-        $sql = "INSERT IGNORE INTO roles(
+        $sql = "INSERT INTO roles(
                     nombre_rol,
                     descripcion,
                     activo,

@@ -14,17 +14,30 @@ require_once __DIR__ . '/../../models/crud/roles.php';
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();
 
+    /*Si llegó una solicitud por POST*/
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        /*Guardamos la acción enviada por el formulario*/
         $accion = $_POST['accion'];
         
+        /*Revisamos que acción es para proceder*/
         switch ($accion) {
             case 'Insertar':
-                $nombre_rol = $_POST['nombre_rol'];
-                $descripcion = $_POST['descripcion'];
-                $activo = $_POST['activo'];
-                $usuario_creacion = $_SESSION["id_usuario"];
-                $modelo->Insertar($nombre_rol, $descripcion, $activo,$usuario_creacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                try {
+                    $nombre_rol = $_POST['nombre_rol'];
+                    $descripcion = $_POST['descripcion'];
+                    $activo = $_POST['activo'];
+                    $usuario_creacion = $_SESSION["id_usuario"];
+                    $modelo->Insertar($nombre_rol, $descripcion, $activo,$usuario_creacion);
+                    $_SESSION['mensaje'] = "Se insertó correctamente el rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo insertar el rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                }
+
                 break;
             
             case 'Editar':
@@ -34,26 +47,53 @@ require_once __DIR__ . '/../../models/crud/roles.php';
                 break;
 
             case 'Actualizar':
-                $id_rol = $_POST['id_rol'];
-                $nombre_rol = $_POST['nombre_rol'];
-                $descripcion = $_POST['descripcion'];
-                $usuario_actualizacion = $_SESSION["id_usuario"];
-                $modelo->Actualizar($id_rol,$nombre_rol,$descripcion,$usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                try {
+                    $id_rol = $_POST['id_rol'];
+                    $nombre_rol = $_POST['nombre_rol'];
+                    $descripcion = $_POST['descripcion'];
+                    $usuario_actualizacion = $_SESSION["id_usuario"];
+                    $modelo->Actualizar($id_rol,$nombre_rol,$descripcion,$usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se actualizó correctamente el rol con ID $id_rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo actualizar el rol con ID $id_rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                }
+
                 break;
 
             case 'Desactivar':
-                $id_rol = $_POST['id_rol'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
-                $modelo->Desactivar($id_rol, $usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                try {
+                    $id_rol = $_POST['id_rol'];
+                    $usuario_actualizacion = $_SESSION['id_usuario'];
+                    $modelo->Desactivar($id_rol, $usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se desactivó correctamente el rol con ID $id_rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo desactivar el rol con ID $id_rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                }
+
                 break;
 
             case 'Activar':
-                $id_rol = $_POST['id_rol'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
-                $modelo->Activar($id_rol, $usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                try {
+                    $id_rol = $_POST['id_rol'];
+                    $usuario_actualizacion = $_SESSION['id_usuario'];
+                    $modelo->Activar($id_rol, $usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se activó correctamente el rol con ID $id_rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo activar el rol con ID $id_rol.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
+                    exit;
+                }
+
                 break;
         }
     }

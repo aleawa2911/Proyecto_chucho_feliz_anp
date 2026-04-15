@@ -9,17 +9,29 @@ require_once __DIR__ . '/../../models/crud/categorias.php';
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();
 
+    /*Si llegó una solicitud por POST*/
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        /*Guardamos la acción enviada por el formulario*/
         $accion = $_POST['accion'];
         
+        /*Revisamos que acción es para proceder*/
         switch ($accion) {
             case 'Insertar':
-                $nombre_categoria = $_POST['nombre_categoria'];
-                $descripcion = $_POST['descripcion'];
-                $activo = $_POST['activo'];
-                $usuario_creacion = $_SESSION["id_usuario"];
-                $modelo->Insertar($nombre_categoria, $descripcion, $activo,$usuario_creacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                try {
+                    $nombre_categoria = $_POST['nombre_categoria'];
+                    $descripcion = $_POST['descripcion'];
+                    $activo = $_POST['activo'];
+                    $usuario_creacion = $_SESSION["id_usuario"];
+                    $modelo->Insertar($nombre_categoria, $descripcion, $activo,$usuario_creacion);
+                    $_SESSION['mensaje'] = "Se insertó correctamente la categoría.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo insertar la categoría.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                }
                 break;
             
             case 'Editar':
@@ -28,26 +40,50 @@ require_once __DIR__ . '/../../models/crud/categorias.php';
                 break;
 
             case 'Actualizar':
-                $id_categoria = $_POST['id_categoria'];
-                $nombre_categoria = $_POST['nombre_categoria'];
-                $descripcion = $_POST['descripcion'];
-                $usuario_actualizacion = $_SESSION["id_usuario"];
-                $modelo->Actualizar($id_categoria,$nombre_categoria,$descripcion,$usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                try {
+                    $id_categoria = $_POST['id_categoria'];
+                    $nombre_categoria = $_POST['nombre_categoria'];
+                    $descripcion = $_POST['descripcion'];
+                    $usuario_actualizacion = $_SESSION["id_usuario"];
+                    $modelo->Actualizar($id_categoria,$nombre_categoria,$descripcion,$usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se actualizó correctamente la categoría con ID $id_categoria.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo actualizar la categoría con ID $id_categoria.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                }
                 break;
 
             case 'Desactivar':
-                $id_categoria = $_POST['id_categoria'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
-                $modelo->Desactivar($id_categoria, $usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                try {
+                    $id_categoria = $_POST['id_categoria'];
+                    $usuario_actualizacion = $_SESSION['id_usuario'];
+                    $modelo->Desactivar($id_categoria, $usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se desactivó correctamente la categoría con ID $id_categoria.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo desactivar la categoría con ID $id_categoria.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                }
                 break;
 
             case 'Activar':
-                $id_categoria = $_POST['id_categoria'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
-                $modelo->Activar($id_categoria, $usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                try {
+                    $id_categoria = $_POST['id_categoria'];
+                    $usuario_actualizacion = $_SESSION['id_usuario'];
+                    $modelo->Activar($id_categoria, $usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se activó correctamente la categoría con ID $id_categoria.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo activar la categoría con ID $id_categoria.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=categorias');
+                    exit;
+                }
                 break;
         }
     }

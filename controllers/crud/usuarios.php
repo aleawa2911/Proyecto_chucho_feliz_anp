@@ -17,24 +17,37 @@ require_once __DIR__ . '/../../models/crud/usuarios.php';
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();
 
+    /*Si llegó una solicitud por POST*/
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        /*Guardamos la acción enviada por el formulario*/
         $accion = $_POST['accion'];
         
+        /*Revisamos que acción es para proceder*/
         switch ($accion) {
             case 'Insertar':
-                $primer_nombre = $_POST["primer_nombre"];
-                $segundo_nombre = $_POST["segundo_nombre"];
-                $primer_apellido = $_POST["primer_apellido"];
-                $segundo_apellido = $_POST["segundo_apellido"];
-                $nombre_usuario = $_POST["nombre_usuario"];
-                $correo = $_POST["correo"];
-                $contrasena = $_POST["contrasena"];
-                $id_rol = $_POST["id_rol"];
-                $activo = $_POST["activo"];
-                $usuario_creacion = $_SESSION["id_usuario"];
+                try {
+                    $primer_nombre = $_POST["primer_nombre"];
+                    $segundo_nombre = $_POST["segundo_nombre"];
+                    $primer_apellido = $_POST["primer_apellido"];
+                    $segundo_apellido = $_POST["segundo_apellido"];
+                    $nombre_usuario = $_POST["nombre_usuario"];
+                    $correo = $_POST["correo"];
+                    $contrasena = $_POST["contrasena"];
+                    $id_rol = $_POST["id_rol"];
+                    $activo = $_POST["activo"];
+                    $usuario_creacion = $_SESSION["id_usuario"];
 
-                $modelo -> Insertar($primer_nombre,$segundo_nombre, $primer_apellido, $segundo_apellido, $nombre_usuario, $correo, $contrasena, $id_rol, $activo,$usuario_creacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    $modelo->Insertar($primer_nombre,$segundo_nombre, $primer_apellido, $segundo_apellido, $nombre_usuario, $correo, $contrasena, $id_rol, $activo,$usuario_creacion);
+                    $_SESSION['mensaje'] = "Se insertó correctamente el usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo insertar el usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                }
+
                 break;
             
             case 'Editar':
@@ -43,32 +56,59 @@ require_once __DIR__ . '/../../models/crud/usuarios.php';
                 break;
 
             case 'Actualizar':
-                $id_usuario = $_POST["id_usuario"];
-                $primer_nombre = $_POST["primer_nombre"];
-                $segundo_nombre = $_POST["segundo_nombre"];
-                $primer_apellido = $_POST["primer_apellido"];
-                $segundo_apellido = $_POST["segundo_apellido"];
-                $nombre_usuario = $_POST["nombre_usuario"];
-                $correo = $_POST["correo"];
-                $id_rol = $_POST["id_rol"];
-                $usuario_actualizacion = $_SESSION["id_usuario"];
+                try {
+                    $id_usuario = $_POST["id_usuario"];
+                    $primer_nombre = $_POST["primer_nombre"];
+                    $segundo_nombre = $_POST["segundo_nombre"];
+                    $primer_apellido = $_POST["primer_apellido"];
+                    $segundo_apellido = $_POST["segundo_apellido"];
+                    $nombre_usuario = $_POST["nombre_usuario"];
+                    $correo = $_POST["correo"];
+                    $id_rol = $_POST["id_rol"];
+                    $usuario_actualizacion = $_SESSION["id_usuario"];
 
-                $modelo->Actualizar($id_usuario,$primer_nombre,$segundo_nombre,$primer_apellido,$segundo_apellido,$nombre_usuario,$correo,$id_rol,$usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    $modelo->Actualizar($id_usuario,$primer_nombre,$segundo_nombre,$primer_apellido,$segundo_apellido,$nombre_usuario,$correo,$id_rol,$usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se actualizó correctamente el usuario con ID $id_usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo actualizar el usuario con ID $id_usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                }
+
                 break;
 
             case 'Desactivar':
-                $id_usuario = $_POST['id_usuario'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
-                $modelo->Desactivar($id_usuario, $usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                try {
+                    $id_usuario = $_POST['id_usuario'];
+                    $usuario_actualizacion = $_SESSION['id_usuario'];
+                    $modelo->Desactivar($id_usuario, $usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se desactivó correctamente el usuario con ID $id_usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo desactivar el usuario con ID $id_usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                }
+
                 break;
 
             case 'Activar':
-                $id_usuario = $_POST['id_usuario'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
-                $modelo->Activar($id_usuario, $usuario_actualizacion);
-                header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                try {
+                    $id_usuario = $_POST['id_usuario'];
+                    $usuario_actualizacion = $_SESSION['id_usuario'];
+                    $modelo->Activar($id_usuario, $usuario_actualizacion);
+                    $_SESSION['mensaje'] = "Se activó correctamente el usuario con ID $id_usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                } catch (Exception $e) {
+                    $_SESSION['mensaje'] = "No se pudo activar el usuario con ID $id_usuario.";
+                    header('Location: /proyecto_chucho_feliz_anp/index.php?url=usuarios');
+                    exit;
+                }
+
                 break;
         }
     }

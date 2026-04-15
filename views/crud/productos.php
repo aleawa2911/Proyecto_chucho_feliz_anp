@@ -19,6 +19,7 @@
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
         <table >
             <tr>
+                
                 <th><label class="insertar-text">Codigo</label></th>
                 <th><label class="insertar-text">Nombre</label></th>
                 <th><label class="insertar-text">Precio de venta</label></th>
@@ -42,7 +43,7 @@
                         <option value="<?php echo $categoria['id_categoria']?>"><?php echo $categoria['nombre_categoria']?></option>
                         <?php endforeach; ?>
                     </select></td>
-                <td><select name="id_proveedor" class="campo-texto"> 
+                <td><select name="id_proveedor" required class="campo-texto"> 
                         <option value="">Proveedor</option>
                         <?php foreach ($dataP as $proveedor): ?>
                         <option value="<?php echo $proveedor['id_proveedor']?>"><?php echo $proveedor['nombre_proveedor']?></option>
@@ -173,5 +174,10 @@
     </table>
 </div>
 <?php require_once __DIR__ . '/../layout/footer.php';?>
+<?php if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}?>
 </body>
 </html>

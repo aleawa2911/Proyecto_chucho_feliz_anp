@@ -64,7 +64,7 @@ class ProveedoresModelo{
     }
 
     public function Insertar($nombre_proveedor,$contacto,$telefono,$correo,$activo,$usuario_creacion){
-        $sql = "INSERT IGNORE INTO proveedores(
+        $sql = "INSERT INTO proveedores(
                     nombre_proveedor,
                     contacto,
                     telefono,

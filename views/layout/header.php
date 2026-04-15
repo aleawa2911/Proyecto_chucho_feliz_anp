@@ -34,7 +34,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de Panel Principal-->
                         <p class="header-box-seccion-titulo">Principal</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='Dashboard')echo 'boton-activo'?>">Dashboard</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>">Dashboard</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->
@@ -70,7 +70,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de Panel Principal-->
                         <p class="header-box-seccion-titulo">Principal</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='Dashboard')echo 'boton-activo'?>">Dashboard</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>">Dashboard</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->
@@ -99,7 +99,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de Panel Principal-->
                         <p class="header-box-seccion-titulo">Principal</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='Dashboard')echo 'boton-activo'?>">Dashboard</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>">Dashboard</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->

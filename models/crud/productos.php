@@ -106,7 +106,7 @@ class ProductosModelo{
     }
 
     public function Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
-        $sql = "INSERT IGNORE INTO productos(
+        $sql = "INSERT INTO productos(
                     codigo,
                     nombre_producto,
                     precio_venta,

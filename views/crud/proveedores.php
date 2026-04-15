@@ -111,5 +111,10 @@
     </table>
 </div>
 <?php require_once __DIR__ . '/../layout/footer.php';?>
+<?php if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}?>
 </body>
 </html>

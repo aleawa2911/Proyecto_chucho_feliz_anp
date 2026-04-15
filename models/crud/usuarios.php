@@ -79,7 +79,7 @@ class UsuariosModelo{
     public function Insertar($primer_nombre,$segundo_nombre, $primer_apellido, $segundo_apellido, $nombre_usuario, $correo, $contrasena, $id_rol, $activo, $usuario_creacion){
         $salt = "IDfgdgbnmnSDFedsfLSDFGGdsffdssSdfhuyt";
         $pass = hash('sha256', $salt . trim($contrasena));
-        $sql = "INSERT IGNORE INTO usuarios (
+        $sql = "INSERT INTO usuarios (
                                 primer_nombre, 
                                 segundo_nombre, 
                                 primer_apellido, 
