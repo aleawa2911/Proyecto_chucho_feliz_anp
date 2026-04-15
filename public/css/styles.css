@@ -12,13 +12,16 @@
 }
 
 .login-form{
-    width: 300px;
     border: 3px solid rgba(93, 113, 98, 0.381);
     border-radius: 15px;
     padding: 20px 50px;
     padding-bottom: 4px;
     width: 50%;
     margin: auto;
+}
+
+.login-form-box{
+    width: 100%;
 }
 
 .login-box{
@@ -34,6 +37,7 @@
     font-size: large;
     color: rgba(18, 42, 18, 0.678);
     letter-spacing: 1px;
+    font-weight:500;
 }
 
 .login-elementos-decorativos{
@@ -47,6 +51,30 @@
 
 .icono-login{
     height: 15px;
+}
+
+.boton-login{
+    background-color: rgb(74, 118, 92);
+    color: rgb(255, 255, 255);
+    display: block;
+    width: 68%;
+    margin: 10px auto 0;
+    border: 3px solid rgb(54, 90, 70);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.boton-login:hover{
+    background-color: rgb(88, 140, 109);
+    cursor: pointer;
+}
+
+.boton-login:active{
+    transform: translateY(1px);
 }
 
 /*--------------------------------HEADER-----------------------------------*/
@@ -150,7 +178,6 @@
 
 .th-registros{
     border: 2px solid black;
-    border-collapse: collapse;
     color: white;
     background-color: rgba(20, 40, 22, 0.638) ;
     padding: 6px;
@@ -161,12 +188,16 @@
 
 .td-registros{
     border: 1px solid black;
-    border-collapse:collapse;
     padding-left: 5px;
     padding-right: 5px;
     text-align: center;
     font-size: 14px;
     height: 50px;
+}
+
+.td-registros form{
+    display: inline-block;
+    margin: 0;
 }
 
 
@@ -214,7 +245,6 @@
     border-radius: 8px;
     padding: 7px;
     text-align: center;
-    width: 45%;
 }    
 
 .tabla-insertar .campo-texto,
@@ -262,7 +292,6 @@
     font-size: 14px;
     text-align: center;
     text-decoration: none;
-    position: relative;
 }
 
 .boton-editar:hover{
@@ -280,7 +309,6 @@
     font-size: 14px;
     text-align: center;
     text-decoration: none;
-    position: relative;
 }
 
 
@@ -322,7 +350,6 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     text-decoration: none;
-    position: relative;
 }
 
 .boton-desactivar:hover{
@@ -341,7 +368,6 @@
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    position: relative;
 }
 
 .boton-activar:hover{

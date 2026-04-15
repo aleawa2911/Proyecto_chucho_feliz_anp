@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../models/crud/categorias.php';
     $data = $modelo->ObtenerTodos();
 
     /*Si llegó una solicitud por POST*/
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['rol'] != 'Cajero') {
         
         /*Guardamos la acción enviada por el formulario*/
         $accion = $_POST['accion'];

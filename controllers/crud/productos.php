@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../models/crud/productos.php';
     $dataC = $modelo->ObtenerCategoria();
 
     /*Si llegó una solicitud por post*/
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['rol'] != 'Cajero') {
         /*Guardamos la acción enviada por el formulario*/
         $accion = $_POST['accion'];
         

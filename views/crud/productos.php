@@ -35,7 +35,7 @@
                 <td><input type="text" name="nombre_producto" required class="campo-texto" placeholder="JugueteWawa"></td>
                 <td><input type="number" name="precio_venta" required class="campo-texto" placeholder="12.99"></td>
                 <td><input type="number" name="stock" required class="campo-texto" placeholder="16"></td>
-                <td><input type="number" name="stock_defectuoso" required class="campo-texto" placeholder="5"></td>
+                <td><input type="number" name="stock_defectuoso" required class="campo-texto" placeholder="0"></td>
                 <td><input type="number" name="stock_minimo" required class="campo-texto" placeholder="10"></td>
                 <td><select name="id_categoria" required class="campo-texto"> 
                         <option value="">Categoría</option>
