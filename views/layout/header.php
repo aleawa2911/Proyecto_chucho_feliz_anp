@@ -34,34 +34,34 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de Panel Principal-->
                         <p class="header-box-seccion-titulo">Principal</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>">Dashboard</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/dashboard.png" alt="icono dashboard" class="icono-seccion">Dashboard</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>">Ventas</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=devoluciones" class="boton <?php if($url=='devoluciones')echo 'boton-activo'?>">Devoluciones</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>">Compras</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=devoluciones" class="boton <?php if($url=='devoluciones')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/devolucion.png" alt="icono devoluciones" class="icono-seccion">Devoluciones</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/compra.png" alt="icono compras" class="icono-seccion">Compras</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de inventario-->
                         <p class="header-box-seccion-titulo">Inventario</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton <?php if($url=='productos')echo 'boton-activo'?>">Productos</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=proveedores" class="boton <?php if($url=='proveedores')echo 'boton-activo'?>">Proveedores</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton <?php if($url=='categorias')echo 'boton-activo'?>">Categorías</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton <?php if($url=='productos')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/productos.png" alt="icono productos" class="icono-seccion">Productos</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=proveedores" class="boton <?php if($url=='proveedores')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/proveedores.png" alt="icono proveedores" class="icono-seccion">Proveedores</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton <?php if($url=='categorias')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/categorias.png" alt="icono categorias" class="icono-seccion">Categor&iacute;as</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de administracion-->
                         <p class="header-box-seccion-titulo">Administración</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=usuarios" class="boton <?php if($url=='usuarios')echo 'boton-activo'?>">Usuarios</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=roles" class="boton <?php if($url=='roles')echo 'boton-activo'?>">Roles</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=historial" class="boton <?php if($url=='historial')echo 'boton-activo'?>">Historial de Cambios</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=usuarios" class="boton <?php if($url=='usuarios')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/usuarios.png" alt="icono usuarios" class="icono-seccion">Usuarios</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=roles" class="boton <?php if($url=='roles')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/roles.png" alt="icono roles" class="icono-seccion">Roles</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=historial" class="boton <?php if($url=='historial')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/historial.png" alt="icono historial" class="icono-seccion">Historial de Cambios</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de control-->
                         <p class="header-box-seccion-titulo">Control</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes')echo 'boton-activo'?>">Reportes</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/reportes.png" alt="icono reportes" class="icono-seccion">Reportes</a></div>
                 </div>
                 <?php break;
 
@@ -70,27 +70,27 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de Panel Principal-->
                         <p class="header-box-seccion-titulo">Principal</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>">Dashboard</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/dashboard.png" alt="icono dashboard" class="icono-seccion">Dashboard</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>">Ventas</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=devoluciones" class="boton <?php if($url=='devoluciones')echo 'boton-activo'?>">Devoluciones</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>">Compras</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=devoluciones" class="boton <?php if($url=='devoluciones')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/devolucion.png" alt="icono devoluciones" class="icono-seccion">Devoluciones</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/compra.png" alt="icono compras" class="icono-seccion">Compras</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de inventario-->
                         <p class="header-box-seccion-titulo">Inventario</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton <?php if($url=='productos')echo 'boton-activo'?>">Productos</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=proveedores" class="boton <?php if($url=='proveedores')echo 'boton-activo'?>">Proveedores</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton <?php if($url=='categorias')echo 'boton-activo'?>">Categorías</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton <?php if($url=='productos')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/productos.png" alt="icono productos" class="icono-seccion">Productos</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=proveedores" class="boton <?php if($url=='proveedores')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/proveedores.png" alt="icono proveedores" class="icono-seccion">Proveedores</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton <?php if($url=='categorias')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/categorias.png" alt="icono categorias" class="icono-seccion">Categor&iacute;as</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de control-->
                         <p class="header-box-seccion-titulo">Control</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes')echo 'boton-activo'?>">Reportes</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/reportes.png" alt="icono reportes" class="icono-seccion">Reportes</a></div>
                 </div>
                 <?php break;
 
@@ -99,19 +99,19 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de Panel Principal-->
                         <p class="header-box-seccion-titulo">Principal</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>">Dashboard</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=dashboard" class="boton <?php if($url=='dashboard')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/dashboard.png" alt="icono dashboard" class="icono-seccion">Dashboard</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton" <?php if($url=='ventas')echo 'boton-activo'?>">Ventas</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton" <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de inventario-->
                         <p class="header-box-seccion-titulo">Inventario</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton <?php if($url=='productos')echo 'boton-activo'?>">Productos</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton <?php if($url=='categorias')echo 'boton-activo'?>">Categorías</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=productos" class="boton <?php if($url=='productos')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/productos.png" alt="icono productos" class="icono-seccion">Productos</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=categorias" class="boton <?php if($url=='categorias')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/categorias.png" alt="icono categorias" class="icono-seccion">Categor&iacute;as</a></div>
                 </div>
                 <?php break; 
 } ?>

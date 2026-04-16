@@ -53,6 +53,14 @@
     height: 15px;
 }
 
+.icono-seccion{
+    width: 1em;
+    height: 1em;
+    margin-right: 0.35em;
+    vertical-align: -0.1em;
+    object-fit: contain;
+}
+
 .boton-login{
     background-color: rgb(74, 118, 92);
     color: rgb(255, 255, 255);
@@ -88,6 +96,17 @@
     font-size: 14px;
 }
 
+.header-boton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    white-space: nowrap;
+}
+.icono-seccion{
+    vertical-align: middle;
+}
+
 .header-box-seccion-titulo{
     text-align: center;
     font-weight: bold;
@@ -101,7 +120,7 @@
     padding: 4px 20px;
     background-color: rgb(94, 114, 88);
     border-radius: 20px;
-    margin-right:50px;
+    margin-right:20px;
     padding-bottom: 7px;
 }
 
@@ -110,7 +129,7 @@
     padding-right: 5px;
     border-radius: 30px;
     display: flex;
-    margin-right: 60px;
+    margin-right: 30px;
 }
 
 .sesion-nombre-box{
@@ -137,7 +156,7 @@
 
 .boton-logout{
     margin-top: 6px;
-    background-color: rgb(79, 97, 74);
+    background-color: rgb(47, 80, 50);
     width: 45px;
     height: 45px;
     padding: 8px;
@@ -151,7 +170,7 @@
 }
 
 .boton-logout:hover{
-    background-color: rgba(47, 92, 51, 0.638);
+    background-color: rgb(75, 129, 79);
     cursor: pointer;
 }
 
@@ -165,7 +184,7 @@
 }
 
 .header-logo-box{
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 /*-------------------------------TABLAS DE REGISTRO------------------------------------*/
@@ -397,4 +416,5 @@
     background-color: rgb(75, 129, 79);
     color: rgb(255, 255, 255);
 }
+
 
