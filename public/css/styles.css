@@ -73,16 +73,11 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     text-align: center;
-    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .boton-login:hover{
     background-color: rgb(88, 140, 109);
     cursor: pointer;
-}
-
-.boton-login:active{
-    transform: translateY(1px);
 }
 
 /*--------------------------------HEADER-----------------------------------*/
@@ -212,7 +207,19 @@
     text-align: center;
     font-size: 14px;
     height: 50px;
+    background-color: #f2f5f1;
 }
+
+.td-registros-alterno{
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 14px;
+    height: 50px;
+    background-color: #e9eee7;
+}
+
 
 .td-registros form{
     display: inline-block;
@@ -248,6 +255,30 @@
     font-size: medium;
     color: rgba(13, 30, 13, 0.678);
     letter-spacing: 1px;
+}
+
+/*-------------------------------SECCION HISTORIAL------------------------------------*/
+.header-box-seccion-historiales{
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 10px;
+    padding: 6px 10px;
+    background-color: rgba(94, 114, 88, 0.18);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.header-box-seccion-historial-titulo{
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
 }
 
 

@@ -58,6 +58,26 @@ switch ($url) {
         require_once __DIR__ . '/controllers/control/historial.php';
         break;
 
+    case 'historial_productos':
+        require_once __DIR__ . '/controllers/control/historial_productos.php';
+        break;
+
+    case 'historial_proveedores':
+        require_once __DIR__ . '/controllers/control/historial_proveedores.php';
+        break;
+
+    case 'historial_categorias':
+        require_once __DIR__ . '/controllers/control/historial_categorias.php';
+        break;
+
+    case 'historial_usuarios':
+        require_once __DIR__ . '/controllers/control/historial_usuarios.php';
+        break;
+
+    case 'historial_roles':
+        require_once __DIR__ . '/controllers/control/historial_roles.php';
+        break;
+
     case 'reportes':
         require_once __DIR__ . '/controllers/control/reportes.php';
         break;

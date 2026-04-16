@@ -56,7 +56,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                         <p class="header-box-seccion-titulo">Administración</p>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=usuarios" class="boton <?php if($url=='usuarios')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/usuarios.png" alt="icono usuarios" class="icono-seccion">Usuarios</a></div>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=roles" class="boton <?php if($url=='roles')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/roles.png" alt="icono roles" class="icono-seccion">Roles</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=historial" class="boton <?php if($url=='historial')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/historial.png" alt="icono historial" class="icono-seccion">Historial de Cambios</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=historial" class="boton <?php if($url=='historial' || $url=='historial_productos' || $url=='historial_proveedores' || $url=='historial_categorias' || $url=='historial_usuarios' || $url=='historial_roles')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/historial.png" alt="icono historial" class="icono-seccion">Historial de Cambios</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de control-->
