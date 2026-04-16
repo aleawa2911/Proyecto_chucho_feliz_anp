@@ -46,19 +46,19 @@
         <?php foreach ($data as $historialcategoria):?>
         <tr>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
-            <td class="td-registros"><?php echo $historialcategoria['id_historial']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['id_categoria']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['accion']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['fecha_cambio']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['usuario_responsable']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['nombre_categoria_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['nombre_categoria_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['descripcion_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['descripcion_nuevo']; ?></td>
-            <td class="td-registros"><?php if ($historialcategoria['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php if ($historialcategoria['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['fecha_actualizacion_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialcategoria['usuario_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['id_historial']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['id_categoria']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['accion']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['fecha_cambio']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['usuario_responsable']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['nombre_categoria_anterior']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['nombre_categoria_nuevo']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['descripcion_anterior']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['descripcion_nuevo']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialcategoria['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialcategoria['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['fecha_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialcategoria['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

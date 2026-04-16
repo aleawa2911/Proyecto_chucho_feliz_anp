@@ -81,16 +81,16 @@
             para enviar esos datos al controlador y usar la funcion Actualizar-->
             <?php if (isset($updateid) && $updateid['id_usuario'] == $usuario['id_usuario']) { ?>
             <td class="th-registros"><?php echo $usuario['id_usuario']; ?></td>
-            <td class="td-registros">
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <input type="text" name="primer_nombre" value="<?php echo $usuario['primer_nombre']; ?>" required class="campo-texto" placeholder="Primer nombre" form="form-editar-usuarios">
                 <input type="text" name="segundo_nombre" value="<?php echo $usuario['segundo_nombre']; ?>" class="campo-texto" placeholder="Segundo nombre" form="form-editar-usuarios">
                 <br>
                 <input type="text" name="primer_apellido" value="<?php echo $usuario['primer_apellido']; ?>" required class="campo-texto" placeholder="Primer apellido" form="form-editar-usuarios">
                 <input type="text" name="segundo_apellido" value="<?php echo $usuario['segundo_apellido']; ?>" class="campo-texto" placeholder="Segundo apellido" form="form-editar-usuarios">
             </td>
-            <td class="td-registros"><input type="text" name="nombre_usuario" value="<?php echo $usuario['nombre_usuario']; ?>" required class="campo-texto" form="form-editar-usuarios"></td>
-            <td class="td-registros"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" required class="campo-texto" form="form-editar-usuarios"></td>
-            <td class="td-registros">
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="nombre_usuario" value="<?php echo $usuario['nombre_usuario']; ?>" required class="campo-texto" form="form-editar-usuarios"></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="email" name="correo" value="<?php echo $usuario['correo']; ?>" required class="campo-texto" form="form-editar-usuarios"></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <select name="id_rol" required class="campo-texto" form="form-editar-usuarios">
                     
                     <option value="1" <?php if ((int)$updateid['id_rol'] === 1) {echo 'selected';} ?>>Administrador</option>
@@ -98,12 +98,12 @@
                     <option value="3" <?php if ((int)$updateid['id_rol'] === 3) {echo 'selected';} ?>>Encargado</option>
                 </select>
             </td>
-            <td class="td-registros"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php echo $usuario['fecha_creacion']; ?></td>
-            <td class="td-registros"><?php echo $usuario['fecha_actualizacion']; ?></td>
-            <td class="td-registros"><?php echo $usuario['usuario_creacion']; ?></td>
-            <td class="td-registros"><?php echo $usuario['usuario_actualizacion']; ?></td>
-            <td class="td-registros">
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_creacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_actualizacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_creacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_actualizacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-usuarios" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">
                     <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
@@ -113,16 +113,16 @@
             <?php } else { ?>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $usuario['id_usuario']; ?></td>
-            <td class="td-registros"><?php echo $usuario['nombre_completo']; ?></td>
-            <td class="td-registros"><?php echo $usuario['nombre_usuario']; ?></td>
-            <td class="td-registros"><?php echo $usuario['correo']; ?></td>
-            <td class="td-registros"><?php echo $usuario['rol']; ?></td>
-            <td class="td-registros"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php echo $usuario['fecha_creacion']; ?></td>
-            <td class="td-registros"><?php echo $usuario['fecha_actualizacion']; ?></td>
-            <td class="td-registros"><?php echo $usuario['usuario_creacion']; ?></td>
-            <td class="td-registros"><?php echo $usuario['usuario_actualizacion']; ?></td>
-            <td class="td-registros">
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['nombre_completo']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['nombre_usuario']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['correo']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['rol']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_creacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_actualizacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_creacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_actualizacion']; ?></td>
+            <td class="<?php if ($usuario['id_usuario'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">
                     <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']?>">

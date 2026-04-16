@@ -46,19 +46,19 @@
         <?php foreach ($data as $historialrol):?>
         <tr>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
-            <td class="td-registros"><?php echo $historialrol['id_historial']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['id_rol']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['accion']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['fecha_cambio']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['usuario_responsable']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['nombre_rol_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['nombre_rol_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['descripcion_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['descripcion_nuevo']; ?></td>
-            <td class="td-registros"><?php if ($historialrol['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php if ($historialrol['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php echo $historialrol['fecha_actualizacion_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialrol['usuario_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['id_historial']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['id_rol']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['accion']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['fecha_cambio']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['usuario_responsable']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['nombre_rol_anterior']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['nombre_rol_nuevo']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['descripcion_anterior']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['descripcion_nuevo']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialrol['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialrol['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['fecha_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialrol['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

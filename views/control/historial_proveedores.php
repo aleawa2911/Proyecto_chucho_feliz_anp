@@ -49,23 +49,23 @@
         <?php foreach ($data as $historialproveedor):?>
         <tr>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
-            <td class="td-registros"><?php echo $historialproveedor['id_historial']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['id_proveedor']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['accion']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['fecha_cambio']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['usuario_responsable']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['nombre_proveedor_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['nombre_proveedor_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['contacto_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['contacto_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['telefono_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['telefono_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['correo_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['correo_nuevo']; ?></td>
-            <td class="td-registros"><?php if ($historialproveedor['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php if ($historialproveedor['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['fecha_actualizacion_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproveedor['usuario_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['id_historial']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['id_proveedor']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['accion']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['fecha_cambio']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['usuario_responsable']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['nombre_proveedor_anterior']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['nombre_proveedor_nuevo']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['contacto_anterior']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['contacto_nuevo']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['telefono_anterior']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['telefono_nuevo']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['correo_anterior']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['correo_nuevo']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialproveedor['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialproveedor['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['fecha_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialproveedor['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproveedor['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

@@ -64,15 +64,15 @@
             y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
             <?php if (isset($updateid) && $updateid['id_categoria'] == $categoria['id_categoria']) { ?>
             <td class="th-registros"><?php echo $categoria['id_categoria']; ?></td>
-            <td class="td-registros"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" required class="campo-texto" form="form-editar-categorias"></td>
-            <td class="td-registros"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto" form="form-editar-categorias"></td>
-            <td class="td-registros"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="nombre_categoria" value="<?php echo $categoria['nombre_categoria']; ?>" required class="campo-texto" form="form-editar-categorias"></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto" form="form-editar-categorias"></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
-            <td class="td-registros"><?php echo $categoria['fecha_creacion']; ?></td>
-            <td class="td-registros"><?php echo $categoria['fecha_actualizacion']; ?></td>
-            <td class="td-registros"><?php echo $categoria['usuario_creacion']; ?></td>
-            <td class="td-registros"><?php echo $categoria['usuario_actualizacion']; ?></td>
-            <td class="td-registros">
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_creacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_actualizacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_creacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_actualizacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-categorias" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
                     <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
@@ -83,15 +83,15 @@
             <?php } else { ?>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $categoria['id_categoria']; ?></td>
-            <td class="td-registros"><?php echo $categoria['nombre_categoria']; ?></td>
-            <td class="td-registros"><?php echo $categoria['descripcion']; ?></td>
-            <td class="td-registros"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['nombre_categoria']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['descripcion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
-            <td class="td-registros"><?php echo $categoria['fecha_creacion']; ?></td>
-            <td class="td-registros"><?php echo $categoria['fecha_actualizacion']; ?></td>
-            <td class="td-registros"><?php echo $categoria['usuario_creacion']; ?></td>
-            <td class="td-registros"><?php echo $categoria['usuario_actualizacion']; ?></td>
-            <td class="td-registros">
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_creacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_actualizacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_creacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_actualizacion']; ?></td>
+            <td class="<?php if ($categoria['id_categoria'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
                     <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">

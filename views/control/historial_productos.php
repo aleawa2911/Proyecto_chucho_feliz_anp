@@ -58,31 +58,31 @@
         <?php foreach ($data as $historialproducto):?>
         <tr>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
-            <td class="td-registros"><?php echo $historialproducto['id_historial']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['id_producto']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['accion']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['fecha_cambio']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['usuario_responsable']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['codigo_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['codigo_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['nombre_producto_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['nombre_producto_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['precio_venta_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['precio_venta_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['stock_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['stock_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['stock_defectuoso_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['stock_defectuoso_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['stock_minimo_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['stock_minimo_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['id_categoria_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['id_categoria_nuevo']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['id_proveedor_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['id_proveedor_nuevo']; ?></td>
-            <td class="td-registros"><?php if ($historialproducto['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php if ($historialproducto['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['fecha_actualizacion_anterior']; ?></td>
-            <td class="td-registros"><?php echo $historialproducto['usuario_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_historial']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_producto']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['accion']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['fecha_cambio']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['usuario_responsable']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['codigo_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['codigo_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['nombre_producto_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['nombre_producto_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['precio_venta_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['precio_venta_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_defectuoso_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_defectuoso_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_minimo_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_minimo_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_categoria_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_categoria_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_proveedor_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_proveedor_nuevo']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialproducto['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialproducto['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['fecha_actualizacion_anterior']; ?></td>
+            <td class="<?php if ($historialproducto['id_historial'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
