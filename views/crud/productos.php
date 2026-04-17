@@ -87,17 +87,21 @@
         </tr>
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
-        <?php foreach ($data as $producto): ?>
+        <?php 
+        $contador_fila = 0;
+        foreach ($data as $producto): 
+        $contador_fila++;
+        ?>
         <tr>
             <!--Formulario de edicion, chequeamos si esta definida la variable $updateid (se define cuando el controlador recibe la accion editar y el valor con X id mediante $_POST)
             y si el valor coincide con el de la fila para mostrar los campos como formulario y el boton actualizar para enviar esos datos al controlador para la funcion Actualizar-->
             <?php if (isset($updateid) && $updateid['id_producto'] == $producto['id_producto']) { ?>
             <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" required class="campo-texto" form="form-editar-productos"></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" required class="campo-texto" form="form-editar-productos"></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock" value="<?php echo $producto['stock']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" required class="campo-texto" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" required class="campo-texto" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock" value="<?php echo $producto['stock']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <select name="id_categoria" required class="campo-texto" form="form-editar-productos">
                     <!--Recibimos los id y nombres de las categorias con ObtenerCategoria()-->
                     <?php foreach ($dataC as $categoria): ?>
@@ -109,10 +113,10 @@
                     <?php endforeach; ?>
                 </select>
             </td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock_defectuoso" value="<?php echo $producto['stock_defectuoso']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <select name="id_proveedor" class="campo-texto" form="form-editar-productos">
                     <!--Recibimos los id y nombres de los proveedores con ObtenerProveedor()-->
                     <?php foreach ($dataP as $proveedor): ?>
@@ -124,11 +128,11 @@
                     <?php endforeach; ?>
                 </select>
             </td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_creacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_creacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_actualizacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_creacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_actualizacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_creacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_actualizacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-productos" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
                     <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">
                     <input type="submit" class="boton-actualizar" name="accion" value="Actualizar">
@@ -140,22 +144,22 @@
 
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['codigo']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['nombre_producto']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['precio_venta']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['categoria']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['codigo']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['nombre_producto']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['precio_venta']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['categoria']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <!--Si el rol es cajero, no mostramos los datos innecesarios para la venta-->
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_defectuoso']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_minimo']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['proveedor']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_creacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_creacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_actualizacion']; ?></td>
-            <td class="<?php if ($producto['id_producto'] % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_defectuoso']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_minimo']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['proveedor']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_creacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_actualizacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_creacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_actualizacion']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
                     <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">

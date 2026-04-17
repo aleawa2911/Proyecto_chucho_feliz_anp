@@ -12,6 +12,9 @@
 <body>
     <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
+
+    <div class="imagen-temporal"><img src="public/images/working.png" alt="work in progress"></div>
+    
     <?php require_once __DIR__ . '/../layout/footer.php';?>
 </body>
 </html>

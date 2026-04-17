@@ -82,6 +82,8 @@ switch ($url) {
         require_once __DIR__ . '/controllers/control/reportes.php';
         break;
 
+    default:
+        header('Location: /proyecto_chucho_feliz_anp/index.php?url=dashboard');
+        exit;
 }
-
 ?>

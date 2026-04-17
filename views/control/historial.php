@@ -13,7 +13,7 @@
     <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
 
-    <div class="header-box-seccion-historiales">
+    <div class="header-box-subseccion">
         <!--Box de historiales-->
         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=historial_productos" class="boton"><img src="/proyecto_chucho_feliz_anp/public/images/productos.png" alt="icono historial productos" class="icono-seccion">Historial Productos</a></div>
         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=historial_proveedores" class="boton"><img src="/proyecto_chucho_feliz_anp/public/images/proveedores.png" alt="icono historial proveedores" class="icono-seccion">Historial Proveedores</a></div>

@@ -104,7 +104,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton" <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
                 </div>
                 <div class="header-box-seccion">

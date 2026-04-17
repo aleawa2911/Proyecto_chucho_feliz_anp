@@ -1,5 +1,13 @@
 /*-------------------------------Estilos del sitio, ni yo entiendo que hice aqui------------------------------------*/
 
+/*-------------------------------TEMPORAL------------------------------------*/
+
+.imagen-temporal{
+    display: flex;
+    justify-content: center;
+
+}
+
 /*-------------------------------LOGIN------------------------------------*/
 
 .login-body{
@@ -258,12 +266,12 @@
 }
 
 /*-------------------------------SECCION HISTORIAL------------------------------------*/
-.header-box-seccion-historiales{
+.header-box-subseccion{
     width: fit-content;
     max-width: 100%;
     margin: 0 auto 10px;
-    padding: 6px 10px;
-    background-color: rgba(94, 114, 88, 0.18);
+    padding: 10px;
+    background-color: rgba(94, 114, 88, 0.776);
     border-radius: 12px;
     display: flex;
     justify-content: center;
