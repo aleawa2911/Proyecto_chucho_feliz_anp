@@ -38,6 +38,7 @@
         </table>
         </form>
     </div>
+    
     <div class="buscar-box">
         <form method="GET" action="/proyecto_chucho_feliz_anp/index.php" class="buscar-form">
             <input type="hidden" name="url" value="roles">
@@ -90,8 +91,8 @@
                     </form>
                     <a href="/proyecto_chucho_feliz_anp/index.php?url=roles" class="boton-cancelar">X</a>
             </td>
-            <?php }else{?> 
-
+            <?php }else{?>
+            
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $rol['id_rol']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['nombre_rol']; ?></td>

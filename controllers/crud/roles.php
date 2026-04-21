@@ -51,7 +51,6 @@ require_once __DIR__ . '/../../models/crud/roles.php';
             
             case 'Editar':
                 $id_rol = $_POST['id_rol'];
-                $usuario_actualizacion = $_SESSION['id_usuario'];
                 $updateid = $modelo->ObtenerPorId($id_rol);
                 break;
 
