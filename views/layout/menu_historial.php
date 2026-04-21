@@ -1,15 +1,6 @@
 <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
-<?php
-$buscadores_historial = [
-    'historial_productos',
-    'historial_proveedores',
-    'historial_categorias',
-    'historial_usuarios',
-    'historial_roles'
-];
-?>
-<div class="submenu-controles">
+
 <div class="header-box-subseccion">
     <!--Box de historiales-->
     <div class="header-boton">
@@ -27,15 +18,4 @@ $buscadores_historial = [
     <div class="header-boton">
         <a href="/proyecto_chucho_feliz_anp/index.php?url=historial_roles" class="boton <?php if($url=='historial_roles')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/roles.png" alt="icono historial roles" class="icono-seccion">Historial Roles</a>
     </div>
-</div>
-<?php if (in_array($url, $buscadores_historial)) { ?>
-<div class="buscar-box">
-    <form method="GET" action="/proyecto_chucho_feliz_anp/index.php" class="buscar-form">
-        <input type="hidden" name="url" value="<?php echo $url; ?>">
-        <input type="text" name="buscar" class="campo-texto" value="<?php echo $_GET['buscar'] ?? ''; ?>" placeholder="Buscar...">
-        <input type="submit" value="Buscar" class="boton-buscar">
-        <a href="/proyecto_chucho_feliz_anp/index.php?url=<?php echo $url; ?>" class="boton-cancelar">X</a>
-    </form>
-</div>
-<?php } ?>
 </div>

@@ -125,10 +125,10 @@ class ProveedoresModelo{
                 OR ua.nombre_usuario LIKE :buscar
                 OR (CASE WHEN pr.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
             ORDER BY pr.id_proveedor ASC;";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([":buscar" => "%".$buscar."%"]);
-    return $stmt->fetchAll();
-}
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":buscar" => "%".$buscar."%"]);
+        return $stmt->fetchAll();
+    }
 
 }
 ?>

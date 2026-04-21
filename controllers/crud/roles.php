@@ -70,7 +70,6 @@ require_once __DIR__ . '/../../models/crud/roles.php';
                     header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
                     exit;
                 }
-
                 break;
 
             case 'Desactivar':
@@ -86,7 +85,6 @@ require_once __DIR__ . '/../../models/crud/roles.php';
                     header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
                     exit;
                 }
-
                 break;
 
             case 'Activar':
@@ -102,7 +100,6 @@ require_once __DIR__ . '/../../models/crud/roles.php';
                     header('Location: /proyecto_chucho_feliz_anp/index.php?url=roles');
                     exit;
                 }
-
                 break;
         }
     }

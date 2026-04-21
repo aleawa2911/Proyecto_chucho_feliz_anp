@@ -16,6 +16,7 @@ class ReporteVentasModelo{
     public function ObtenerTodos(){
         $sql = "SELECT 
                     v.id_venta,
+                    v.id_cierre,
                     v.fecha,
                     u.nombre_usuario AS usuario_responsable,
                     v.subtotal,
@@ -34,6 +35,7 @@ class ReporteVentasModelo{
     public function BuscarPorTexto($buscar){
     $sql = "SELECT 
                 v.id_venta,
+                v.id_cierre,
                 v.fecha,
                 u.nombre_usuario AS usuario_responsable,
                 v.subtotal,
@@ -43,6 +45,7 @@ class ReporteVentasModelo{
             LEFT JOIN usuarios u
                 ON v.id_usuario = u.id_usuario
             WHERE v.id_venta LIKE :buscar
+                OR v.id_cierre LIKE :buscar
                 OR v.fecha LIKE :buscar
                 OR u.nombre_usuario LIKE :buscar
                 OR v.subtotal LIKE :buscar
@@ -53,6 +56,25 @@ class ReporteVentasModelo{
     $stmt->execute([":buscar" => "%".$buscar."%"]);
     return $stmt->fetchAll();
 }
+
+    public function ObtenerDetalleVenta($id_venta){
+        $sql = "SELECT
+                    d.id_detalle,
+                    d.id_producto,
+                    p.nombre_producto AS producto,
+                    d.cantidad,
+                    d.precio_unitario,
+                    d.subtotal
+                FROM detalle_ventas d
+                LEFT JOIN productos p
+                    ON d.id_producto = p.id_producto
+                WHERE d.id_venta = :id_venta
+                ORDER BY d.id_detalle ASC;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_venta" => $id_venta]);
+        $data = $stmt->fetchAll();
+        return $data;
+    }
 
 }
 ?>

@@ -19,6 +19,7 @@
         <!--Header de la tabla-->
         <tr>
             <th class="th-registros">ID</th>
+            <th class="th-registros">ID Caja</th>
             <th class="th-registros">Fecha</th>
             <th class="th-registros">Usuario Responsable</th>
             <th class="th-registros">Subtotal</th>
@@ -36,6 +37,7 @@
         <tr>
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $venta['id_venta']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $venta['id_cierre']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $venta['fecha']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $venta['usuario_responsable']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $venta['subtotal']; ?></td>

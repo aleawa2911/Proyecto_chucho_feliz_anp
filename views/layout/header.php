@@ -61,7 +61,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de control-->
                         <p class="header-box-seccion-titulo">Control</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes' || $url=='reporte_ventas' || $url=='reporte_compras' || $url=='movimientos_inventario')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/reportes.png" alt="icono reportes" class="icono-seccion">Reportes</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes' || $url=='reporte_ventas' || $url=='reporte_compras' || $url=='reporte_devoluciones_cliente' || $url=='reporte_devoluciones_proveedor' || $url=='reporte_caja' || $url=='movimientos_inventario')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/reportes.png" alt="icono reportes" class="icono-seccion">Reportes</a></div>
                 </div>
                 <?php break;
 
@@ -90,7 +90,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                 <div class="header-box-seccion">
                         <!--Box de control-->
                         <p class="header-box-seccion-titulo">Control</p>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes' || $url=='reporte_ventas' || $url=='reporte_compras' || $url=='movimientos_inventario')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/reportes.png" alt="icono reportes" class="icono-seccion">Reportes</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=reportes" class="boton <?php if($url=='reportes' || $url=='reporte_ventas' || $url=='reporte_compras' || $url=='reporte_devoluciones_cliente' || $url=='reporte_devoluciones_proveedor' || $url=='reporte_caja' || $url=='movimientos_inventario')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/reportes.png" alt="icono reportes" class="icono-seccion">Reportes</a></div>
                 </div>
                 <?php break;
 

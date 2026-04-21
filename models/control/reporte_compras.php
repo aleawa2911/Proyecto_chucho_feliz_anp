@@ -58,5 +58,24 @@ class ReporteComprasModelo{
     return $stmt->fetchAll();
 }
 
+    public function ObtenerDetalleCompra($id_compra){
+        $sql = "SELECT
+                    d.id_detalle,
+                    d.id_producto,
+                    p.nombre_producto AS producto,
+                    d.cantidad,
+                    d.precio_unitario,
+                    d.subtotal
+                FROM detalle_compras d
+                LEFT JOIN productos p
+                    ON d.id_producto = p.id_producto
+                WHERE d.id_compra = :id_compra
+                ORDER BY d.id_detalle ASC;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":id_compra" => $id_compra]);
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+
 }
 ?>
