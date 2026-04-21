@@ -72,7 +72,6 @@
             <th class="th-registros">Usuario Actualización</th>
             <th class="th-registros">Acciones</th> 
         </tr>
-        </tr>
         <!--Recibimos los datos de la funcion ObtenerTodos() e imprimimos una fila por cada registro-->
         <?php 
         $contador_fila = 0;

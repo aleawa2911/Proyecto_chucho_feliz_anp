@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../models/control/historial_usuarios.php';
         exit;
     }
 
-    /*Instanciamos el modelo de usuarios*/
+    /*Instanciamos el modelo de historial usuarios*/
     $modelo = new HistorialUsuariosModelo();
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();

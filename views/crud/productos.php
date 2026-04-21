@@ -75,8 +75,8 @@
             <th class="th-registros">Categoría</th>
             <th class="th-registros">Estado</th>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>    
-            <th class="th-registros">Stock Mínimo</th>
             <th class="th-registros">Stock Defectuoso</th>
+            <th class="th-registros">Stock Mínimo</th>
             <th class="th-registros">Proveedor</th> 
             <th class="th-registros">Fecha Creación</th>
             <th class="th-registros">Fecha Actualización</th>

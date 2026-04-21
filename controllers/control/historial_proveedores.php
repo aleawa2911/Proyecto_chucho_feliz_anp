@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../models/control/historial_proveedores.php';
         exit;
     }
 
-    /*Instanciamos el modelo de proveedores*/
+    /*Instanciamos el modelo de historial proveedores*/
     $modelo = new HistorialProveedoresModelo();
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();

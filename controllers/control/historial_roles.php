@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../models/control/historial_roles.php';
         exit;
     }
 
-    /*Instanciamos el modelo de roles*/
+    /*Instanciamos el modelo de historial roles*/
     $modelo = new HistorialRolesModelo();
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();

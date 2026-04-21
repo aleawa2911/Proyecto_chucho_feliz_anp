@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../models/control/historial_productos.php';
         exit;
     }
 
-    /*Instanciamos el modelo de productos*/
+    /*Instanciamos el modelo de historial productos*/
     $modelo = new HistorialProductosModelo();
     /*Guardamos la data de las tablas en $data*/
     $data = $modelo->ObtenerTodos();
