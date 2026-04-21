@@ -13,6 +13,7 @@
     <?php require_once __DIR__ . '/../layout/header.php';?>
     <div class="espacio-header"></div>
 
+    <div class="crud-controles">
 <!--Formulario para insertar datos en la tabla-->
     <div class="tabla-insertar">
         <form method="POST" action="/proyecto_chucho_feliz_anp/index.php?url=roles">
@@ -36,6 +37,15 @@
             </tr>
         </table>
         </form>
+    </div>
+    <div class="buscar-box">
+        <form method="GET" action="/proyecto_chucho_feliz_anp/index.php" class="buscar-form">
+            <input type="hidden" name="url" value="roles">
+            <input type="text" name="buscar" class="campo-texto" value="<?php echo $_GET['buscar'] ?? ''; ?>" placeholder="Buscar...">
+            <input type="submit" value="Buscar" class="boton-buscar">
+            <a href="/proyecto_chucho_feliz_anp/index.php?url=roles" class="boton-cancelar">X</a>
+        </form>
+    </div>
     </div>
 
 <!--Tabla de registros-->
