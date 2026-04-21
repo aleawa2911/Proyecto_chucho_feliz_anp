@@ -96,5 +96,39 @@ class ProveedoresModelo{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
+
+    public function BuscarPorTexto($buscar){
+    $sql = "SELECT 
+                pr.id_proveedor,
+                pr.nombre_proveedor,
+                pr.contacto,
+                pr.telefono,
+                pr.correo,
+                pr.activo,
+                pr.fecha_creacion,
+                pr.fecha_actualizacion,
+                uc.nombre_usuario AS usuario_creacion,
+                ua.nombre_usuario AS usuario_actualizacion
+            FROM proveedores pr
+            LEFT JOIN usuarios uc 
+                ON pr.usuario_creacion = uc.id_usuario
+            LEFT JOIN usuarios ua 
+                ON pr.usuario_actualizacion = ua.id_usuario
+            WHERE pr.id_proveedor LIKE :buscar
+                OR pr.nombre_proveedor LIKE :buscar
+                OR pr.contacto LIKE :buscar
+                OR pr.telefono LIKE :buscar
+                OR pr.correo LIKE :buscar
+                OR pr.fecha_creacion LIKE :buscar
+                OR pr.fecha_actualizacion LIKE :buscar
+                OR uc.nombre_usuario LIKE :buscar
+                OR ua.nombre_usuario LIKE :buscar
+                OR (CASE WHEN pr.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
+            ORDER BY pr.id_proveedor ASC;";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([":buscar" => "%".$buscar."%"]);
+    return $stmt->fetchAll();
+}
+
 }
 ?>

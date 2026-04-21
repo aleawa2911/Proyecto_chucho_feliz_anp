@@ -87,5 +87,35 @@ class CategoriasModelo{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id_categoria, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
+
+    public function BuscarPorTexto($buscar){
+    $sql = "SELECT 
+                c.id_categoria,
+                c.nombre_categoria,
+                c.descripcion,
+                c.activo,
+                c.fecha_creacion,
+                c.fecha_actualizacion,
+                uc.nombre_usuario AS usuario_creacion,
+                ua.nombre_usuario AS usuario_actualizacion
+            FROM categorias c
+            LEFT JOIN usuarios uc 
+                ON c.usuario_creacion = uc.id_usuario
+            LEFT JOIN usuarios ua 
+                ON c.usuario_actualizacion = ua.id_usuario
+            WHERE c.id_categoria LIKE :buscar
+                OR c.nombre_categoria LIKE :buscar
+                OR c.descripcion LIKE :buscar
+                OR c.fecha_creacion LIKE :buscar
+                OR c.fecha_actualizacion LIKE :buscar
+                OR uc.nombre_usuario LIKE :buscar
+                OR ua.nombre_usuario LIKE :buscar
+                OR (CASE WHEN c.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
+            ORDER BY c.id_categoria ASC;";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([":buscar" => "%".$buscar."%"]);
+    return $stmt->fetchAll();
+}
+
 }
 ?>

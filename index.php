@@ -1,9 +1,8 @@
 <?php 
-// Si no viene nada en la URL, manda a login por default
+//guarda en la variable $url lo que devuelve get en url, si no viene url, usa login
 $url = $_GET['url'] ?? 'login';
 
-//Los botones de la pagina reenvian a un index.php?url=talcosa, entonces el index toma la decision segun que url se le da, de llamar a X o Y controlador
-
+//Los botones del menu reenvian a index.php?url=talcosa, entonces el index toma la decision de llamar a X o Y controlador segun q traiga la variable url
 switch ($url) {
 
     case 'login':

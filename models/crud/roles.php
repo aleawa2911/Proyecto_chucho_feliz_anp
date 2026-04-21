@@ -86,5 +86,35 @@ class RolesModelo{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id_rol, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
+
+    public function BuscarPorTexto($buscar){
+    $sql = "SELECT 
+                r.id_rol,
+                r.nombre_rol,
+                r.descripcion,
+                r.activo,
+                r.fecha_creacion,
+                r.fecha_actualizacion,
+                uc.nombre_usuario AS usuario_creacion,
+                ua.nombre_usuario AS usuario_actualizacion
+            FROM roles r
+            LEFT JOIN usuarios uc 
+                ON r.usuario_creacion = uc.id_usuario
+            LEFT JOIN usuarios ua 
+                ON r.usuario_actualizacion = ua.id_usuario
+            WHERE r.id_rol LIKE :buscar
+                OR r.nombre_rol LIKE :buscar
+                OR r.descripcion LIKE :buscar
+                OR r.fecha_creacion LIKE :buscar
+                OR r.fecha_actualizacion LIKE :buscar
+                OR uc.nombre_usuario LIKE :buscar
+                OR ua.nombre_usuario LIKE :buscar
+                OR (CASE WHEN r.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
+            ORDER BY r.id_rol ASC;";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([":buscar" => "%".$buscar."%"]);
+    return $stmt->fetchAll();
+}
+
 }
 ?>

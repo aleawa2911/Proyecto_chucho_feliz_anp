@@ -26,11 +26,37 @@ class ReporteComprasModelo{
                     ON c.id_proveedor = p.id_proveedor
                 LEFT JOIN usuarios u
                     ON c.id_usuario = u.id_usuario
-                ORDER BY c.fecha DESC, c.id_compra DESC;";
+                ORDER BY c.id_compra DESC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
     }
+
+    public function BuscarPorTexto($buscar){
+    $sql = "SELECT 
+                c.id_compra,
+                c.id_proveedor,
+                p.nombre_proveedor AS proveedor,
+                c.fecha,
+                c.total,
+                u.nombre_usuario AS usuario_responsable
+            FROM compras c
+            LEFT JOIN proveedores p
+                ON c.id_proveedor = p.id_proveedor
+            LEFT JOIN usuarios u
+                ON c.id_usuario = u.id_usuario
+            WHERE c.id_compra LIKE :buscar
+                OR c.id_proveedor LIKE :buscar
+                OR p.nombre_proveedor LIKE :buscar
+                OR c.fecha LIKE :buscar
+                OR c.total LIKE :buscar
+                OR u.nombre_usuario LIKE :buscar
+            ORDER BY c.id_compra DESC;";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([":buscar" => "%".$buscar."%"]);
+    return $stmt->fetchAll();
+}
+
 }
 ?>

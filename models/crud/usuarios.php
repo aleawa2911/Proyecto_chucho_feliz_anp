@@ -120,5 +120,51 @@ class UsuariosModelo{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id_usuario, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
+
+    public function BuscarPorTexto($buscar){
+    $sql = "SELECT 
+                u.id_usuario,
+                u.primer_nombre,
+                u.segundo_nombre,
+                u.primer_apellido,
+                u.segundo_apellido,
+                CONCAT_WS(' ', u.primer_nombre, u.segundo_nombre, u.primer_apellido, u.segundo_apellido) AS nombre_completo,
+                u.nombre_usuario,
+                u.correo,
+                u.id_rol,
+                r.nombre_rol AS rol,
+                u.activo,
+                u.fecha_creacion,
+                u.fecha_actualizacion,
+                uc.nombre_usuario AS usuario_creacion,
+                ua.nombre_usuario AS usuario_actualizacion
+            FROM usuarios u
+            INNER JOIN roles r 
+                ON u.id_rol = r.id_rol
+            LEFT JOIN usuarios uc 
+                ON u.usuario_creacion = uc.id_usuario
+            LEFT JOIN usuarios ua 
+                ON u.usuario_actualizacion = ua.id_usuario
+            WHERE u.id_usuario LIKE :buscar
+                OR u.primer_nombre LIKE :buscar
+                OR u.segundo_nombre LIKE :buscar
+                OR u.primer_apellido LIKE :buscar
+                OR u.segundo_apellido LIKE :buscar
+                OR u.nombre_usuario LIKE :buscar
+                OR u.correo LIKE :buscar
+                OR u.id_rol LIKE :buscar
+                OR r.nombre_rol LIKE :buscar
+                OR u.fecha_creacion LIKE :buscar
+                OR u.fecha_actualizacion LIKE :buscar
+                OR uc.nombre_usuario LIKE :buscar
+                OR ua.nombre_usuario LIKE :buscar
+                OR (CASE WHEN u.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
+                OR CONCAT_WS(' ', u.primer_nombre, u.segundo_nombre, u.primer_apellido, u.segundo_apellido) LIKE :buscar
+            ORDER BY u.id_usuario ASC;";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([":buscar" => "%".$buscar."%"]);
+    return $stmt->fetchAll();
+}
+
 }
 ?>

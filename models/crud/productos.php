@@ -146,5 +146,55 @@ class ProductosModelo{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id_producto, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
     }
+
+    public function BuscarPorTexto($buscar){
+    $sql = "SELECT 
+                p.id_producto,
+                p.codigo,
+                p.nombre_producto,
+                p.precio_venta,
+                p.stock,
+                p.stock_defectuoso,
+                p.stock_minimo,
+                p.id_categoria,
+                p.id_proveedor,
+                c.nombre_categoria AS categoria,
+                pr.nombre_proveedor AS proveedor,
+                p.activo,
+                p.fecha_creacion,
+                p.fecha_actualizacion,
+                uc.nombre_usuario AS usuario_creacion,
+                ua.nombre_usuario AS usuario_actualizacion
+            FROM productos p
+            INNER JOIN categorias c 
+                ON p.id_categoria = c.id_categoria
+            INNER JOIN proveedores pr 
+                ON p.id_proveedor = pr.id_proveedor
+            LEFT JOIN usuarios uc 
+                ON p.usuario_creacion = uc.id_usuario
+            LEFT JOIN usuarios ua 
+                ON p.usuario_actualizacion = ua.id_usuario
+            WHERE p.id_producto LIKE :buscar
+                OR p.codigo LIKE :buscar
+                OR p.nombre_producto LIKE :buscar
+                OR p.precio_venta LIKE :buscar
+                OR p.stock LIKE :buscar
+                OR p.stock_defectuoso LIKE :buscar
+                OR p.stock_minimo LIKE :buscar
+                OR p.id_categoria LIKE :buscar
+                OR p.id_proveedor LIKE :buscar
+                OR c.nombre_categoria LIKE :buscar
+                OR pr.nombre_proveedor LIKE :buscar
+                OR p.fecha_creacion LIKE :buscar
+                OR p.fecha_actualizacion LIKE :buscar
+                OR uc.nombre_usuario LIKE :buscar
+                OR ua.nombre_usuario LIKE :buscar
+                OR (CASE WHEN p.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
+            ORDER BY p.id_producto ASC";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([":buscar" => "%".$buscar."%"]);
+    return $stmt->fetchAll();
+}
+
 }
 ?>
