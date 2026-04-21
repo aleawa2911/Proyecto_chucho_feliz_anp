@@ -24,6 +24,7 @@
             <th class="th-registros">Fecha</th>
             <th class="th-registros">Total</th>
             <th class="th-registros">Usuario Responsable</th>
+            <th class="th-registros">Detalle</th>
         </tr>
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
@@ -40,6 +41,7 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $compra['fecha']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $compra['total']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $compra['usuario_responsable']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">Ver detalle va aquí</td>
         </tr>
         <?php endforeach; ?>
     </table>
