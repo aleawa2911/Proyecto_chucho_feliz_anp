@@ -1,6 +1,3 @@
-<?php require_once __DIR__ . '/../layout/header.php';?>
-    <div class="espacio-header"></div>
-
 <div class="header-box-subseccion">
     <!--Box de historiales-->
     <div class="header-boton">

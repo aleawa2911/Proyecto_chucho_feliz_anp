@@ -267,14 +267,57 @@
 
 .productos-controles,
 .crud-controles{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
     gap: 20px;
-    flex-wrap: wrap;
     width: 100%;
     box-sizing: border-box;
     padding: 0 20px;
+}
+
+.productos-controles .tabla-insertar,
+.crud-controles .tabla-insertar{
+    grid-column: 2;
+}
+
+.productos-controles .buscar-box,
+.crud-controles .buscar-box{
+    position: absolute;
+    right: 20px;
+    top: 0;
+    margin-bottom: 10px;
+}
+
+.historial-controles,
+.reportes-controles{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.historial-menu,
+.reportes-menu{
+    grid-column: 2;
+}
+
+.historial-controles .header-box-subseccion,
+.reportes-controles .header-box-subseccion{
+    margin: 0 0 10px;
+}
+
+.historial-controles .buscar-box,
+.reportes-controles .buscar-box{
+    position: absolute;
+    right: 20px;
+    top: 0;
+    margin-bottom: 10px;
 }
 
 .submenu-controles{

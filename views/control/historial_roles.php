@@ -11,7 +11,21 @@
 </head>
 <body>
     <!--Menu de tablas de historial-->
-    <?php require_once __DIR__ . '/../layout/menu_historial.php';?>
+    <?php require_once __DIR__ . '/../layout/header.php';?>
+    <div class="espacio-header"></div>
+    <div class="historial-controles">
+        <div class="historial-menu">
+            <?php require_once __DIR__ . '/../layout/menu_historial_botones.php';?>
+        </div>
+        <div class="buscar-box">
+            <form method="GET" action="/proyecto_chucho_feliz_anp/index.php" class="buscar-form">
+                <input type="hidden" name="url" value="historial_roles">
+                <input type="text" name="buscar" class="campo-texto" value="<?php echo $_GET['buscar'] ?? ''; ?>" placeholder="Buscar...">
+                <input type="submit" value="Buscar" class="boton-buscar">
+                <a href="/proyecto_chucho_feliz_anp/index.php?url=historial_roles" class="boton-cancelar">X</a>
+            </form>
+        </div>
+    </div>
 <!--Tabla de registros del historial-->
 <div class="tabla-registros-box">
     <table class="tabla-registros">
