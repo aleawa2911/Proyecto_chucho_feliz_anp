@@ -23,9 +23,6 @@ class ProductosModelo{
                     p.codigo,
                     p.nombre_producto,
                     p.precio_venta,
-                    p.stock,
-                    p.stock_defectuoso,
-                    p.stock_minimo,
                     p.id_categoria,
                     p.id_proveedor,
                     c.nombre_categoria AS categoria,
@@ -49,9 +46,6 @@ class ProductosModelo{
                     codigo,
                     nombre_producto,
                     precio_venta,
-                    stock,
-                    stock_defectuoso,
-                    stock_minimo,
                     id_categoria,
                     id_proveedor
                 FROM productos
@@ -62,22 +56,19 @@ class ProductosModelo{
         return $data;
     }
 
-    public function Actualizar($id_producto,$codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$usuario_actualizacion){
+    public function Actualizar($id_producto,$codigo,$nombre_producto,$precio_venta,$id_categoria,$id_proveedor,$usuario_actualizacion){
         $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE productos
                 SET
                     codigo = :codigo,
                     nombre_producto = :nombre_producto,
                     precio_venta = :precio_venta,
-                    stock = :stock,
-                    stock_defectuoso = :stock_defectuoso,
-                    stock_minimo = :stock_minimo,
                     id_categoria = :id_categoria,
                     id_proveedor = :id_proveedor
                 WHERE
                     id_producto = :id_producto";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor]);
+        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor]);
     }
 
     public function ObtenerProveedor(){
@@ -104,15 +95,12 @@ class ProductosModelo{
         return $data;
     }
 
-    public function Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
+    public function Insertar($codigo,$nombre_producto,$precio_venta,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
         $this->DefinirUsuarioResponsable($usuario_creacion);
         $sql = "INSERT INTO productos(
                     codigo,
                     nombre_producto,
                     precio_venta,
-                    stock,
-                    stock_defectuoso,
-                    stock_minimo,
                     id_categoria,
                     id_proveedor,
                     activo)
@@ -120,15 +108,12 @@ class ProductosModelo{
                     :codigo,
                     :nombre_producto,
                     :precio_venta,
-                    :stock,
-                    :stock_defectuoso,
-                    :stock_minimo,
                     :id_categoria,
                     :id_proveedor,
                     :activo
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
+        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
     }
 
     public function Desactivar($id_producto, $usuario_actualizacion){
@@ -153,9 +138,6 @@ class ProductosModelo{
                 p.codigo,
                 p.nombre_producto,
                 p.precio_venta,
-                p.stock,
-                p.stock_defectuoso,
-                p.stock_minimo,
                 p.id_categoria,
                 p.id_proveedor,
                 c.nombre_categoria AS categoria,
@@ -170,9 +152,6 @@ class ProductosModelo{
                 OR p.codigo LIKE :buscar
                 OR p.nombre_producto LIKE :buscar
                 OR p.precio_venta LIKE :buscar
-                OR p.stock LIKE :buscar
-                OR p.stock_defectuoso LIKE :buscar
-                OR p.stock_minimo LIKE :buscar
                 OR p.id_categoria LIKE :buscar
                 OR p.id_proveedor LIKE :buscar
                 OR c.nombre_categoria LIKE :buscar

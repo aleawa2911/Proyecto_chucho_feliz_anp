@@ -35,6 +35,7 @@
             <th class="th-registros">ID</th>
             <th class="th-registros">ID Producto</th>
             <th class="th-registros">Producto</th>
+            <th class="th-registros">Lote</th>
             <th class="th-registros">Tipo</th>
             <th class="th-registros">Razon</th>
             <th class="th-registros">Cantidad</th>
@@ -53,6 +54,7 @@
             <td class="th-registros"><?php echo $movimiento['id_movimiento']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $movimiento['id_producto']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $movimiento['producto']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $movimiento['lote']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $movimiento['tipo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $movimiento['razon']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $movimiento['cantidad']; ?></td>

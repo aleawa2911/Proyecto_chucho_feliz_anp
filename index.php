@@ -33,6 +33,10 @@ switch ($url) {
         require_once __DIR__ . '/controllers/crud/productos.php';
         break;
 
+    case 'inventario':
+        require_once __DIR__ . '/controllers/crud/inventario.php';
+        break;
+
     case 'devoluciones':
         require_once __DIR__ . '/controllers/operaciones/devoluciones.php';
         break;

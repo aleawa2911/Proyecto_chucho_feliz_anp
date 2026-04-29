@@ -24,7 +24,7 @@
                 <th><label class="insertar-text">Segundo Apellido</label></th>
                 <th><label class="insertar-text">Nombre Usuario</label></th>
                 <th><label class="insertar-text">Correo</label></th>
-                <th><label class="insertar-text">Contraseña</label></th>
+                <th><label class="insertar-text">ContraseÃ±a</label></th>
                 <th><label class="insertar-text">Rol</label></th>
                 <th><label class="insertar-text">Estado</label></th>
             </tr>

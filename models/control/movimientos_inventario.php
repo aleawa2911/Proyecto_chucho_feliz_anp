@@ -18,6 +18,7 @@ class MovimientosInventarioModelo{
                     m.id_movimiento,
                     m.id_producto,
                     p.nombre_producto AS producto,
+                    i.lote,
                     m.tipo,
                     m.razon,
                     m.cantidad,
@@ -26,6 +27,8 @@ class MovimientosInventarioModelo{
                 FROM movimientos_inventario m
                 LEFT JOIN productos p
                     ON m.id_producto = p.id_producto
+                LEFT JOIN inventario i
+                    ON m.id_inventario = i.id_inventario
                 LEFT JOIN usuarios u
                     ON m.id_usuario = u.id_usuario
                 ORDER BY m.id_movimiento DESC;";
@@ -40,6 +43,7 @@ class MovimientosInventarioModelo{
                 m.id_movimiento,
                 m.id_producto,
                 p.nombre_producto AS producto,
+                i.lote,
                 m.tipo,
                 m.razon,
                 m.cantidad,
@@ -48,11 +52,14 @@ class MovimientosInventarioModelo{
             FROM movimientos_inventario m
             LEFT JOIN productos p
                 ON m.id_producto = p.id_producto
+            LEFT JOIN inventario i
+                ON m.id_inventario = i.id_inventario
             LEFT JOIN usuarios u
                 ON m.id_usuario = u.id_usuario
             WHERE m.id_movimiento LIKE :buscar
                 OR m.id_producto LIKE :buscar
                 OR p.nombre_producto LIKE :buscar
+                OR i.lote LIKE :buscar
                 OR m.tipo LIKE :buscar
                 OR m.razon LIKE :buscar
                 OR m.cantidad LIKE :buscar

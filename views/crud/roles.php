@@ -20,7 +20,7 @@
         <table >
             <tr>
                 <th><label class="insertar-text">Nombre</label></th>
-                <th><label class="insertar-text">Descripción</label></th>
+                <th><label class="insertar-text">DescripciÃ³n</label></th>
                 <th><label class="insertar-text">Estado</label></th>
             </tr>
             <tr>
