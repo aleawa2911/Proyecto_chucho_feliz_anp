@@ -42,6 +42,8 @@
             <th class="th-registros">Nombre Producto Nuevo</th>
             <th class="th-registros">Precio Venta Anterior</th>
             <th class="th-registros">Precio Venta Nuevo</th>
+            <th class="th-registros">Stock Mínimo Anterior</th>
+            <th class="th-registros">Stock Mínimo Nuevo</th>
             <th class="th-registros">ID Categoria Anterior</th>
             <th class="th-registros">ID Categoria Nuevo</th>
             <th class="th-registros">ID Proveedor Anterior</th>
@@ -67,8 +69,10 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['codigo_nuevo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['nombre_producto_anterior']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['nombre_producto_nuevo']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['precio_venta_anterior']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['precio_venta_nuevo']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($historialproducto['precio_venta_anterior'], 2); ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($historialproducto['precio_venta_nuevo'], 2); ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_minimo_anterior']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['stock_minimo_nuevo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_categoria_anterior']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_categoria_nuevo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_proveedor_anterior']; ?></td>

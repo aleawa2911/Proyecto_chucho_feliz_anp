@@ -24,6 +24,8 @@ class HistorialProductosModelo{
                     h.nombre_producto_nuevo,
                     h.precio_venta_anterior,
                     h.precio_venta_nuevo,
+                    h.stock_minimo_anterior,
+                    h.stock_minimo_nuevo,
                     h.id_categoria_anterior,
                     h.id_categoria_nuevo,
                     h.id_proveedor_anterior,
@@ -53,6 +55,8 @@ class HistorialProductosModelo{
                 h.nombre_producto_nuevo,
                 h.precio_venta_anterior,
                 h.precio_venta_nuevo,
+                h.stock_minimo_anterior,
+                h.stock_minimo_nuevo,
                 h.id_categoria_anterior,
                 h.id_categoria_nuevo,
                 h.id_proveedor_anterior,
@@ -73,6 +77,8 @@ class HistorialProductosModelo{
                 OR h.nombre_producto_nuevo LIKE :buscar
                 OR h.precio_venta_anterior LIKE :buscar
                 OR h.precio_venta_nuevo LIKE :buscar
+                OR h.stock_minimo_anterior LIKE :buscar
+                OR h.stock_minimo_nuevo LIKE :buscar
                 OR h.id_categoria_anterior LIKE :buscar
                 OR h.id_categoria_nuevo LIKE :buscar
                 OR h.id_proveedor_anterior LIKE :buscar

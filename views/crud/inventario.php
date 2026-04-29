@@ -31,16 +31,16 @@
         <tr>
             <th class="th-registros">ID</th>
             <th class="th-registros">ID Producto</th>
+            <th class="th-registros">Código</th>
+            <th class="th-registros">Nombre Producto</th>
             <th class="th-registros">Lote</th>
             <th class="th-registros">Stock</th>
             <th class="th-registros">Stock Defectuoso</th>
-            <th class="th-registros">Stock Mínimo</th>
             <th class="th-registros">Fecha Ingreso</th>
             <th class="th-registros">Fecha Vencimiento</th>
-            <th class="th-registros">Estado</th>
         </tr>
 
-        <!--Recibimos los datos de la funcion ObtenerTodos()-->
+        <!--Recibimos los datos de la función ObtenerTodos()-->
         <?php
         $contador_fila = 0;
         foreach ($data as $inventario):
@@ -50,13 +50,13 @@
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $inventario['id_inventario']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['id_producto']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['codigo']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['nombre_producto']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['lote']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['stock']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['stock_defectuoso']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['stock_minimo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['fecha_ingreso']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $inventario['fecha_vencimiento']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($inventario['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($inventario['fecha_vencimiento'] != null && $inventario['fecha_vencimiento'] !== '') { echo date('m/Y', strtotime($inventario['fecha_vencimiento'])); } ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

@@ -50,7 +50,7 @@
             <!--Se muestran los registros de la tabla q obtuvimos con el foreach-->
             <td class="th-registros"><?php echo $caja['id_cierre']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $caja['fecha']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $caja['total_ventas']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($caja['total_ventas'], 2); ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $caja['usuario_responsable']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $caja['estado']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $caja['fecha_registro']; ?></td>

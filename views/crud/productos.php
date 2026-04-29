@@ -21,9 +21,10 @@
         <table >
             <tr>
                 
-                <th><label class="insertar-text">Codigo</label></th>
+                <th><label class="insertar-text">Código</label></th>
                 <th><label class="insertar-text">Nombre</label></th>
                 <th><label class="insertar-text">Precio de venta</label></th>
+                <th><label class="insertar-text">Stock Mínimo</label></th>
                 <th><label class="insertar-text">Categoría</label></th>
                 <th><label class="insertar-text">Proveedor</label></th>
                 <th><label class="insertar-text">Estado</label></th>
@@ -32,6 +33,7 @@
                 <td><input type="text" name="codigo" required class="campo-texto" placeholder="ALI001"></td>
                 <td><input type="text" name="nombre_producto" required class="campo-texto" placeholder="JugueteWawa"></td>
                 <td><input type="number" name="precio_venta" required class="campo-texto" placeholder="12.99"></td>
+                <td><input type="number" name="stock_minimo" required min="0" class="campo-texto" placeholder="10"></td>
                 <td><select name="id_categoria" required class="campo-texto"> 
                         <option value="">Categoría</option>
                         <?php foreach ($dataC as $categoria): ?>
@@ -72,9 +74,11 @@
         <!--Header de la tabla-->
         <tr>
             <th class="th-registros">ID</th>
-            <th class="th-registros">Codigo</th>
+            <th class="th-registros">Código</th>
             <th class="th-registros">Nombre</th>
             <th class="th-registros">Precio</th>
+            <th class="th-registros">Stock Total</th>
+            <th class="th-registros">Stock Mínimo</th>
             <th class="th-registros">Categoría</th>
             <th class="th-registros">Estado</th>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>    
@@ -97,6 +101,8 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="codigo" value="<?php echo $producto['codigo']; ?>" required class="campo-texto" form="form-editar-productos"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="nombre_producto" value="<?php echo $producto['nombre_producto']; ?>" required class="campo-texto" form="form-editar-productos"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="precio_venta" value="<?php echo $producto['precio_venta']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_total']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="stock_minimo" value="<?php echo $producto['stock_minimo']; ?>" required class="campo-texto-num" form="form-editar-productos"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <select name="id_categoria" required class="campo-texto" form="form-editar-productos">
                     <!--Recibimos los id y nombres de las categorias con ObtenerCategoria()-->
@@ -136,7 +142,9 @@
             <td class="th-registros"><?php echo $producto['id_producto']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['codigo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['nombre_producto']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['precio_venta']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($producto['precio_venta'], 2); ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_total']; ?></td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_minimo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['categoria']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($producto['activo'] == 1) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <!--Si el rol es cajero, no mostramos los datos innecesarios para la venta-->

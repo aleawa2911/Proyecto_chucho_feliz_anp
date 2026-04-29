@@ -23,6 +23,8 @@ class ProductosModelo{
                     p.codigo,
                     p.nombre_producto,
                     p.precio_venta,
+                    p.stock_minimo,
+                    COALESCE(SUM(i.stock), 0) AS stock_total,
                     p.id_categoria,
                     p.id_proveedor,
                     c.nombre_categoria AS categoria,
@@ -33,6 +35,19 @@ class ProductosModelo{
                     ON p.id_categoria = c.id_categoria
                 INNER JOIN proveedores pr 
                     ON p.id_proveedor = pr.id_proveedor
+                LEFT JOIN inventario i
+                    ON p.id_producto = i.id_producto
+                GROUP BY
+                    p.id_producto,
+                    p.codigo,
+                    p.nombre_producto,
+                    p.precio_venta,
+                    p.stock_minimo,
+                    p.id_categoria,
+                    p.id_proveedor,
+                    c.nombre_categoria,
+                    pr.nombre_proveedor,
+                    p.activo
                 ORDER BY p.id_producto ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
@@ -46,6 +61,7 @@ class ProductosModelo{
                     codigo,
                     nombre_producto,
                     precio_venta,
+                    stock_minimo,
                     id_categoria,
                     id_proveedor
                 FROM productos
@@ -56,19 +72,20 @@ class ProductosModelo{
         return $data;
     }
 
-    public function Actualizar($id_producto,$codigo,$nombre_producto,$precio_venta,$id_categoria,$id_proveedor,$usuario_actualizacion){
+    public function Actualizar($id_producto,$codigo,$nombre_producto,$precio_venta,$stock_minimo,$id_categoria,$id_proveedor,$usuario_actualizacion){
         $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE productos
                 SET
                     codigo = :codigo,
                     nombre_producto = :nombre_producto,
                     precio_venta = :precio_venta,
+                    stock_minimo = :stock_minimo,
                     id_categoria = :id_categoria,
                     id_proveedor = :id_proveedor
                 WHERE
                     id_producto = :id_producto";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor]);
+        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor]);
     }
 
     public function ObtenerProveedor(){
@@ -95,12 +112,13 @@ class ProductosModelo{
         return $data;
     }
 
-    public function Insertar($codigo,$nombre_producto,$precio_venta,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
+    public function Insertar($codigo,$nombre_producto,$precio_venta,$stock_minimo,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
         $this->DefinirUsuarioResponsable($usuario_creacion);
         $sql = "INSERT INTO productos(
                     codigo,
                     nombre_producto,
                     precio_venta,
+                    stock_minimo,
                     id_categoria,
                     id_proveedor,
                     activo)
@@ -108,12 +126,13 @@ class ProductosModelo{
                     :codigo,
                     :nombre_producto,
                     :precio_venta,
+                    :stock_minimo,
                     :id_categoria,
                     :id_proveedor,
                     :activo
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
+        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
     }
 
     public function Desactivar($id_producto, $usuario_actualizacion){
@@ -138,6 +157,8 @@ class ProductosModelo{
                 p.codigo,
                 p.nombre_producto,
                 p.precio_venta,
+                p.stock_minimo,
+                COALESCE(SUM(i.stock), 0) AS stock_total,
                 p.id_categoria,
                 p.id_proveedor,
                 c.nombre_categoria AS categoria,
@@ -148,15 +169,29 @@ class ProductosModelo{
                 ON p.id_categoria = c.id_categoria
             INNER JOIN proveedores pr 
                 ON p.id_proveedor = pr.id_proveedor
+            LEFT JOIN inventario i
+                ON p.id_producto = i.id_producto
             WHERE p.id_producto LIKE :buscar
                 OR p.codigo LIKE :buscar
                 OR p.nombre_producto LIKE :buscar
                 OR p.precio_venta LIKE :buscar
+                OR p.stock_minimo LIKE :buscar
                 OR p.id_categoria LIKE :buscar
                 OR p.id_proveedor LIKE :buscar
                 OR c.nombre_categoria LIKE :buscar
                 OR pr.nombre_proveedor LIKE :buscar
                 OR (CASE WHEN p.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
+            GROUP BY
+                p.id_producto,
+                p.codigo,
+                p.nombre_producto,
+                p.precio_venta,
+                p.stock_minimo,
+                p.id_categoria,
+                p.id_proveedor,
+                c.nombre_categoria,
+                pr.nombre_proveedor,
+                p.activo
             ORDER BY p.id_producto ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([":buscar" => "%".$buscar."%"]);
