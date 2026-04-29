@@ -11,6 +11,12 @@ class UsuariosModelo{
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
+
+    private function DefinirUsuarioResponsable($id_usuario){
+        $stmt = $this->pdo->prepare("SET @id_usuario_responsable = :id_usuario");
+        $stmt->execute([":id_usuario"=>$id_usuario]);
+    }
+
     public function ObtenerTodos(){
                 $sql = "SELECT 
                     u.id_usuario,
@@ -23,18 +29,11 @@ class UsuariosModelo{
                     u.correo,
                     u.id_rol,
                     r.nombre_rol AS rol,
-                    u.activo,
-                    u.fecha_creacion,
-                    u.fecha_actualizacion,
-                    uc.nombre_usuario AS usuario_creacion,
-                    ua.nombre_usuario AS usuario_actualizacion
+                    u.activo
                 FROM usuarios u
                 INNER JOIN roles r 
                     ON u.id_rol = r.id_rol
-                LEFT JOIN usuarios uc 
-                    ON u.usuario_creacion = uc.id_usuario
-                LEFT JOIN usuarios ua 
-                    ON u.usuario_actualizacion = ua.id_usuario ORDER BY u.id_usuario ASC;";
+                ORDER BY u.id_usuario ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -60,6 +59,7 @@ class UsuariosModelo{
     }
 
     public function Actualizar($id_usuario,$primer_nombre,$segundo_nombre,$primer_apellido,$segundo_apellido,$nombre_usuario,$correo,$id_rol,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE usuarios
                 SET
                     primer_nombre = :primer_nombre,
@@ -68,15 +68,15 @@ class UsuariosModelo{
                     segundo_apellido = :segundo_apellido,
                     nombre_usuario = :nombre_usuario,
                     correo = :correo,
-                    id_rol = :id_rol,
-                    usuario_actualizacion = :usuario_actualizacion
+                    id_rol = :id_rol
                 WHERE
                     id_usuario = :id_usuario";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id_usuario'=>$id_usuario,':primer_nombre'=>$primer_nombre,':segundo_nombre'=>$segundo_nombre,':primer_apellido'=>$primer_apellido,':segundo_apellido'=>$segundo_apellido,':nombre_usuario'=>$nombre_usuario,':correo'=>$correo,':id_rol'=>$id_rol,':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id_usuario'=>$id_usuario,':primer_nombre'=>$primer_nombre,':segundo_nombre'=>$segundo_nombre,':primer_apellido'=>$primer_apellido,':segundo_apellido'=>$segundo_apellido,':nombre_usuario'=>$nombre_usuario,':correo'=>$correo,':id_rol'=>$id_rol]);
     }
 
     public function Insertar($primer_nombre,$segundo_nombre, $primer_apellido, $segundo_apellido, $nombre_usuario, $correo, $contrasena, $id_rol, $activo, $usuario_creacion){
+        $this->DefinirUsuarioResponsable($usuario_creacion);
         $salt = "IDfgdgbnmnSDFedsfLSDFGGdsffdssSdfhuyt";
         $pass = hash('sha256', $salt . trim($contrasena));
         $sql = "INSERT INTO usuarios (
@@ -88,8 +88,7 @@ class UsuariosModelo{
                                 correo, 
                                 contrasena, 
                                 id_rol, 
-                                activo,
-                                usuario_creacion
+                                activo
                             ) 
                     VALUES (
                         :primer_nombre, 
@@ -100,25 +99,26 @@ class UsuariosModelo{
                         :correo, 
                         :contrasena, 
                         :id_rol, 
-                        :activo,
-                        :usuario_creacion
+                        :activo
                         )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':primer_nombre'=>$primer_nombre,':segundo_nombre'=> $segundo_nombre, ':primer_apellido'=>$primer_apellido, ':segundo_apellido'=>$segundo_apellido, ':nombre_usuario'=>$nombre_usuario, ':correo'=>$correo, ':contrasena'=>$pass, ':id_rol'=>$id_rol, ':activo'=>$activo, ':usuario_creacion'=>$usuario_creacion]);
+        $stmt->execute([':primer_nombre'=>$primer_nombre,':segundo_nombre'=> $segundo_nombre, ':primer_apellido'=>$primer_apellido, ':segundo_apellido'=>$segundo_apellido, ':nombre_usuario'=>$nombre_usuario, ':correo'=>$correo, ':contrasena'=>$pass, ':id_rol'=>$id_rol, ':activo'=>$activo]);
     }
 
     public function Desactivar($id_usuario,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 0;
-        $sql = "UPDATE usuarios SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_usuario = :id";
+        $sql = "UPDATE usuarios SET activo = :activo WHERE id_usuario = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_usuario, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_usuario, ':activo'=>$activo]);
     } 
 
     public function Activar($id_usuario,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 1;
-        $sql = "UPDATE usuarios SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_usuario = :id";
+        $sql = "UPDATE usuarios SET activo = :activo WHERE id_usuario = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_usuario, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_usuario, ':activo'=>$activo]);
     }
 
     public function BuscarPorTexto($buscar){
@@ -133,18 +133,10 @@ class UsuariosModelo{
                 u.correo,
                 u.id_rol,
                 r.nombre_rol AS rol,
-                u.activo,
-                u.fecha_creacion,
-                u.fecha_actualizacion,
-                uc.nombre_usuario AS usuario_creacion,
-                ua.nombre_usuario AS usuario_actualizacion
+                u.activo
             FROM usuarios u
             INNER JOIN roles r 
                 ON u.id_rol = r.id_rol
-            LEFT JOIN usuarios uc 
-                ON u.usuario_creacion = uc.id_usuario
-            LEFT JOIN usuarios ua 
-                ON u.usuario_actualizacion = ua.id_usuario
             WHERE u.id_usuario LIKE :buscar
                 OR u.primer_nombre LIKE :buscar
                 OR u.segundo_nombre LIKE :buscar
@@ -154,10 +146,6 @@ class UsuariosModelo{
                 OR u.correo LIKE :buscar
                 OR u.id_rol LIKE :buscar
                 OR r.nombre_rol LIKE :buscar
-                OR u.fecha_creacion LIKE :buscar
-                OR u.fecha_actualizacion LIKE :buscar
-                OR uc.nombre_usuario LIKE :buscar
-                OR ua.nombre_usuario LIKE :buscar
                 OR (CASE WHEN u.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
                 OR CONCAT_WS(' ', u.primer_nombre, u.segundo_nombre, u.primer_apellido, u.segundo_apellido) LIKE :buscar
             ORDER BY u.id_usuario ASC;";

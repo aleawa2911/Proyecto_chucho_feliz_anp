@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
                 <th><label class="insertar-text">Segundo Apellido</label></th>
                 <th><label class="insertar-text">Nombre Usuario</label></th>
                 <th><label class="insertar-text">Correo</label></th>
-                <th><label class="insertar-text">Contraseña</label></th>
+                <th><label class="insertar-text">Contrase�a</label></th>
                 <th><label class="insertar-text">Rol</label></th>
                 <th><label class="insertar-text">Estado</label></th>
             </tr>
@@ -76,10 +76,6 @@
             <th class="th-registros">Correo</th>
             <th class="th-registros">Rol</th>
             <th class="th-registros">Estado</th>
-            <th class="th-registros">Fecha Creación</th>
-            <th class="th-registros">Fecha Actualización</th>
-            <th class="th-registros">Usuario Creación</th>
-            <th class="th-registros">Usuario Actualización</th>
             <th class="th-registros">Acciones</th> 
         </tr>
         <!--Recibimos los datos de la funcion ObtenerTodos() e imprimimos una fila por cada registro-->
@@ -112,10 +108,6 @@
                 </select>
             </td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-usuarios" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">
                     <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']?>">
@@ -131,10 +123,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['correo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['rol']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($usuario['activo'] == '1') {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $usuario['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=usuarios">

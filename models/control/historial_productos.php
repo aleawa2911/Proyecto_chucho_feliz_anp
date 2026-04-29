@@ -35,14 +35,10 @@ class HistorialProductosModelo{
                     h.id_proveedor_anterior,
                     h.id_proveedor_nuevo,
                     h.activo_anterior,
-                    h.activo_nuevo,
-                    h.fecha_actualizacion_anterior,
-                    uaa.nombre_usuario AS usuario_actualizacion_anterior
+                    h.activo_nuevo
                 FROM historial_productos h
                 LEFT JOIN usuarios ur
                     ON h.id_usuario_responsable = ur.id_usuario
-                LEFT JOIN usuarios uaa
-                    ON h.usuario_actualizacion_anterior = uaa.id_usuario
                 ORDER BY h.id_historial DESC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
@@ -74,14 +70,10 @@ class HistorialProductosModelo{
                 h.id_proveedor_anterior,
                 h.id_proveedor_nuevo,
                 h.activo_anterior,
-                h.activo_nuevo,
-                h.fecha_actualizacion_anterior,
-                uaa.nombre_usuario AS usuario_actualizacion_anterior
+                h.activo_nuevo
             FROM historial_productos h
             LEFT JOIN usuarios ur
                 ON h.id_usuario_responsable = ur.id_usuario
-            LEFT JOIN usuarios uaa
-                ON h.usuario_actualizacion_anterior = uaa.id_usuario
             WHERE h.id_historial LIKE :buscar
                 OR h.id_producto LIKE :buscar
                 OR h.accion LIKE :buscar
@@ -107,8 +99,6 @@ class HistorialProductosModelo{
                 OR h.activo_nuevo LIKE :buscar
                 OR (CASE WHEN h.activo_anterior = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
                 OR (CASE WHEN h.activo_nuevo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
-                OR h.fecha_actualizacion_anterior LIKE :buscar
-                OR uaa.nombre_usuario LIKE :buscar
             ORDER BY h.id_historial DESC;";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([":buscar" => "%".$buscar."%"]);

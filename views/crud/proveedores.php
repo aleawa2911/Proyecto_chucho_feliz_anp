@@ -62,10 +62,6 @@
             <th class="th-registros">Teléfono</th>
             <th class="th-registros">Email</th>
             <th class="th-registros">Estado</th>
-            <th class="th-registros">Fecha Creación</th>
-            <th class="th-registros">Fecha Actualización</th>
-            <th class="th-registros">Usuario Creación</th>
-            <th class="th-registros">Usuario Actualización</th>
             <th class="th-registros">Acciones</th>  
         </tr>
 
@@ -84,10 +80,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="telefono" value="<?php echo $proveedor['telefono']; ?>" class="campo-texto" form="form-editar-proveedores"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="correo" value="<?php echo $proveedor['correo']; ?>" class="campo-texto" form="form-editar-proveedores"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($proveedor['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-proveedores" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">
                     <input type="hidden" name="id_proveedor" value="<?php echo $proveedor['id_proveedor']?>">
@@ -103,10 +95,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['telefono']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['correo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($proveedor['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $proveedor['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=proveedores">

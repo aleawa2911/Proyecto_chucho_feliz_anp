@@ -88,10 +88,6 @@
             <th class="th-registros">Stock Defectuoso</th>
             <th class="th-registros">Stock Mínimo</th>
             <th class="th-registros">Proveedor</th> 
-            <th class="th-registros">Fecha Creación</th>
-            <th class="th-registros">Fecha Actualización</th>
-            <th class="th-registros">Usuario Creación</th>
-            <th class="th-registros">Usuario Actualización</th>
             <th class="th-registros">Acciones</th> 
             <?php } ?>
         </tr>
@@ -138,10 +134,6 @@
                     <?php endforeach; ?>
                 </select>
             </td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-productos" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">
                     <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']?>">
@@ -165,10 +157,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_defectuoso']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['stock_minimo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['proveedor']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $producto['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=productos">

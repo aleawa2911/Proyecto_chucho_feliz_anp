@@ -11,6 +11,12 @@ class ProveedoresModelo{
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
+
+    private function DefinirUsuarioResponsable($id_usuario){
+        $stmt = $this->pdo->prepare("SET @id_usuario_responsable = :id_usuario");
+        $stmt->execute([":id_usuario"=>$id_usuario]);
+    }
+
     public function ObtenerTodos(){
         $sql = "SELECT 
                     pr.id_proveedor,
@@ -18,16 +24,9 @@ class ProveedoresModelo{
                     pr.contacto,
                     pr.telefono,
                     pr.correo,
-                    pr.activo,
-                    pr.fecha_creacion,
-                    pr.fecha_actualizacion,
-                    uc.nombre_usuario AS usuario_creacion,
-                    ua.nombre_usuario AS usuario_actualizacion
+                    pr.activo
                 FROM proveedores pr
-                LEFT JOIN usuarios uc 
-                    ON pr.usuario_creacion = uc.id_usuario
-                LEFT JOIN usuarios ua 
-                    ON pr.usuario_actualizacion = ua.id_usuario ORDER BY pr.id_proveedor ASC;";
+                ORDER BY pr.id_proveedor ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -50,51 +49,52 @@ class ProveedoresModelo{
     }
 
     public function Actualizar($id_proveedor,$nombre_proveedor,$contacto,$telefono,$correo,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE proveedores
                 SET
                     nombre_proveedor = :nombre_proveedor,
                     contacto = :contacto,
                     telefono = :telefono,
-                    correo = :correo,
-                    usuario_actualizacion = :usuario_actualizacion
+                    correo = :correo
                 WHERE
                     id_proveedor = :id_proveedor";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":id_proveedor"=>$id_proveedor,":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":usuario_actualizacion"=>$usuario_actualizacion]);
+        $stmt->execute([":id_proveedor"=>$id_proveedor,":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo]);
     }
 
     public function Insertar($nombre_proveedor,$contacto,$telefono,$correo,$activo,$usuario_creacion){
+        $this->DefinirUsuarioResponsable($usuario_creacion);
         $sql = "INSERT INTO proveedores(
                     nombre_proveedor,
                     contacto,
                     telefono,
                     correo,
-                    activo,
-                    usuario_creacion)
+                    activo)
                 VALUES(
                     :nombre_proveedor,
                     :contacto,
                     :telefono,
                     :correo,
-                    :activo,
-                    :usuario_creacion
+                    :activo
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":activo"=>$activo,":usuario_creacion"=>$usuario_creacion]);
+        $stmt->execute([":nombre_proveedor"=>$nombre_proveedor,":contacto"=>$contacto,":telefono"=>$telefono,":correo"=>$correo,":activo"=>$activo]);
     }
 
     public function Desactivar($id_proveedor, $usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 0;
-        $sql = "UPDATE proveedores SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_proveedor = :id";
+        $sql = "UPDATE proveedores SET activo = :activo WHERE id_proveedor = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo]);
     } 
 
     public function Activar($id_proveedor, $usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 1;
-        $sql = "UPDATE proveedores SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_proveedor = :id";
+        $sql = "UPDATE proveedores SET activo = :activo WHERE id_proveedor = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_proveedor, ':activo'=>$activo]);
     }
 
     public function BuscarPorTexto($buscar){
@@ -104,25 +104,13 @@ class ProveedoresModelo{
                 pr.contacto,
                 pr.telefono,
                 pr.correo,
-                pr.activo,
-                pr.fecha_creacion,
-                pr.fecha_actualizacion,
-                uc.nombre_usuario AS usuario_creacion,
-                ua.nombre_usuario AS usuario_actualizacion
+                pr.activo
             FROM proveedores pr
-            LEFT JOIN usuarios uc 
-                ON pr.usuario_creacion = uc.id_usuario
-            LEFT JOIN usuarios ua 
-                ON pr.usuario_actualizacion = ua.id_usuario
             WHERE pr.id_proveedor LIKE :buscar
                 OR pr.nombre_proveedor LIKE :buscar
                 OR pr.contacto LIKE :buscar
                 OR pr.telefono LIKE :buscar
                 OR pr.correo LIKE :buscar
-                OR pr.fecha_creacion LIKE :buscar
-                OR pr.fecha_actualizacion LIKE :buscar
-                OR uc.nombre_usuario LIKE :buscar
-                OR ua.nombre_usuario LIKE :buscar
                 OR (CASE WHEN pr.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
             ORDER BY pr.id_proveedor ASC;";
         $stmt = $this->pdo->prepare($sql);

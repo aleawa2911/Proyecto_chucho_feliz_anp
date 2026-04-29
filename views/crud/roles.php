@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
         <table >
             <tr>
                 <th><label class="insertar-text">Nombre</label></th>
-                <th><label class="insertar-text">Descripción</label></th>
+                <th><label class="insertar-text">Descripci�n</label></th>
                 <th><label class="insertar-text">Estado</label></th>
             </tr>
             <tr>
@@ -58,10 +58,6 @@
             <th class="th-registros">Nombre</th>
             <th class="th-registros">Descripcion</th>
             <th class="th-registros">Estado</th>
-            <th class="th-registros">Fecha Creación</th>
-            <th class="th-registros">Fecha Actualización</th>
-            <th class="th-registros">Usuario Creación</th>
-            <th class="th-registros">Usuario Actualización</th>
             <th class="th-registros">Acciones</th>  
         </tr>
 
@@ -80,10 +76,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="nombre_rol" value="<?php echo $rol['nombre_rol']; ?>" required class="campo-texto" form="form-editar-roles"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="descripcion" value="<?php echo $rol['descripcion']; ?>" class="campo-texto" form="form-editar-roles"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($rol['activo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-roles" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=roles">
                     <input type="hidden" name="id_rol" value="<?php echo $rol['id_rol']?>">
@@ -98,10 +90,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['nombre_rol']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['descripcion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($rol['activo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $rol['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=roles">

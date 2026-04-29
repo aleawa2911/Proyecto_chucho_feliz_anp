@@ -42,8 +42,6 @@
             <th class="th-registros">Descripcion Nuevo</th>
             <th class="th-registros">Estado Anterior</th>
             <th class="th-registros">Estado Nuevo</th>
-            <th class="th-registros">Fecha Actualizacion Anterior</th>
-            <th class="th-registros">Usuario Actualizacion Anterior</th>
         </tr>
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
@@ -65,8 +63,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['descripcion_nuevo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialrol['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialrol['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['fecha_actualizacion_anterior']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialrol['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

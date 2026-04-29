@@ -11,21 +11,20 @@ class CategoriasModelo{
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
+
+    private function DefinirUsuarioResponsable($id_usuario){
+        $stmt = $this->pdo->prepare("SET @id_usuario_responsable = :id_usuario");
+        $stmt->execute([":id_usuario"=>$id_usuario]);
+    }
+
     public function ObtenerTodos(){
         $sql = "SELECT 
                     c.id_categoria,
                     c.nombre_categoria,
                     c.descripcion,
-                    c.activo,
-                    c.fecha_creacion,
-                    c.fecha_actualizacion,
-                    uc.nombre_usuario AS usuario_creacion,
-                    ua.nombre_usuario AS usuario_actualizacion
+                    c.activo
                 FROM categorias c
-                LEFT JOIN usuarios uc 
-                    ON c.usuario_creacion = uc.id_usuario
-                LEFT JOIN usuarios ua 
-                    ON c.usuario_actualizacion = ua.id_usuario ORDER BY c.id_categoria ASC;";
+                ORDER BY c.id_categoria ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -46,46 +45,47 @@ class CategoriasModelo{
     }
 
     public function Actualizar($id_categoria,$nombre_categoria,$descripcion,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE categorias
                 SET
                     nombre_categoria = :nombre_categoria,
-                    descripcion = :descripcion,
-                    usuario_actualizacion = :usuario_actualizacion
+                    descripcion = :descripcion
                 WHERE
                     id_categoria = :id_categoria";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":id_categoria"=>$id_categoria,":nombre_categoria"=>$nombre_categoria,":descripcion"=>$descripcion,":usuario_actualizacion"=>$usuario_actualizacion]);
+        $stmt->execute([":id_categoria"=>$id_categoria,":nombre_categoria"=>$nombre_categoria,":descripcion"=>$descripcion]);
     }
 
     public function Insertar($nombre_categoria,$descripcion,$activo,$usuario_creacion){
+        $this->DefinirUsuarioResponsable($usuario_creacion);
         $sql = "INSERT INTO categorias(
                     nombre_categoria,
                     descripcion,
-                    activo,
-                    usuario_creacion
+                    activo
                     )
                 VALUES(
                     :nombre_categoria,
                     :descripcion,
-                    :activo,
-                    :usuario_creacion
+                    :activo
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":nombre_categoria"=>$nombre_categoria,":descripcion"=>$descripcion,":activo"=>$activo, ":usuario_creacion"=>$usuario_creacion]);
+        $stmt->execute([":nombre_categoria"=>$nombre_categoria,":descripcion"=>$descripcion,":activo"=>$activo]);
     }
 
     public function Desactivar($id_categoria,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 0;
-        $sql = "UPDATE categorias SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_categoria = :id";
+        $sql = "UPDATE categorias SET activo = :activo WHERE id_categoria = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_categoria, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_categoria, ':activo'=>$activo]);
     } 
 
     public function Activar($id_categoria,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 1;
-        $sql = "UPDATE categorias SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_categoria = :id";
+        $sql = "UPDATE categorias SET activo = :activo WHERE id_categoria = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_categoria, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_categoria, ':activo'=>$activo]);
     }
 
     public function BuscarPorTexto($buscar){
@@ -93,23 +93,11 @@ class CategoriasModelo{
                 c.id_categoria,
                 c.nombre_categoria,
                 c.descripcion,
-                c.activo,
-                c.fecha_creacion,
-                c.fecha_actualizacion,
-                uc.nombre_usuario AS usuario_creacion,
-                ua.nombre_usuario AS usuario_actualizacion
+                c.activo
             FROM categorias c
-            LEFT JOIN usuarios uc 
-                ON c.usuario_creacion = uc.id_usuario
-            LEFT JOIN usuarios ua 
-                ON c.usuario_actualizacion = ua.id_usuario
             WHERE c.id_categoria LIKE :buscar
                 OR c.nombre_categoria LIKE :buscar
                 OR c.descripcion LIKE :buscar
-                OR c.fecha_creacion LIKE :buscar
-                OR c.fecha_actualizacion LIKE :buscar
-                OR uc.nombre_usuario LIKE :buscar
-                OR ua.nombre_usuario LIKE :buscar
                 OR (CASE WHEN c.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
             ORDER BY c.id_categoria ASC;";
     $stmt = $this->pdo->prepare($sql);

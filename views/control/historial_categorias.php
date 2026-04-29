@@ -42,8 +42,6 @@
             <th class="th-registros">Descripcion Nuevo</th>
             <th class="th-registros">Estado Anterior</th>
             <th class="th-registros">Estado Nuevo</th>
-            <th class="th-registros">Fecha Actualizacion Anterior</th>
-            <th class="th-registros">Usuario Actualizacion Anterior</th>
         </tr>
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
@@ -66,8 +64,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['descripcion_nuevo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialcategoria['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialcategoria['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['fecha_actualizacion_anterior']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialcategoria['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

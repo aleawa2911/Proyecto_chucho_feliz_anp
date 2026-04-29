@@ -54,8 +54,6 @@
             <th class="th-registros">ID Proveedor Nuevo</th>
             <th class="th-registros">Estado Anterior</th>
             <th class="th-registros">Estado Nuevo</th>
-            <th class="th-registros">Fecha Actualizacion Anterior</th>
-            <th class="th-registros">Usuario Actualizacion Anterior</th>
         </tr>
 
         <!--Recibimos los datos de la funcion ObtenerTodos()-->
@@ -89,8 +87,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['id_proveedor_nuevo']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialproducto['activo_anterior']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($historialproducto['activo_nuevo']) {echo 'Activo';} else {echo 'Inactivo';} ; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['fecha_actualizacion_anterior']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $historialproducto['usuario_actualizacion_anterior']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

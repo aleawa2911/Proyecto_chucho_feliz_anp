@@ -11,6 +11,12 @@ class ProductosModelo{
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
+
+    private function DefinirUsuarioResponsable($id_usuario){
+        $stmt = $this->pdo->prepare("SET @id_usuario_responsable = :id_usuario");
+        $stmt->execute([":id_usuario"=>$id_usuario]);
+    }
+
     public function ObtenerTodos(){
                 $sql = "SELECT 
                     p.id_producto,
@@ -24,20 +30,13 @@ class ProductosModelo{
                     p.id_proveedor,
                     c.nombre_categoria AS categoria,
                     pr.nombre_proveedor AS proveedor,
-                    p.activo,
-                    p.fecha_creacion,
-                    p.fecha_actualizacion,
-                    uc.nombre_usuario AS usuario_creacion,
-                    ua.nombre_usuario AS usuario_actualizacion
+                    p.activo
                 FROM productos p
                 INNER JOIN categorias c 
                     ON p.id_categoria = c.id_categoria
                 INNER JOIN proveedores pr 
                     ON p.id_proveedor = pr.id_proveedor
-                LEFT JOIN usuarios uc 
-                    ON p.usuario_creacion = uc.id_usuario
-                LEFT JOIN usuarios ua 
-                    ON p.usuario_actualizacion = ua.id_usuario ORDER BY p.id_producto ASC";
+                ORDER BY p.id_producto ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -64,6 +63,7 @@ class ProductosModelo{
     }
 
     public function Actualizar($id_producto,$codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE productos
                 SET
                     codigo = :codigo,
@@ -73,12 +73,11 @@ class ProductosModelo{
                     stock_defectuoso = :stock_defectuoso,
                     stock_minimo = :stock_minimo,
                     id_categoria = :id_categoria,
-                    id_proveedor = :id_proveedor,
-                    usuario_actualizacion = :usuario_actualizacion
+                    id_proveedor = :id_proveedor
                 WHERE
                     id_producto = :id_producto";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":usuario_actualizacion"=>$usuario_actualizacion]);
+        $stmt->execute([":id_producto"=>$id_producto,":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor]);
     }
 
     public function ObtenerProveedor(){
@@ -106,6 +105,7 @@ class ProductosModelo{
     }
 
     public function Insertar($codigo,$nombre_producto,$precio_venta,$stock,$stock_defectuoso,$stock_minimo,$id_categoria,$id_proveedor,$activo,$usuario_creacion){
+        $this->DefinirUsuarioResponsable($usuario_creacion);
         $sql = "INSERT INTO productos(
                     codigo,
                     nombre_producto,
@@ -115,8 +115,7 @@ class ProductosModelo{
                     stock_minimo,
                     id_categoria,
                     id_proveedor,
-                    activo,
-                    usuario_creacion)
+                    activo)
                 VALUES(
                     :codigo,
                     :nombre_producto,
@@ -126,25 +125,26 @@ class ProductosModelo{
                     :stock_minimo,
                     :id_categoria,
                     :id_proveedor,
-                    :activo,
-                    :usuario_creacion
+                    :activo
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo, ":usuario_creacion"=>$usuario_creacion]);
+        $stmt->execute([":codigo"=>$codigo,":nombre_producto"=>$nombre_producto,":precio_venta"=>$precio_venta,":stock"=>$stock,":stock_defectuoso"=>$stock_defectuoso,":stock_minimo"=>$stock_minimo,":id_categoria"=>$id_categoria,":id_proveedor"=>$id_proveedor,":activo"=>$activo]);
     }
 
     public function Desactivar($id_producto, $usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 0;
-        $sql = "UPDATE productos SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_producto = :id";
+        $sql = "UPDATE productos SET activo = :activo WHERE id_producto = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_producto, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_producto, ':activo'=>$activo]);
     } 
 
     public function Activar($id_producto, $usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 1;
-        $sql = "UPDATE productos SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_producto = :id";
+        $sql = "UPDATE productos SET activo = :activo WHERE id_producto = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_producto, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_producto, ':activo'=>$activo]);
     }
 
     public function BuscarPorTexto($buscar){
@@ -160,20 +160,12 @@ class ProductosModelo{
                 p.id_proveedor,
                 c.nombre_categoria AS categoria,
                 pr.nombre_proveedor AS proveedor,
-                p.activo,
-                p.fecha_creacion,
-                p.fecha_actualizacion,
-                uc.nombre_usuario AS usuario_creacion,
-                ua.nombre_usuario AS usuario_actualizacion
+                p.activo
             FROM productos p
             INNER JOIN categorias c 
                 ON p.id_categoria = c.id_categoria
             INNER JOIN proveedores pr 
                 ON p.id_proveedor = pr.id_proveedor
-            LEFT JOIN usuarios uc 
-                ON p.usuario_creacion = uc.id_usuario
-            LEFT JOIN usuarios ua 
-                ON p.usuario_actualizacion = ua.id_usuario
             WHERE p.id_producto LIKE :buscar
                 OR p.codigo LIKE :buscar
                 OR p.nombre_producto LIKE :buscar
@@ -185,10 +177,6 @@ class ProductosModelo{
                 OR p.id_proveedor LIKE :buscar
                 OR c.nombre_categoria LIKE :buscar
                 OR pr.nombre_proveedor LIKE :buscar
-                OR p.fecha_creacion LIKE :buscar
-                OR p.fecha_actualizacion LIKE :buscar
-                OR uc.nombre_usuario LIKE :buscar
-                OR ua.nombre_usuario LIKE :buscar
                 OR (CASE WHEN p.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
             ORDER BY p.id_producto ASC";
     $stmt = $this->pdo->prepare($sql);

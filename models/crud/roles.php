@@ -11,21 +11,20 @@ class RolesModelo{
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
+
+    private function DefinirUsuarioResponsable($id_usuario){
+        $stmt = $this->pdo->prepare("SET @id_usuario_responsable = :id_usuario");
+        $stmt->execute([":id_usuario"=>$id_usuario]);
+    }
+
     public function ObtenerTodos(){
         $sql = "SELECT 
                     r.id_rol,
                     r.nombre_rol,
                     r.descripcion,
-                    r.activo,
-                    r.fecha_creacion,
-                    r.fecha_actualizacion,
-                    uc.nombre_usuario AS usuario_creacion,
-                    ua.nombre_usuario AS usuario_actualizacion
+                    r.activo
                 FROM roles r
-                LEFT JOIN usuarios uc 
-                    ON r.usuario_creacion = uc.id_usuario
-                LEFT JOIN usuarios ua 
-                    ON r.usuario_actualizacion = ua.id_usuario ORDER BY r.id_rol ASC;";
+                ORDER BY r.id_rol ASC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -46,45 +45,46 @@ class RolesModelo{
     }
 
     public function Actualizar($id_rol,$nombre_rol,$descripcion,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $sql = "UPDATE roles 
                 SET 
                     nombre_rol = :nombre_rol,
-                    descripcion = :descripcion,
-                    usuario_actualizacion = :usuario_actualizacion
+                    descripcion = :descripcion
                 WHERE 
                     id_rol = :id_rol";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":id_rol"=>$id_rol,":nombre_rol"=>$nombre_rol,":descripcion"=>$descripcion,":usuario_actualizacion"=>$usuario_actualizacion]);
+        $stmt->execute([":id_rol"=>$id_rol,":nombre_rol"=>$nombre_rol,":descripcion"=>$descripcion]);
     }
 
     public function Insertar($nombre_rol,$descripcion,$activo,$usuario_creacion){
+        $this->DefinirUsuarioResponsable($usuario_creacion);
         $sql = "INSERT INTO roles(
                     nombre_rol,
                     descripcion,
-                    activo,
-                    usuario_creacion)
+                    activo)
                 VALUES(
                     :nombre_rol,
                     :descripcion,
-                    :activo,
-                    :usuario_creacion
+                    :activo
                     )";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":nombre_rol"=>$nombre_rol,":descripcion"=>$descripcion,":activo"=>$activo,":usuario_creacion"=>$usuario_creacion]);
+        $stmt->execute([":nombre_rol"=>$nombre_rol,":descripcion"=>$descripcion,":activo"=>$activo]);
     }
 
     public function Desactivar($id_rol,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 0;
-        $sql = "UPDATE roles SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_rol = :id";
+        $sql = "UPDATE roles SET activo = :activo WHERE id_rol = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_rol, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_rol, ':activo'=>$activo]);
     } 
 
     public function Activar($id_rol,$usuario_actualizacion){
+        $this->DefinirUsuarioResponsable($usuario_actualizacion);
         $activo = 1;
-        $sql = "UPDATE roles SET activo = :activo, usuario_actualizacion = :usuario_actualizacion WHERE id_rol = :id";
+        $sql = "UPDATE roles SET activo = :activo WHERE id_rol = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id_rol, ':activo'=>$activo, ':usuario_actualizacion'=>$usuario_actualizacion]);
+        $stmt->execute([':id' => $id_rol, ':activo'=>$activo]);
     }
 
     public function BuscarPorTexto($buscar){
@@ -92,23 +92,11 @@ class RolesModelo{
                 r.id_rol,
                 r.nombre_rol,
                 r.descripcion,
-                r.activo,
-                r.fecha_creacion,
-                r.fecha_actualizacion,
-                uc.nombre_usuario AS usuario_creacion,
-                ua.nombre_usuario AS usuario_actualizacion
+                r.activo
             FROM roles r
-            LEFT JOIN usuarios uc 
-                ON r.usuario_creacion = uc.id_usuario
-            LEFT JOIN usuarios ua 
-                ON r.usuario_actualizacion = ua.id_usuario
             WHERE r.id_rol LIKE :buscar
                 OR r.nombre_rol LIKE :buscar
                 OR r.descripcion LIKE :buscar
-                OR r.fecha_creacion LIKE :buscar
-                OR r.fecha_actualizacion LIKE :buscar
-                OR uc.nombre_usuario LIKE :buscar
-                OR ua.nombre_usuario LIKE :buscar
                 OR (CASE WHEN r.activo = 1 THEN 'Activo' ELSE 'Inactivo' END) LIKE :buscar
             ORDER BY r.id_rol ASC;";
     $stmt = $this->pdo->prepare($sql);

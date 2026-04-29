@@ -59,10 +59,6 @@
             <th class="th-registros">Descripción</th>
             <th class="th-registros">Estado</th>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
-            <th class="th-registros">Fecha Creación</th>
-            <th class="th-registros">Fecha Actualización</th>
-            <th class="th-registros">Usuario Creación</th>
-            <th class="th-registros">Usuario Actualización</th>
             <th class="th-registros">Acciones</th>  
             <?php } ?>
         </tr>
@@ -83,10 +79,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><input type="text" name="descripcion" value="<?php echo $categoria['descripcion']; ?>" class="campo-texto" form="form-editar-categorias"></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                     <form id="form-editar-categorias" method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
                     <input type="hidden" name="id_categoria" value="<?php echo $categoria['id_categoria']?>">
@@ -102,10 +94,6 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['descripcion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php if ($categoria['activo']) {echo 'Activo';} else {echo 'Inactivo';} ?></td>
             <?php if ($_SESSION['rol'] != 'Cajero') { ?>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['fecha_actualizacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_creacion']; ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>"><?php echo $categoria['usuario_actualizacion']; ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
                 <!--Botones que triggerean los cases del switch del controlador-->
                 <form method="post" action="/proyecto_chucho_feliz_anp/index.php?url=categorias">
