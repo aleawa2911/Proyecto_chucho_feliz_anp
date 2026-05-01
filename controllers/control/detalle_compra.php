@@ -13,16 +13,18 @@ require_once __DIR__ . '/../../models/control/reporte_compras.php';
     /*Instanciamos el modelo de reporte compras*/
     $modelo = new ReporteComprasModelo();
 
-    /*Obtenemos el parametro 'buscar' enviado por GET y lo guardamos en $buscar, si no hay, la declaramos como vacía*/
-    $buscar = trim($_GET['buscar'] ?? '');
+    /*Obtenemos la compra enviada por GET*/
+    $id_compra = $_GET['id_compra'] ?? '';
 
-    /*Si buscar no está vacío, la usamos para guardar en $data la concidencia con la db, sino, guardamos todos los datos */
-    if ($buscar !== '') { 
-        $data = $modelo->BuscarPorTexto($buscar);
-    } else {
-        $data = $modelo->ObtenerTodos();
+    /*Si no viene la compra, regresamos al reporte*/
+    if ($id_compra === '') {
+        header('Location: /proyecto_chucho_feliz_anp/index.php?url=reporte_compras');
+        exit;
     }
 
-require_once __DIR__ . '/../../views/control/reporte_compras.php';
+    /*Obtenemos los detalles de la compra seleccionada*/
+    $detalleCompra = $modelo->ObtenerDetalleCompra($id_compra);
+
+require_once __DIR__ . '/../../views/control/detalle_compra.php';
 
 ?>
