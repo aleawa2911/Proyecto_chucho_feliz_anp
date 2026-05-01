@@ -12,17 +12,19 @@ require_once __DIR__ . '/../../models/control/reporte_ventas.php';
 
     /*Instanciamos el modelo de reporte ventas*/
     $modelo = new ReporteVentasModelo();
-    
-    /*Obtenemos el parametro 'buscar' enviado por GET y lo guardamos en $buscar, si no hay, la declaramos como vacía*/
-    $buscar = trim($_GET['buscar'] ?? '');
 
-    /*Si buscar no está vacío, la usamos para guardar en $data la concidencia con la db, sino, guardamos todos los datos */
-    if ($buscar !== '') { 
-        $data = $modelo->BuscarPorTexto($buscar);
-    } else {
-        $data = $modelo->ObtenerTodos();
+    /*Obtenemos la venta enviada por GET*/
+    $id_venta = $_GET['id_venta'] ?? '';
+
+    /*Si no viene la venta, regresamos al reporte*/
+    if ($id_venta === '') {
+        header('Location: /proyecto_chucho_feliz_anp/index.php?url=reporte_ventas');
+        exit;
     }
 
-require_once __DIR__ . '/../../views/control/reporte_ventas.php';
+    /*Obtenemos los detalles de la venta seleccionada*/
+    $detalleVenta = $modelo->ObtenerDetalleVenta($id_venta);
+
+require_once __DIR__ . '/../../views/control/detalle_venta.php';
 
 ?>

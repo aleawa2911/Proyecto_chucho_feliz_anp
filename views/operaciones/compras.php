@@ -48,7 +48,7 @@
                     </select>
                 </td>
                 <td>
-                    <select name="id_producto" required class="campo-texto">
+                    <select name="id_producto" required class="campo-texto select-producto-operacion">
                         <option value="">Producto</option>
                         <?php foreach ($dataProductos as $producto): ?>
                         <option value="<?php echo $producto['id_producto']; ?>"><?php echo $producto['codigo']; ?> - <?php echo $producto['nombre_producto']; ?></option>
@@ -59,7 +59,7 @@
                 <td><input type="number" name="cantidad" required min="1" class="campo-texto" placeholder="1"></td>
                 <td><input type="number" name="precio_unitario" required min="0" step="0.01" class="campo-texto" placeholder="0.00"></td>
                 <td><input type="month" name="fecha_vencimiento" class="campo-texto"></td>
-                <td><input type="submit" value="Agregar detalle" name="accion" class="boton-insertar"></td>
+                <td><input type="submit" value="Agregar producto" name="accion" class="boton-insertar"></td>
             </tr>
         </table>
         </form>

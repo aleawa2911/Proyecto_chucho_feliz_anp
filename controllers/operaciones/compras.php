@@ -31,7 +31,7 @@ require_once __DIR__ . '/../../models/operaciones/compras.php';
 
         /*Revisamos que acción es para proceder*/
         switch ($accion) {
-            case 'Agregar detalle':
+            case 'Agregar producto':
                 try {
                     $id_proveedor = $_POST['id_proveedor'];
                     $id_producto = $_POST['id_producto'];

@@ -41,6 +41,14 @@ switch ($url) {
         require_once __DIR__ . '/controllers/operaciones/devoluciones.php';
         break;
 
+    case 'devoluciones_ventas':
+        require_once __DIR__ . '/controllers/operaciones/devoluciones_ventas.php';
+        break;
+
+    case 'devoluciones_proveedores':
+        require_once __DIR__ . '/controllers/operaciones/devoluciones_proveedores.php';
+        break;
+
     case 'compras':
         require_once __DIR__ . '/controllers/operaciones/compras.php';
         break;
@@ -87,6 +95,10 @@ switch ($url) {
 
     case 'reporte_ventas':
         require_once __DIR__ . '/controllers/control/reporte_ventas.php';
+        break;
+
+    case 'detalle_venta':
+        require_once __DIR__ . '/controllers/control/detalle_venta.php';
         break;
 
     case 'reporte_compras':

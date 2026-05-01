@@ -1,19 +1,20 @@
 <?php 
-/*Jalamos la conexion a la db*/
+/*Jalamos la conexión a la db*/
 require_once __DIR__ . '/../../config/conexion.php';
 
 class ReporteVentasModelo{
 
-    /*Propiedad privada q guarda la conexion PDO a la DB*/
+    /*Propiedad privada q guarda la conexión PDO a la DB*/
     private $pdo;
 
-    /*Guardamos la conexion a la DB en la propiedad pdo*/
+    /*Guardamos la conexión a la DB en la propiedad pdo*/
     public function __construct(){
         $conexion = new Conexion();
         $this->pdo = $conexion->conectar();
     }
 
     public function ObtenerTodos(){
+        /*Obtenemos las ventas registradas con usuario responsable*/
         $sql = "SELECT 
                     v.id_venta,
                     v.id_cierre,
@@ -33,41 +34,49 @@ class ReporteVentasModelo{
     }
 
     public function BuscarPorTexto($buscar){
-    $sql = "SELECT 
-                v.id_venta,
-                v.id_cierre,
-                v.fecha,
-                u.nombre_usuario AS usuario_responsable,
-                v.subtotal,
-                v.iva,
-                v.total
-            FROM ventas v
-            LEFT JOIN usuarios u
-                ON v.id_usuario = u.id_usuario
-            WHERE v.id_venta LIKE :buscar
-                OR v.id_cierre LIKE :buscar
-                OR v.fecha LIKE :buscar
-                OR u.nombre_usuario LIKE :buscar
-                OR v.subtotal LIKE :buscar
-                OR v.iva LIKE :buscar
-                OR v.total LIKE :buscar
-            ORDER BY v.id_venta DESC;";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([":buscar" => "%".$buscar."%"]);
-    return $stmt->fetchAll();
-}
+        /*Buscamos ventas por datos generales*/
+        $sql = "SELECT 
+                    v.id_venta,
+                    v.id_cierre,
+                    v.fecha,
+                    u.nombre_usuario AS usuario_responsable,
+                    v.subtotal,
+                    v.iva,
+                    v.total
+                FROM ventas v
+                LEFT JOIN usuarios u
+                    ON v.id_usuario = u.id_usuario
+                WHERE v.id_venta LIKE :buscar
+                    OR v.id_cierre LIKE :buscar
+                    OR v.fecha LIKE :buscar
+                    OR u.nombre_usuario LIKE :buscar
+                    OR v.subtotal LIKE :buscar
+                    OR v.iva LIKE :buscar
+                    OR v.total LIKE :buscar
+                ORDER BY v.id_venta DESC;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":buscar" => "%".$buscar."%"]);
+        return $stmt->fetchAll();
+    }
 
     public function ObtenerDetalleVenta($id_venta){
+        /*Obtenemos los productos que pertenecen a una venta*/
         $sql = "SELECT
                     d.id_detalle,
                     d.id_producto,
+                    p.codigo,
                     p.nombre_producto AS producto,
+                    d.id_inventario,
+                    i.lote,
+                    i.fecha_vencimiento,
                     d.cantidad,
                     d.precio_unitario,
                     d.subtotal
                 FROM detalle_ventas d
                 LEFT JOIN productos p
                     ON d.id_producto = p.id_producto
+                LEFT JOIN inventario i
+                    ON d.id_inventario = i.id_inventario
                 WHERE d.id_venta = :id_venta
                 ORDER BY d.id_detalle ASC;";
         $stmt = $this->pdo->prepare($sql);

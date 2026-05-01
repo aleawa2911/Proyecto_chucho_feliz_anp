@@ -425,6 +425,19 @@
     margin: 2px auto;
 }
 
+.tabla-insertar .select-producto-operacion{
+    width: 480px;
+    text-align: left;
+}
+
+.mensaje-error-caja{
+    color: rgb(180, 20, 20);
+    border: 2px solid rgb(180, 20, 20);
+    background-color: rgb(255, 235, 235);
+    padding: 10px 18px;
+    border-radius: 8px;
+}
+
 .tabla-insertar .campo-texto-num,
 .td-registros .campo-texto-num{
     width: 90px;

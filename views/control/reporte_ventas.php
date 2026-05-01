@@ -42,7 +42,7 @@
             <th class="th-registros">Detalle</th>
         </tr>
 
-        <!--Recibimos los datos de la funcion ObtenerTodos()-->
+        <!--Recibimos los datos de la función ObtenerTodos()-->
         <?php
         $contador_fila = 0; 
         foreach ($data as $venta):
@@ -57,7 +57,9 @@
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($venta['subtotal'], 2); ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($venta['iva'], 2); ?></td>
             <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">$<?php echo number_format($venta['total'], 2); ?></td>
-            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">Ver detalle va aquí</td>
+            <td class="<?php if ($contador_fila % 2 === 0) echo 'td-registros-alterno'; else echo 'td-registros'; ?>">
+                <a href="/proyecto_chucho_feliz_anp/index.php?url=detalle_venta&id_venta=<?php echo $venta['id_venta']; ?>" class="boton-buscar">Ver detalle</a>
+            </td>
         </tr>
         <?php endforeach; ?>
     </table>
