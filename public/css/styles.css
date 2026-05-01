@@ -581,4 +581,120 @@
     color: rgb(255, 255, 255);
 }
 
+/*-------------------------------SECCION RESUMEN------------------------------------*/
+.resumen-header{
+    width: fit-content;
+    max-width: 92%;
+    margin: 20px auto 22px auto;
+    padding: 14px 34px;
+    background-color: rgb(94, 114, 88);
+    border: 3px solid rgba(20, 40, 22, 0.638);
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
 
+.resumen-header-titulo{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.resumen-cards{
+    width: min(1050px, 92%);
+    margin: 0 auto 16px auto;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.resumen-card{
+    background-color: #d7e0d3;
+    border: 3px solid rgba(20, 40, 22, 0.638);
+    border-radius: 18px;
+    padding: 16px;
+    min-width: 260px;
+    flex: 1;
+}
+
+.resumen-tabla{
+    width: min(1050px, 92%);
+    margin: 14px auto 0 auto;
+}
+
+.resumen-titulo{
+    color: rgb(255, 255, 255);
+    border-radius: 14px;
+    padding: 9px 12px;
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-size: 15px;
+}
+
+.resumen-dato{
+    background-color: rgb(249, 250, 247);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.resumen-etiqueta{
+    font-weight: 600;
+}
+
+.resumen-valor{
+    text-align: right;
+}
+
+.resumen-lista{
+    display: grid;
+    gap: 8px;
+}
+
+.resumen-item{
+    background-color: rgb(249, 250, 247);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.resumen-item-alterno{
+    background-color: rgb(255, 255, 255);
+}
+
+.resumen-total{
+    background-color: rgb(65, 105, 68);
+    color: rgb(255, 255, 255);
+    border-color: rgb(35, 65, 38);
+}
+
+.resumen-producto{
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.resumen-detalle{
+    font-size: 14px;
+}
+
+.resumen-caja{
+    background-color: rgb(112, 78, 54);
+}
+
+.resumen-ventas{
+    background-color: rgb(54, 111, 140);
+}
+
+.resumen-inventario-bajo{
+    background-color: rgb(183, 127, 37);
+}
+
+.resumen-stock-defectuoso{
+    background-color: rgb(151, 55, 55);
+}
