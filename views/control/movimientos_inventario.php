@@ -20,12 +20,36 @@
         <div class="buscar-box">
             <form method="GET" action="/proyecto_chucho_feliz_anp/index.php" class="buscar-form">
                 <input type="hidden" name="url" value="movimientos_inventario">
+                <input type="hidden" name="tipo_resumen" value="<?php echo $tipo_resumen; ?>">
+                <input type="hidden" name="fecha_resumen" value="<?php echo $fecha_resumen; ?>">
                 <input type="text" name="buscar" class="campo-texto" value="<?php echo $_GET['buscar'] ?? ''; ?>" placeholder="Buscar...">
                 <input type="submit" value="Buscar" class="boton-buscar">
                 <a href="/proyecto_chucho_feliz_anp/index.php?url=movimientos_inventario" class="boton-cancelar">X</a>
             </form>
         </div>
     </div>
+
+<!--Tarjeta de resumen de movimientos-->
+<div class="reporte-resumen">
+    <h2 class="resumen-titulo resumen-inventario-bajo">Resumen de movimientos</h2>
+    <form method="GET" action="/proyecto_chucho_feliz_anp/index.php" class="reporte-resumen-form">
+        <input type="hidden" name="url" value="movimientos_inventario">
+        <input type="hidden" name="buscar" value="<?php echo $_GET['buscar'] ?? ''; ?>">
+        <select name="tipo_resumen" class="campo-texto">
+            <option value="dia" <?php if ($tipo_resumen == 'dia') echo 'selected'; ?>>Día</option>
+            <option value="mes" <?php if ($tipo_resumen == 'mes') echo 'selected'; ?>>Mes</option>
+            <option value="anio" <?php if ($tipo_resumen == 'anio') echo 'selected'; ?>>Año</option>
+        </select>
+        <input type="date" name="fecha_resumen" class="campo-texto" value="<?php echo $fecha_resumen; ?>">
+        <input type="submit" value="Ver resumen" class="boton-buscar">
+    </form>
+    <div class="reporte-resumen-datos">
+        <div class="reporte-resumen-dato">Movimientos<br><?php echo $resumen['cantidad_registros']; ?></div>
+        <div class="reporte-resumen-dato">Entradas<br><?php echo $resumen['entradas']; ?></div>
+        <div class="reporte-resumen-dato">Salidas<br><?php echo $resumen['salidas']; ?></div>
+        <div class="reporte-resumen-dato reporte-resumen-total">Productos<br><?php echo $resumen['cantidad_productos']; ?></div>
+    </div>
+</div>
 
 <!--Tabla de registros de movimientos-->
 <div class="tabla-registros-box">

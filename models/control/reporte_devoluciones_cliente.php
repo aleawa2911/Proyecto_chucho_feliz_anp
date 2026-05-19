@@ -64,5 +64,31 @@ class ReporteDevolucionesClienteModelo{
     return $stmt->fetchAll();
 }
 
+    private function ObtenerCondicionFecha($campo_fecha, $tipo_resumen){
+        if ($tipo_resumen == 'mes') {
+            return "YEAR($campo_fecha) = YEAR(:fecha_resumen) AND MONTH($campo_fecha) = MONTH(:fecha_resumen)";
+        }
+
+        if ($tipo_resumen == 'anio') {
+            return "YEAR($campo_fecha) = YEAR(:fecha_resumen)";
+        }
+
+        return "DATE($campo_fecha) = :fecha_resumen";
+    }
+
+    public function ObtenerResumen($tipo_resumen, $fecha_resumen){
+        /*Obtenemos el resumen de devoluciones de clientes segun el periodo elegido*/
+        $condicion_fecha = $this->ObtenerCondicionFecha('d.fecha', $tipo_resumen);
+
+        $sql = "SELECT
+                    COUNT(*) AS cantidad_registros,
+                    IFNULL(SUM(d.cantidad), 0) AS cantidad_productos
+                FROM devoluciones_clientes d
+                WHERE $condicion_fecha";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":fecha_resumen" => $fecha_resumen]);
+        return $stmt->fetch();
+    }
+
 }
 ?>

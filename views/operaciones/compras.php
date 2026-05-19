@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td>
-                    <select name="id_proveedor" required class="campo-texto">
+                    <select name="id_proveedor" required class="campo-texto" id="select-proveedor-compra">
                         <option value="">Proveedor</option>
                         <?php foreach ($dataP as $proveedor): ?>
                         <option value="<?php echo $proveedor['id_proveedor']; ?>" <?php if ($id_proveedor_compra == $proveedor['id_proveedor']) { echo 'selected'; } ?>><?php echo $proveedor['nombre_proveedor']; ?></option>
@@ -48,10 +48,10 @@
                     </select>
                 </td>
                 <td>
-                    <select name="id_producto" required class="campo-texto select-producto-operacion">
+                    <select name="id_producto" required class="campo-texto select-producto-operacion" id="select-producto-compra">
                         <option value="">Producto</option>
                         <?php foreach ($dataProductos as $producto): ?>
-                        <option value="<?php echo $producto['id_producto']; ?>"><?php echo $producto['codigo']; ?> - <?php echo $producto['nombre_producto']; ?></option>
+                        <option value="<?php echo $producto['id_producto']; ?>" data-proveedor="<?php echo $producto['id_proveedor']; ?>"><?php echo $producto['codigo']; ?> - <?php echo $producto['nombre_producto']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
@@ -116,6 +116,29 @@
 </div>
 
 <?php require_once __DIR__ . '/../layout/footer.php';?>
+<script>
+const selectProveedorCompra = document.getElementById('select-proveedor-compra');
+const selectProductoCompra = document.getElementById('select-producto-compra');
+
+function FiltrarProductosPorProveedor() {
+    const proveedorSeleccionado = selectProveedorCompra.value;
+    const opcionesProducto = selectProductoCompra.querySelectorAll('option');
+
+    selectProductoCompra.value = '';
+
+    opcionesProducto.forEach(function(opcion) {
+        if (opcion.value === '') {
+            opcion.hidden = false;
+            return;
+        }
+
+        opcion.hidden = proveedorSeleccionado === '' || opcion.dataset.proveedor !== proveedorSeleccionado;
+    });
+}
+
+selectProveedorCompra.addEventListener('change', FiltrarProductosPorProveedor);
+FiltrarProductosPorProveedor();
+</script>
 <?php if (isset($_SESSION['mensaje'])) {
     $mensaje = $_SESSION['mensaje'];
     echo "<script>alert('$mensaje')</script>";

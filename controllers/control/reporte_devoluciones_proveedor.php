@@ -13,6 +13,20 @@ require_once __DIR__ . '/../../models/control/reporte_devoluciones_proveedor.php
     /*Instanciamos el modelo de reporte devoluciones proveedor*/
     $modelo = new ReporteDevolucionesProveedorModelo();
 
+    /*Obtenemos los datos para el resumen*/
+    $tipo_resumen = $_GET['tipo_resumen'] ?? 'dia';
+    $fecha_resumen = $_GET['fecha_resumen'] ?? date('Y-m-d');
+
+    if ($tipo_resumen != 'dia' && $tipo_resumen != 'mes' && $tipo_resumen != 'anio') {
+        $tipo_resumen = 'dia';
+    }
+
+    if ($fecha_resumen == '') {
+        $fecha_resumen = date('Y-m-d');
+    }
+
+    $resumen = $modelo->ObtenerResumen($tipo_resumen, $fecha_resumen);
+
     /*Obtenemos el parametro 'buscar' enviado por GET y lo guardamos en $buscar, si no hay, la declaramos como vacia*/
     $buscar = trim($_GET['buscar'] ?? '');
 

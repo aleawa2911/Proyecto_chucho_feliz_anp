@@ -49,6 +49,11 @@ require_once __DIR__ . '/../../models/operaciones/compras.php';
                     /*Guardamos el proveedor seleccionado para mantenerlo en la compra temporal*/
                     $_SESSION['id_proveedor_compra'] = $id_proveedor;
 
+                    /*Validamos que el producto pertenezca al proveedor seleccionado*/
+                    if ($modelo->ProductoPerteneceAProveedor($id_producto, $id_proveedor) == false) {
+                        throw new Exception("El producto no pertenece al proveedor seleccionado.");
+                    }
+
                     /*Buscamos el nombre del producto seleccionado para mostrarlo en la tabla temporal*/
                     foreach ($dataProductos as $producto) {
                         if ($producto['id_producto'] == $id_producto) {

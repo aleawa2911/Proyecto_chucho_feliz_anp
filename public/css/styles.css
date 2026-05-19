@@ -434,7 +434,7 @@
     color: rgb(180, 20, 20);
     border: 2px solid rgb(180, 20, 20);
     background-color: rgb(255, 235, 235);
-    padding: 10px 18px;
+    padding: 200px;
     border-radius: 8px;
 }
 
@@ -697,4 +697,44 @@
 
 .resumen-stock-defectuoso{
     background-color: rgb(151, 55, 55);
+}
+
+.reporte-resumen{
+    width: min(720px, 92%);
+    margin: 12px auto 18px auto;
+    background-color: #d7e0d3;
+    border: 3px solid rgba(20, 40, 22, 0.638);
+    border-radius: 18px;
+    padding: 14px;
+}
+
+.reporte-resumen-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.reporte-resumen-datos{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reporte-resumen-dato{
+    min-width: 150px;
+    background-color: rgb(249, 250, 247);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.reporte-resumen-total{
+    background-color: rgb(65, 105, 68);
+    color: rgb(255, 255, 255);
+    border-color: rgb(35, 65, 38);
 }

@@ -31,13 +31,31 @@ class ComprasModelo{
         $sql = "SELECT
                     id_producto,
                     codigo,
-                    nombre_producto
+                    nombre_producto,
+                    id_proveedor
                 FROM productos
                 WHERE activo = 1
                 ORDER BY nombre_producto ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function ProductoPerteneceAProveedor($id_producto, $id_proveedor){
+        /*Verificamos que el producto pertenezca al proveedor seleccionado*/
+        $sql = "SELECT
+                    id_producto
+                FROM productos
+                WHERE id_producto = :id_producto
+                    AND id_proveedor = :id_proveedor
+                    AND activo = 1
+                LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ":id_producto" => $id_producto,
+            ":id_proveedor" => $id_proveedor
+        ]);
+        return $stmt->fetch() != false;
     }
 
     public function RegistrarCompra($id_proveedor, $id_usuario, $detalles){
