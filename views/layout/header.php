@@ -40,7 +40,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Caja</a></div>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=devoluciones" class="boton <?php if($url=='devoluciones' || $url=='devoluciones_ventas' || $url=='devoluciones_proveedores')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/devolucion.png" alt="icono devoluciones" class="icono-seccion">Devoluciones</a></div>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/compra.png" alt="icono compras" class="icono-seccion">Compras</a></div>
                 </div>
@@ -77,7 +77,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Caja</a></div>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=devoluciones" class="boton <?php if($url=='devoluciones' || $url=='devoluciones_ventas' || $url=='devoluciones_proveedores')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/devolucion.png" alt="icono devoluciones" class="icono-seccion">Devoluciones</a></div>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=compras" class="boton <?php if($url=='compras')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/compra.png" alt="icono compras" class="icono-seccion">Compras</a></div>
                 </div>
@@ -107,7 +107,7 @@ igualmente cada controlador chequea eso tambien para q no puedan entrar por url 
                         <!--Box de operaciones-->
                         <p class="header-box-seccion-titulo">Operaciones</p>
                         <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=ventas" class="boton <?php if($url=='ventas')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/venta.png" alt="icono ventas" class="icono-seccion">Ventas</a></div>
-                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Cierre de caja</a></div>
+                        <div class="header-boton"><a href="/proyecto_chucho_feliz_anp/index.php?url=cierre_caja" class="boton <?php if($url=='cierre_caja')echo 'boton-activo'?>"><img src="/proyecto_chucho_feliz_anp/public/images/cierre_caja.png" alt="icono cierre de caja" class="icono-seccion">Caja</a></div>
                 </div>
                 <div class="header-box-seccion">
                         <!--Box de inventario-->
